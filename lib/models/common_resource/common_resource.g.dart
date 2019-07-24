@@ -30,6 +30,18 @@ class _$CommonResourceSerializer
       'contentType',
       serializers.serialize(object.contentType,
           specifiedType: const FullType(String)),
+      'revision',
+      serializers.serialize(object.revision,
+          specifiedType: const FullType(int)),
+      'createdAt',
+      serializers.serialize(object.createdAt,
+          specifiedType: const FullType(String)),
+      'updatedAt',
+      serializers.serialize(object.updatedAt,
+          specifiedType: const FullType(String)),
+      'locale',
+      serializers.serialize(object.locale,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -63,6 +75,22 @@ class _$CommonResourceSerializer
           result.contentType = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'revision':
+          result.revision = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'createdAt':
+          result.createdAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'updatedAt':
+          result.updatedAt = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'locale':
+          result.locale = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -79,11 +107,27 @@ class _$CommonResource extends CommonResource {
   final String space;
   @override
   final String contentType;
+  @override
+  final int revision;
+  @override
+  final String createdAt;
+  @override
+  final String updatedAt;
+  @override
+  final String locale;
 
   factory _$CommonResource([void Function(CommonResourceBuilder) updates]) =>
       (new CommonResourceBuilder()..update(updates)).build();
 
-  _$CommonResource._({this.type, this.id, this.space, this.contentType})
+  _$CommonResource._(
+      {this.type,
+      this.id,
+      this.space,
+      this.contentType,
+      this.revision,
+      this.createdAt,
+      this.updatedAt,
+      this.locale})
       : super._() {
     if (type == null) {
       throw new BuiltValueNullFieldError('CommonResource', 'type');
@@ -96,6 +140,18 @@ class _$CommonResource extends CommonResource {
     }
     if (contentType == null) {
       throw new BuiltValueNullFieldError('CommonResource', 'contentType');
+    }
+    if (revision == null) {
+      throw new BuiltValueNullFieldError('CommonResource', 'revision');
+    }
+    if (createdAt == null) {
+      throw new BuiltValueNullFieldError('CommonResource', 'createdAt');
+    }
+    if (updatedAt == null) {
+      throw new BuiltValueNullFieldError('CommonResource', 'updatedAt');
+    }
+    if (locale == null) {
+      throw new BuiltValueNullFieldError('CommonResource', 'locale');
     }
   }
 
@@ -114,13 +170,27 @@ class _$CommonResource extends CommonResource {
         type == other.type &&
         id == other.id &&
         space == other.space &&
-        contentType == other.contentType;
+        contentType == other.contentType &&
+        revision == other.revision &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
+        locale == other.locale;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc($jc(0, type.hashCode), id.hashCode), space.hashCode),
-        contentType.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, type.hashCode), id.hashCode),
+                            space.hashCode),
+                        contentType.hashCode),
+                    revision.hashCode),
+                createdAt.hashCode),
+            updatedAt.hashCode),
+        locale.hashCode));
   }
 
   @override
@@ -129,7 +199,11 @@ class _$CommonResource extends CommonResource {
           ..add('type', type)
           ..add('id', id)
           ..add('space', space)
-          ..add('contentType', contentType))
+          ..add('contentType', contentType)
+          ..add('revision', revision)
+          ..add('createdAt', createdAt)
+          ..add('updatedAt', updatedAt)
+          ..add('locale', locale))
         .toString();
   }
 }
@@ -154,6 +228,22 @@ class CommonResourceBuilder
   String get contentType => _$this._contentType;
   set contentType(String contentType) => _$this._contentType = contentType;
 
+  int _revision;
+  int get revision => _$this._revision;
+  set revision(int revision) => _$this._revision = revision;
+
+  String _createdAt;
+  String get createdAt => _$this._createdAt;
+  set createdAt(String createdAt) => _$this._createdAt = createdAt;
+
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
+
+  String _locale;
+  String get locale => _$this._locale;
+  set locale(String locale) => _$this._locale = locale;
+
   CommonResourceBuilder();
 
   CommonResourceBuilder get _$this {
@@ -162,6 +252,10 @@ class CommonResourceBuilder
       _id = _$v.id;
       _space = _$v.space;
       _contentType = _$v.contentType;
+      _revision = _$v.revision;
+      _createdAt = _$v.createdAt;
+      _updatedAt = _$v.updatedAt;
+      _locale = _$v.locale;
       _$v = null;
     }
     return this;
@@ -184,7 +278,14 @@ class CommonResourceBuilder
   _$CommonResource build() {
     final _$result = _$v ??
         new _$CommonResource._(
-            type: type, id: id, space: space, contentType: contentType);
+            type: type,
+            id: id,
+            space: space,
+            contentType: contentType,
+            revision: revision,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+            locale: locale);
     replace(_$result);
     return _$result;
   }

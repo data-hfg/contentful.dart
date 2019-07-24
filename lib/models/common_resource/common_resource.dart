@@ -15,7 +15,10 @@ abstract class CommonResource
   String get id;
   String get space;
   String get contentType;
-  String get type;
+  int get revision;
+  String get createdAt;
+  String get updatedAt;
+  String get locale;
 
   CommonResource._();
 
