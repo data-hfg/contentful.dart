@@ -1,19 +1,12 @@
 language: dart
 
 dart:
-  - dev
-  - 2.4.0
+  - stable
 
 dart_task:
-  - dartanalyzer: --fatal-infos --fatal-warnings .
+  - dartfmt
 
-matrix:
-  include:
-    # Only validate formatting using the dev release
-    - dart: develop
-      dart_task: dartfmt
-
-# Only building master means that we don't run two builds for each pull request.
+# Only building develop means that we don't run two builds for each pull request.
 branches:
   only: [develop]
 
