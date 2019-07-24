@@ -1,4 +1,4 @@
-name: Contentfuly
+name: contentful.dart
 description: Contentful APIs client for Dart & Flutter apps.
 version: 0.0.1
 author: Sasha Prokhiorenko <djminikin@gmail.com>
@@ -6,7 +6,7 @@ repository: https://github.com/data-hfg/contentfuly.git
 homepage: https://github.com/data-hfg/contentfuly.git
 
 environment:
-  sdk: ">=2.4.0 <3.0.0"
+  sdk: '>=2.4.0 <3.0.0'
 
 dependencies:
   built_collection: ^4.2.2
