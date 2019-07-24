@@ -9,6 +9,7 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   CommonResource,
+  Sys,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
