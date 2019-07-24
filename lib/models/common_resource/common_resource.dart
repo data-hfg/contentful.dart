@@ -2,9 +2,9 @@ library common_resource;
 
 import 'dart:convert';
 
-import 'package:Contentfuly/models/models.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:contentful.dart/models/serializers/serializers.dart';
 
 part 'common_resource.g.dart';
 
