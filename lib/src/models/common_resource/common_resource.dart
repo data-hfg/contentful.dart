@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful.dart/models/serializers/serializers.dart';
+import 'package:contentful.dart/src/models/serializers/serializers.dart';
 
 part 'common_resource.g.dart';
 
