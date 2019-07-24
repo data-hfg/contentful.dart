@@ -9,6 +9,7 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   CommonResource,
+  Link,
   Sys,
 ])
 final Serializers serializers =
