@@ -10,6 +10,7 @@ part 'serializers.g.dart';
 @SerializersFor([
   CommonResource,
   Endpoint,
+  Field,
   FieldType,
   Link,
   Link,

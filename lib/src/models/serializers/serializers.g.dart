@@ -9,6 +9,7 @@ part of serializers;
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CommonResource.serializer)
       ..add(Endpoint.serializer)
+      ..add(Field.serializer)
       ..add(FieldType.serializer)
       ..add(Link.serializer)
       ..add(Location.serializer)
