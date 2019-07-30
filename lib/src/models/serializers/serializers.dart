@@ -13,7 +13,6 @@ part 'serializers.g.dart';
   Field,
   FieldType,
   Link,
-  Link,
   Location,
   Sys,
 ])
