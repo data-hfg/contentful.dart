@@ -12,6 +12,7 @@ part 'sys.g.dart';
 /// all resources have an `id` and a `type` available.
 abstract class Sys implements Built<Sys, SysBuilder> {
   /// The unique identifier of the resource.
+  @nullable
   String get id;
 
   /// The type identifier of the resource.

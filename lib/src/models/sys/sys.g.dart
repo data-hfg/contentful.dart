@@ -18,11 +18,15 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
   Iterable<Object> serialize(Serializers serializers, Sys object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
     ];
+    if (object.id != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(object.id,
+            specifiedType: const FullType(String)));
+    }
     if (object.createdAt != null) {
       result
         ..add('createdAt')
@@ -156,9 +160,6 @@ class _$Sys extends Sys {
       this.vision,
       this.contentType})
       : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('Sys', 'id');
-    }
     if (type == null) {
       throw new BuiltValueNullFieldError('Sys', 'type');
     }

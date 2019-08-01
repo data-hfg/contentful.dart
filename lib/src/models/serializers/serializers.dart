@@ -8,6 +8,7 @@ import 'package:contentful.dart/src/models/models.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
+  AllLocales,
   CommonResource,
   Endpoint,
   Field,
