@@ -12,6 +12,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Field.serializer)
       ..add(FieldType.serializer)
       ..add(Link.serializer)
+      ..add(Locale.serializer)
       ..add(Location.serializer)
       ..add(Sys.serializer))
     .build();

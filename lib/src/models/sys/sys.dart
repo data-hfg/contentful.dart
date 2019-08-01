@@ -34,7 +34,11 @@ abstract class Sys implements Built<Sys, SysBuilder> {
   String get contentTypeId;
 
   /// The number denoting what the published version of the resource is.
+  @nullable
   int get revision;
+
+  @nullable
+  int get vision;
 
   /// The link describing the resource type.
   /// Not present on `Asset` or `ContentType` resources.

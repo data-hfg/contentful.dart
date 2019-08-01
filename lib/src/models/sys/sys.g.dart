@@ -22,9 +22,6 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
       serializers.serialize(object.id, specifiedType: const FullType(String)),
       'type',
       serializers.serialize(object.type, specifiedType: const FullType(String)),
-      'revision',
-      serializers.serialize(object.revision,
-          specifiedType: const FullType(int)),
     ];
     if (object.createdAt != null) {
       result
@@ -49,6 +46,18 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
         ..add('contentTypeId')
         ..add(serializers.serialize(object.contentTypeId,
             specifiedType: const FullType(String)));
+    }
+    if (object.revision != null) {
+      result
+        ..add('revision')
+        ..add(serializers.serialize(object.revision,
+            specifiedType: const FullType(int)));
+    }
+    if (object.vision != null) {
+      result
+        ..add('vision')
+        ..add(serializers.serialize(object.vision,
+            specifiedType: const FullType(int)));
     }
     if (object.contentType != null) {
       result
@@ -98,6 +107,10 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
           result.revision = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'vision':
+          result.vision = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'contentType':
           result.contentType = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -125,6 +138,8 @@ class _$Sys extends Sys {
   @override
   final int revision;
   @override
+  final int vision;
+  @override
   final String contentType;
 
   factory _$Sys([void Function(SysBuilder) updates]) =>
@@ -138,6 +153,7 @@ class _$Sys extends Sys {
       this.locale,
       this.contentTypeId,
       this.revision,
+      this.vision,
       this.contentType})
       : super._() {
     if (id == null) {
@@ -145,9 +161,6 @@ class _$Sys extends Sys {
     }
     if (type == null) {
       throw new BuiltValueNullFieldError('Sys', 'type');
-    }
-    if (revision == null) {
-      throw new BuiltValueNullFieldError('Sys', 'revision');
     }
   }
 
@@ -169,6 +182,7 @@ class _$Sys extends Sys {
         locale == other.locale &&
         contentTypeId == other.contentTypeId &&
         revision == other.revision &&
+        vision == other.vision &&
         contentType == other.contentType;
   }
 
@@ -179,12 +193,14 @@ class _$Sys extends Sys {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), type.hashCode),
-                            createdAt.hashCode),
-                        updatedAt.hashCode),
-                    locale.hashCode),
-                contentTypeId.hashCode),
-            revision.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, id.hashCode), type.hashCode),
+                                createdAt.hashCode),
+                            updatedAt.hashCode),
+                        locale.hashCode),
+                    contentTypeId.hashCode),
+                revision.hashCode),
+            vision.hashCode),
         contentType.hashCode));
   }
 
@@ -198,6 +214,7 @@ class _$Sys extends Sys {
           ..add('locale', locale)
           ..add('contentTypeId', contentTypeId)
           ..add('revision', revision)
+          ..add('vision', vision)
           ..add('contentType', contentType))
         .toString();
   }
@@ -235,6 +252,10 @@ class SysBuilder implements Builder<Sys, SysBuilder> {
   int get revision => _$this._revision;
   set revision(int revision) => _$this._revision = revision;
 
+  int _vision;
+  int get vision => _$this._vision;
+  set vision(int vision) => _$this._vision = vision;
+
   String _contentType;
   String get contentType => _$this._contentType;
   set contentType(String contentType) => _$this._contentType = contentType;
@@ -250,6 +271,7 @@ class SysBuilder implements Builder<Sys, SysBuilder> {
       _locale = _$v.locale;
       _contentTypeId = _$v.contentTypeId;
       _revision = _$v.revision;
+      _vision = _$v.vision;
       _contentType = _$v.contentType;
       _$v = null;
     }
@@ -280,6 +302,7 @@ class SysBuilder implements Builder<Sys, SysBuilder> {
             locale: locale,
             contentTypeId: contentTypeId,
             revision: revision,
+            vision: vision,
             contentType: contentType);
     replace(_$result);
     return _$result;
