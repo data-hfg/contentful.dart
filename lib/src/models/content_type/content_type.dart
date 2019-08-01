@@ -9,14 +9,23 @@ import 'package:contentful.dart/src/models/models.dart';
 
 part 'content_type.g.dart';
 
+/// A `ContentType` represents your content model
+/// for entries in a Contentful space.
 abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
+  /// System fields.
   Sys get sys;
+
+  /// The fields which are part of this content type.
   BuiltList<Field> get fields;
+
+  /// The name of this content type.
   String get name;
 
+  /// The description of this content type.
   @nullable
   String get description;
 
+  /// Resource type ("ContentType").
   @memoized
   String get type => sys.type;
 
