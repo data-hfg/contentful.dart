@@ -9,6 +9,7 @@ part of serializers;
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AllLocales.serializer)
       ..add(CommonResource.serializer)
+      ..add(ContentType.serializer)
       ..add(Endpoint.serializer)
       ..add(Field.serializer)
       ..add(FieldType.serializer)
@@ -16,6 +17,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Locale.serializer)
       ..add(Location.serializer)
       ..add(Sys.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Field)]),
+          () => new ListBuilder<Field>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Locale)]),
           () => new ListBuilder<Locale>()))

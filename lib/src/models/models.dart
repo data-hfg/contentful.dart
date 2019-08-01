@@ -1,4 +1,5 @@
 export 'package:contentful.dart/src/models/common_resource/common_resource.dart';
+export 'package:contentful.dart/src/models/content_type/content_type.dart';
 export 'package:contentful.dart/src/models/endpoint/endpoint.dart';
 export 'package:contentful.dart/src/models/field/field.dart';
 export 'package:contentful.dart/src/models/field_type/field_type.dart';

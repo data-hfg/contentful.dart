@@ -10,6 +10,7 @@ part 'serializers.g.dart';
 @SerializersFor([
   AllLocales,
   CommonResource,
+  ContentType,
   Endpoint,
   Field,
   FieldType,
