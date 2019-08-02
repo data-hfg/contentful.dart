@@ -8,6 +8,7 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AllLocales.serializer)
+      ..add(AssetFileDetailsImage.serializer)
       ..add(CommonResource.serializer)
       ..add(ContentType.serializer)
       ..add(Endpoint.serializer)
