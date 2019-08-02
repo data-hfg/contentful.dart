@@ -21,6 +21,7 @@ part 'serializers.g.dart';
   SystemFields,
   AssetFileDetailsImage,
   AssetFileDetails,
+  AssetFile,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
