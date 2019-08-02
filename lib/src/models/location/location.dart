@@ -13,9 +13,11 @@ part 'location.g.dart';
 /// extra linking requirements for the SDK.
 abstract class Location implements Built<Location, LocationBuilder> {
   /// The latitude of this location coordinate.
+  @BuiltValueField(wireName: 'lat')
   double get latitude;
 
   /// The longitude of this location coordinate.
+  @BuiltValueField(wireName: 'lon')
   double get longitude;
 
   Location._();

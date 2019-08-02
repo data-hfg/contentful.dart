@@ -17,21 +17,71 @@ class _$LinkSerializer implements StructuredSerializer<Link> {
   @override
   Iterable<Object> serialize(Serializers serializers, Link object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    final result = <Object>[
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
+      'asset',
+      serializers.serialize(object.asset, specifiedType: const FullType(Asset)),
+      'entry',
+      serializers.serialize(object.entry, specifiedType: const FullType(Entry)),
+    ];
+
+    return result;
   }
 
   @override
   Link deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new LinkBuilder().build();
+    final result = new LinkBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
+          break;
+        case 'asset':
+          result.asset.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Asset)) as Asset);
+          break;
+        case 'entry':
+          result.entry = serializers.deserialize(value,
+              specifiedType: const FullType(Entry)) as Entry;
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
 class _$Link extends Link {
+  @override
+  final SystemFields sys;
+  @override
+  final Asset asset;
+  @override
+  final Entry entry;
+
   factory _$Link([void Function(LinkBuilder) updates]) =>
       (new LinkBuilder()..update(updates)).build();
 
-  _$Link._() : super._();
+  _$Link._({this.sys, this.asset, this.entry}) : super._() {
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('Link', 'sys');
+    }
+    if (asset == null) {
+      throw new BuiltValueNullFieldError('Link', 'asset');
+    }
+    if (entry == null) {
+      throw new BuiltValueNullFieldError('Link', 'entry');
+    }
+  }
 
   @override
   Link rebuild(void Function(LinkBuilder) updates) =>
@@ -43,24 +93,53 @@ class _$Link extends Link {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Link;
+    return other is Link &&
+        sys == other.sys &&
+        asset == other.asset &&
+        entry == other.entry;
   }
 
   @override
   int get hashCode {
-    return 836709295;
+    return $jf($jc($jc($jc(0, sys.hashCode), asset.hashCode), entry.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper('Link').toString();
+    return (newBuiltValueToStringHelper('Link')
+          ..add('sys', sys)
+          ..add('asset', asset)
+          ..add('entry', entry))
+        .toString();
   }
 }
 
 class LinkBuilder implements Builder<Link, LinkBuilder> {
   _$Link _$v;
 
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
+
+  AssetBuilder _asset;
+  AssetBuilder get asset => _$this._asset ??= new AssetBuilder();
+  set asset(AssetBuilder asset) => _$this._asset = asset;
+
+  Entry _entry;
+  Entry get entry => _$this._entry;
+  set entry(Entry entry) => _$this._entry = entry;
+
   LinkBuilder();
+
+  LinkBuilder get _$this {
+    if (_$v != null) {
+      _sys = _$v.sys?.toBuilder();
+      _asset = _$v.asset?.toBuilder();
+      _entry = _$v.entry;
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(Link other) {
@@ -77,7 +156,23 @@ class LinkBuilder implements Builder<Link, LinkBuilder> {
 
   @override
   _$Link build() {
-    final _$result = _$v ?? new _$Link._();
+    _$Link _$result;
+    try {
+      _$result = _$v ??
+          new _$Link._(sys: sys.build(), asset: asset.build(), entry: entry);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'sys';
+        sys.build();
+        _$failedField = 'asset';
+        asset.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Link', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

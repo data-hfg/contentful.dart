@@ -22,6 +22,7 @@ part 'serializers.g.dart';
   Link,
   Locale,
   Location,
+  Space,
   SystemFields,
 ])
 final Serializers serializers =

@@ -18,10 +18,10 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
   Iterable<Object> serialize(Serializers serializers, Location object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'latitude',
+      'lat',
       serializers.serialize(object.latitude,
           specifiedType: const FullType(double)),
-      'longitude',
+      'lon',
       serializers.serialize(object.longitude,
           specifiedType: const FullType(double)),
     ];
@@ -40,11 +40,11 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'latitude':
+        case 'lat':
           result.latitude = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;
-        case 'longitude':
+        case 'lon':
           result.longitude = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
           break;

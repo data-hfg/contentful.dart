@@ -13,7 +13,14 @@ part 'link.g.dart';
 /// This stateful type safely highlights links that have been resolved
 /// to entries, resolved to assets, or remain unresolved.
 abstract class Link implements Built<Link, LinkBuilder> {
-  // fields go here
+  /// The system properties which describe the link.
+  SystemFields get sys;
+
+  /// The Link points to an `Asset`.
+  Asset get asset;
+
+  /// The Link points to an `Entry`.
+  Entry get entry;
 
   Link._();
 
