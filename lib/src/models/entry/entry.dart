@@ -1,4 +1,4 @@
-import 'package:contentful.dart/src/models/models.dart';
+import 'package:contentful_dart/src/models/models.dart';
 
 abstract class Entry<T> {
   Entry({
