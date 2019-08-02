@@ -7,7 +7,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: null,
+      child: Text('Demo'),
     );
   }
 }
