@@ -13,7 +13,7 @@ part 'content_type.g.dart';
 /// for entries in a Contentful space.
 abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
   /// System fields.
-  Sys get sys;
+  SystemFields get sys;
 
   /// The fields which are part of this content type.
   BuiltList<Field> get fields;

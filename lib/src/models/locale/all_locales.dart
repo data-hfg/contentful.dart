@@ -10,7 +10,7 @@ import 'package:contentful.dart/src/models/models.dart';
 part 'all_locales.g.dart';
 
 abstract class AllLocales implements Built<AllLocales, AllLocalesBuilder> {
-  Sys get sys;
+  SystemFields get sys;
 
   int get total;
 

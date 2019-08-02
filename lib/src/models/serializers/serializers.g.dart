@@ -16,7 +16,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Link.serializer)
       ..add(Locale.serializer)
       ..add(Location.serializer)
-      ..add(Sys.serializer)
+      ..add(SystemFields.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Field)]),
           () => new ListBuilder<Field>())

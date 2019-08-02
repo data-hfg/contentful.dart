@@ -1,21 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of sys;
+part of system_fields;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<Sys> _$sysSerializer = new _$SysSerializer();
+Serializer<SystemFields> _$systemFieldsSerializer =
+    new _$SystemFieldsSerializer();
 
-class _$SysSerializer implements StructuredSerializer<Sys> {
+class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
   @override
-  final Iterable<Type> types = const [Sys, _$Sys];
+  final Iterable<Type> types = const [SystemFields, _$SystemFields];
   @override
-  final String wireName = 'Sys';
+  final String wireName = 'SystemFields';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Sys object,
+  Iterable<Object> serialize(Serializers serializers, SystemFields object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'type',
@@ -73,9 +74,9 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
   }
 
   @override
-  Sys deserialize(Serializers serializers, Iterable<Object> serialized,
+  SystemFields deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new SysBuilder();
+    final result = new SystemFieldsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -126,7 +127,7 @@ class _$SysSerializer implements StructuredSerializer<Sys> {
   }
 }
 
-class _$Sys extends Sys {
+class _$SystemFields extends SystemFields {
   @override
   final String id;
   @override
@@ -146,10 +147,10 @@ class _$Sys extends Sys {
   @override
   final String contentType;
 
-  factory _$Sys([void Function(SysBuilder) updates]) =>
-      (new SysBuilder()..update(updates)).build();
+  factory _$SystemFields([void Function(SystemFieldsBuilder) updates]) =>
+      (new SystemFieldsBuilder()..update(updates)).build();
 
-  _$Sys._(
+  _$SystemFields._(
       {this.id,
       this.type,
       this.createdAt,
@@ -161,21 +162,21 @@ class _$Sys extends Sys {
       this.contentType})
       : super._() {
     if (type == null) {
-      throw new BuiltValueNullFieldError('Sys', 'type');
+      throw new BuiltValueNullFieldError('SystemFields', 'type');
     }
   }
 
   @override
-  Sys rebuild(void Function(SysBuilder) updates) =>
+  SystemFields rebuild(void Function(SystemFieldsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SysBuilder toBuilder() => new SysBuilder()..replace(this);
+  SystemFieldsBuilder toBuilder() => new SystemFieldsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Sys &&
+    return other is SystemFields &&
         id == other.id &&
         type == other.type &&
         createdAt == other.createdAt &&
@@ -207,7 +208,7 @@ class _$Sys extends Sys {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Sys')
+    return (newBuiltValueToStringHelper('SystemFields')
           ..add('id', id)
           ..add('type', type)
           ..add('createdAt', createdAt)
@@ -221,8 +222,9 @@ class _$Sys extends Sys {
   }
 }
 
-class SysBuilder implements Builder<Sys, SysBuilder> {
-  _$Sys _$v;
+class SystemFieldsBuilder
+    implements Builder<SystemFields, SystemFieldsBuilder> {
+  _$SystemFields _$v;
 
   String _id;
   String get id => _$this._id;
@@ -261,9 +263,9 @@ class SysBuilder implements Builder<Sys, SysBuilder> {
   String get contentType => _$this._contentType;
   set contentType(String contentType) => _$this._contentType = contentType;
 
-  SysBuilder();
+  SystemFieldsBuilder();
 
-  SysBuilder get _$this {
+  SystemFieldsBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _type = _$v.type;
@@ -280,22 +282,22 @@ class SysBuilder implements Builder<Sys, SysBuilder> {
   }
 
   @override
-  void replace(Sys other) {
+  void replace(SystemFields other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$Sys;
+    _$v = other as _$SystemFields;
   }
 
   @override
-  void update(void Function(SysBuilder) updates) {
+  void update(void Function(SystemFieldsBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Sys build() {
+  _$SystemFields build() {
     final _$result = _$v ??
-        new _$Sys._(
+        new _$SystemFields._(
             id: id,
             type: type,
             createdAt: createdAt,

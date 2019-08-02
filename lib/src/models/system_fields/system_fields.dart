@@ -1,4 +1,4 @@
-library sys;
+library system_fields;
 
 import 'dart:convert';
 
@@ -6,11 +6,12 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:contentful.dart/src/models/models.dart';
 
-part 'sys.g.dart';
+part 'system_fields.g.dart';
 
 /// The system fields available on all resources in Contentful. At minimum,
 /// all resources have an `id` and a `type` available.
-abstract class Sys implements Built<Sys, SysBuilder> {
+abstract class SystemFields
+    implements Built<SystemFields, SystemFieldsBuilder> {
   /// The unique identifier of the resource.
   @nullable
   String get id;
@@ -46,17 +47,19 @@ abstract class Sys implements Built<Sys, SysBuilder> {
   @nullable
   String get contentType; // Link
 
-  Sys._();
+  SystemFields._();
 
-  factory Sys([updates(SysBuilder b)]) = _$Sys;
+  factory SystemFields([updates(SystemFieldsBuilder b)]) = _$SystemFields;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Sys.serializer, this));
+    return json
+        .encode(serializers.serializeWith(SystemFields.serializer, this));
   }
 
-  static Sys fromJson(String jsonString) {
-    return serializers.deserializeWith(Sys.serializer, json.decode(jsonString));
+  static SystemFields fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        SystemFields.serializer, json.decode(jsonString));
   }
 
-  static Serializer<Sys> get serializer => _$sysSerializer;
+  static Serializer<SystemFields> get serializer => _$systemFieldsSerializer;
 }

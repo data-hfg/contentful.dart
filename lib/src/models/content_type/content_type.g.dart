@@ -19,7 +19,8 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'sys',
-      serializers.serialize(object.sys, specifiedType: const FullType(Sys)),
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
       'fields',
       serializers.serialize(object.fields,
           specifiedType:
@@ -49,7 +50,7 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
       switch (key) {
         case 'sys':
           result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Sys)) as Sys);
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
         case 'fields':
           result.fields.replace(serializers.deserialize(value,
@@ -74,7 +75,7 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
 
 class _$ContentType extends ContentType {
   @override
-  final Sys sys;
+  final SystemFields sys;
   @override
   final BuiltList<Field> fields;
   @override
@@ -140,9 +141,9 @@ class _$ContentType extends ContentType {
 class ContentTypeBuilder implements Builder<ContentType, ContentTypeBuilder> {
   _$ContentType _$v;
 
-  SysBuilder _sys;
-  SysBuilder get sys => _$this._sys ??= new SysBuilder();
-  set sys(SysBuilder sys) => _$this._sys = sys;
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   ListBuilder<Field> _fields;
   ListBuilder<Field> get fields => _$this._fields ??= new ListBuilder<Field>();

@@ -8,4 +8,4 @@ export 'package:contentful.dart/src/models/locale/all_locales.dart';
 export 'package:contentful.dart/src/models/locale/locale.dart';
 export 'package:contentful.dart/src/models/location/location.dart';
 export 'package:contentful.dart/src/models/serializers/serializers.dart';
-export 'package:contentful.dart/src/models/sys/sys.dart';
+export 'package:contentful.dart/src/models/system_fields/system_fields.dart';

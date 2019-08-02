@@ -26,7 +26,8 @@ class _$LocaleSerializer implements StructuredSerializer<Locale> {
       serializers.serialize(object.isDefault,
           specifiedType: const FullType(bool)),
       'sys',
-      serializers.serialize(object.sys, specifiedType: const FullType(Sys)),
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
     ];
     if (object.fallbackCode != null) {
       result
@@ -66,7 +67,7 @@ class _$LocaleSerializer implements StructuredSerializer<Locale> {
           break;
         case 'sys':
           result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Sys)) as Sys);
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
       }
     }
@@ -85,7 +86,7 @@ class _$Locale extends Locale {
   @override
   final String fallbackCode;
   @override
-  final Sys sys;
+  final SystemFields sys;
 
   factory _$Locale([void Function(LocaleBuilder) updates]) =>
       (new LocaleBuilder()..update(updates)).build();
@@ -164,9 +165,9 @@ class LocaleBuilder implements Builder<Locale, LocaleBuilder> {
   String get fallbackCode => _$this._fallbackCode;
   set fallbackCode(String fallbackCode) => _$this._fallbackCode = fallbackCode;
 
-  SysBuilder _sys;
-  SysBuilder get sys => _$this._sys ??= new SysBuilder();
-  set sys(SysBuilder sys) => _$this._sys = sys;
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   LocaleBuilder();
 

@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:contentful.dart/src/configuration/host.dart';
 import 'package:http/http.dart' as http;
 
-class ContentfulProvider {
+class ContentfulClient {
   final _baseUrl = Host.delivery.name;
 
   final http.Client _client;
-  ContentfulProvider(this._client);
+  ContentfulClient(this._client);
 
-  Future<void> fetc() async {
+  Future<void> getSpaces() async {
     final response = await _client.get(
       '$_baseUrl/questionnaires/id',
       headers: {

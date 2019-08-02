@@ -17,7 +17,7 @@ part 'serializers.g.dart';
   Link,
   Locale,
   Location,
-  Sys,
+  SystemFields,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

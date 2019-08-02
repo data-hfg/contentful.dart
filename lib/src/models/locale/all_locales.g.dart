@@ -19,7 +19,8 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'sys',
-      serializers.serialize(object.sys, specifiedType: const FullType(Sys)),
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
       'total',
       serializers.serialize(object.total, specifiedType: const FullType(int)),
       'skip',
@@ -48,7 +49,7 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
       switch (key) {
         case 'sys':
           result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Sys)) as Sys);
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
         case 'total':
           result.total = serializers.deserialize(value,
@@ -77,7 +78,7 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
 
 class _$AllLocales extends AllLocales {
   @override
-  final Sys sys;
+  final SystemFields sys;
   @override
   final int total;
   @override
@@ -150,9 +151,9 @@ class _$AllLocales extends AllLocales {
 class AllLocalesBuilder implements Builder<AllLocales, AllLocalesBuilder> {
   _$AllLocales _$v;
 
-  SysBuilder _sys;
-  SysBuilder get sys => _$this._sys ??= new SysBuilder();
-  set sys(SysBuilder sys) => _$this._sys = sys;
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   int _total;
   int get total => _$this._total;
