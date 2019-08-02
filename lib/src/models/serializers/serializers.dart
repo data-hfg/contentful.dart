@@ -12,6 +12,7 @@ part 'serializers.g.dart';
   CommonResource,
   ContentType,
   Endpoint,
+  EntryList,
   Field,
   FieldType,
   Link,

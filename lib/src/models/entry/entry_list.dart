@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful.dart/src/models/entry/entry.dart';
 import 'package:contentful.dart/src/models/models.dart';
 
 part 'entry_list.g.dart';
