@@ -1,3 +1,8 @@
+export 'package:contentful.dart/src/models/asset/asset.dart';
+export 'package:contentful.dart/src/models/asset/asset_fields.dart';
+export 'package:contentful.dart/src/models/asset/asset_file.dart';
+export 'package:contentful.dart/src/models/asset/asset_file_details.dart';
+export 'package:contentful.dart/src/models/asset/asset_file_details_image.dart';
 export 'package:contentful.dart/src/models/common_resource/common_resource.dart';
 export 'package:contentful.dart/src/models/content_type/content_type.dart';
 export 'package:contentful.dart/src/models/endpoint/endpoint.dart';
@@ -11,9 +16,3 @@ export 'package:contentful.dart/src/models/locale/locale.dart';
 export 'package:contentful.dart/src/models/location/location.dart';
 export 'package:contentful.dart/src/models/serializers/serializers.dart';
 export 'package:contentful.dart/src/models/system_fields/system_fields.dart';
-
-export 'package:contentful.dart/src/models/asset/asset_file_details_image.dart';
-export 'package:contentful.dart/src/models/asset/asset.dart';
-export 'package:contentful.dart/src/models/asset/asset_file_details.dart';
-export 'package:contentful.dart/src/models/asset/asset_file.dart';
-export 'package:contentful.dart/src/models/asset/asset_fields.dart';

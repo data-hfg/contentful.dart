@@ -9,6 +9,11 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   AllLocales,
+  Asset,
+  AssetFields,
+  AssetFile,
+  AssetFileDetails,
+  AssetFileDetailsImage,
   CommonResource,
   ContentType,
   Endpoint,
@@ -19,10 +24,6 @@ part 'serializers.g.dart';
   Locale,
   Location,
   SystemFields,
-  AssetFileDetailsImage,
-  AssetFileDetails,
-  AssetFile,
-  AssetFields,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

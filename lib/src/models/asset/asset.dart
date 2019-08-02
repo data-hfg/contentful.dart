@@ -2,7 +2,6 @@ library asset;
 
 import 'dart:convert';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:contentful.dart/src/models/models.dart';
@@ -10,7 +9,8 @@ import 'package:contentful.dart/src/models/models.dart';
 part 'asset.g.dart';
 
 abstract class Asset implements Built<Asset, AssetBuilder> {
-  // fields go here
+  SystemFields get sys;
+  AssetFields get fields;
 
   Asset._();
 

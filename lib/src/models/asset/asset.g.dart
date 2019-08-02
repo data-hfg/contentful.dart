@@ -17,21 +17,61 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
   @override
   Iterable<Object> serialize(Serializers serializers, Asset object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object>[];
+    final result = <Object>[
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
+      'fields',
+      serializers.serialize(object.fields,
+          specifiedType: const FullType(AssetFields)),
+    ];
+
+    return result;
   }
 
   @override
   Asset deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new AssetBuilder().build();
+    final result = new AssetBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
+          break;
+        case 'fields':
+          result.fields.replace(serializers.deserialize(value,
+              specifiedType: const FullType(AssetFields)) as AssetFields);
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
 class _$Asset extends Asset {
+  @override
+  final SystemFields sys;
+  @override
+  final AssetFields fields;
+
   factory _$Asset([void Function(AssetBuilder) updates]) =>
       (new AssetBuilder()..update(updates)).build();
 
-  _$Asset._() : super._();
+  _$Asset._({this.sys, this.fields}) : super._() {
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('Asset', 'sys');
+    }
+    if (fields == null) {
+      throw new BuiltValueNullFieldError('Asset', 'fields');
+    }
+  }
 
   @override
   Asset rebuild(void Function(AssetBuilder) updates) =>
@@ -43,24 +83,44 @@ class _$Asset extends Asset {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Asset;
+    return other is Asset && sys == other.sys && fields == other.fields;
   }
 
   @override
   int get hashCode {
-    return 667655707;
+    return $jf($jc($jc(0, sys.hashCode), fields.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper('Asset').toString();
+    return (newBuiltValueToStringHelper('Asset')
+          ..add('sys', sys)
+          ..add('fields', fields))
+        .toString();
   }
 }
 
 class AssetBuilder implements Builder<Asset, AssetBuilder> {
   _$Asset _$v;
 
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
+
+  AssetFieldsBuilder _fields;
+  AssetFieldsBuilder get fields => _$this._fields ??= new AssetFieldsBuilder();
+  set fields(AssetFieldsBuilder fields) => _$this._fields = fields;
+
   AssetBuilder();
+
+  AssetBuilder get _$this {
+    if (_$v != null) {
+      _sys = _$v.sys?.toBuilder();
+      _fields = _$v.fields?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(Asset other) {
@@ -77,7 +137,22 @@ class AssetBuilder implements Builder<Asset, AssetBuilder> {
 
   @override
   _$Asset build() {
-    final _$result = _$v ?? new _$Asset._();
+    _$Asset _$result;
+    try {
+      _$result = _$v ?? new _$Asset._(sys: sys.build(), fields: fields.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'sys';
+        sys.build();
+        _$failedField = 'fields';
+        fields.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Asset', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
