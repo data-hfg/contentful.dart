@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:contentful.dart/src/configuration/host.dart';
+import 'package:contentful_dart/src/configuration/host.dart';
 import 'package:http/http.dart' as http;
 
 class ContentfulClient {

@@ -20,10 +20,10 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
     final result = <Object>[
       'latitude',
       serializers.serialize(object.latitude,
-          specifiedType: const FullType(Double)),
+          specifiedType: const FullType(double)),
       'longitude',
       serializers.serialize(object.longitude,
-          specifiedType: const FullType(Double)),
+          specifiedType: const FullType(double)),
     ];
 
     return result;
@@ -42,11 +42,11 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       switch (key) {
         case 'latitude':
           result.latitude = serializers.deserialize(value,
-              specifiedType: const FullType(Double)) as Double;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'longitude':
           result.longitude = serializers.deserialize(value,
-              specifiedType: const FullType(Double)) as Double;
+              specifiedType: const FullType(double)) as double;
           break;
       }
     }
@@ -57,9 +57,9 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
 
 class _$Location extends Location {
   @override
-  final Double latitude;
+  final double latitude;
   @override
-  final Double longitude;
+  final double longitude;
 
   factory _$Location([void Function(LocationBuilder) updates]) =>
       (new LocationBuilder()..update(updates)).build();
@@ -105,13 +105,13 @@ class _$Location extends Location {
 class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location _$v;
 
-  Double _latitude;
-  Double get latitude => _$this._latitude;
-  set latitude(Double latitude) => _$this._latitude = latitude;
+  double _latitude;
+  double get latitude => _$this._latitude;
+  set latitude(double latitude) => _$this._latitude = latitude;
 
-  Double _longitude;
-  Double get longitude => _$this._longitude;
-  set longitude(Double longitude) => _$this._longitude = longitude;
+  double _longitude;
+  double get longitude => _$this._longitude;
+  set longitude(double longitude) => _$this._longitude = longitude;
 
   LocationBuilder();
 
