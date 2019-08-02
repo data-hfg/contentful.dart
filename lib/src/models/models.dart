@@ -3,7 +3,6 @@ export 'package:contentful_dart/src/models/asset/asset_fields.dart';
 export 'package:contentful_dart/src/models/asset/asset_file.dart';
 export 'package:contentful_dart/src/models/asset/asset_file_details.dart';
 export 'package:contentful_dart/src/models/asset/asset_file_details_image.dart';
-export 'package:contentful_dart/src/models/common_resource/common_resource.dart';
 export 'package:contentful_dart/src/models/content_type/content_type.dart';
 export 'package:contentful_dart/src/models/endpoint/endpoint.dart';
 export 'package:contentful_dart/src/models/entry/entry.dart';

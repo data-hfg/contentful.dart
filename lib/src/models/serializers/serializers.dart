@@ -14,7 +14,6 @@ part 'serializers.g.dart';
   AssetFile,
   AssetFileDetails,
   AssetFileDetailsImage,
-  CommonResource,
   ContentType,
   Endpoint,
   EntryList,
