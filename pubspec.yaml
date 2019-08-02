@@ -10,8 +10,8 @@ environment:
   sdk: '>=2.4.0 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
+  # flutter:
+  #   sdk: flutter
 
   built_collection: ^4.2.2
   built_value: ^6.7.0
