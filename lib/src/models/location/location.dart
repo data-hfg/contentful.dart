@@ -1,7 +1,6 @@
 library location;
 
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,10 +13,10 @@ part 'location.g.dart';
 /// extra linking requirements for the SDK.
 abstract class Location implements Built<Location, LocationBuilder> {
   /// The latitude of this location coordinate.
-  Double get latitude;
+  double get latitude;
 
   /// The longitude of this location coordinate.
-  Double get longitude;
+  double get longitude;
 
   Location._();
 
