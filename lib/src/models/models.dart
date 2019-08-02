@@ -14,3 +14,4 @@ export 'package:contentful.dart/src/models/system_fields/system_fields.dart';
 
 export 'package:contentful.dart/src/models/asset/asset_file_details_image.dart';
 export 'package:contentful.dart/src/models/asset/asset.dart';
+export 'package:contentful.dart/src/models/asset/asset_file_details.dart';
