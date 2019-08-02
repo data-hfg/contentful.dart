@@ -8,9 +8,7 @@ import 'package:contentful_dart/src/models/models.dart';
 
 part 'location.g.dart';
 
-/// Small class to store location coordinates.
-/// This is used in preferences over CoreLocation types to avoid
-/// extra linking requirements for the SDK.
+/// Class to store location coordinates.
 abstract class Location implements Built<Location, LocationBuilder> {
   /// The latitude of this location coordinate.
   @BuiltValueField(wireName: 'lat')

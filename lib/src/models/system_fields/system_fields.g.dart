@@ -58,10 +58,10 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
         ..add(serializers.serialize(object.revision,
             specifiedType: const FullType(int)));
     }
-    if (object.vision != null) {
+    if (object.version != null) {
       result
-        ..add('vision')
-        ..add(serializers.serialize(object.vision,
+        ..add('version')
+        ..add(serializers.serialize(object.version,
             specifiedType: const FullType(int)));
     }
     if (object.contentType != null) {
@@ -112,8 +112,8 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
           result.revision = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'vision':
-          result.vision = serializers.deserialize(value,
+        case 'version':
+          result.version = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'contentType':
@@ -143,7 +143,7 @@ class _$SystemFields extends SystemFields {
   @override
   final int revision;
   @override
-  final int vision;
+  final int version;
   @override
   final String contentType;
 
@@ -158,7 +158,7 @@ class _$SystemFields extends SystemFields {
       this.locale,
       this.contentTypeId,
       this.revision,
-      this.vision,
+      this.version,
       this.contentType})
       : super._() {
     if (type == null) {
@@ -184,7 +184,7 @@ class _$SystemFields extends SystemFields {
         locale == other.locale &&
         contentTypeId == other.contentTypeId &&
         revision == other.revision &&
-        vision == other.vision &&
+        version == other.version &&
         contentType == other.contentType;
   }
 
@@ -202,7 +202,7 @@ class _$SystemFields extends SystemFields {
                         locale.hashCode),
                     contentTypeId.hashCode),
                 revision.hashCode),
-            vision.hashCode),
+            version.hashCode),
         contentType.hashCode));
   }
 
@@ -216,7 +216,7 @@ class _$SystemFields extends SystemFields {
           ..add('locale', locale)
           ..add('contentTypeId', contentTypeId)
           ..add('revision', revision)
-          ..add('vision', vision)
+          ..add('version', version)
           ..add('contentType', contentType))
         .toString();
   }
@@ -255,9 +255,9 @@ class SystemFieldsBuilder
   int get revision => _$this._revision;
   set revision(int revision) => _$this._revision = revision;
 
-  int _vision;
-  int get vision => _$this._vision;
-  set vision(int vision) => _$this._vision = vision;
+  int _version;
+  int get version => _$this._version;
+  set version(int version) => _$this._version = version;
 
   String _contentType;
   String get contentType => _$this._contentType;
@@ -274,7 +274,7 @@ class SystemFieldsBuilder
       _locale = _$v.locale;
       _contentTypeId = _$v.contentTypeId;
       _revision = _$v.revision;
-      _vision = _$v.vision;
+      _version = _$v.version;
       _contentType = _$v.contentType;
       _$v = null;
     }
@@ -305,7 +305,7 @@ class SystemFieldsBuilder
             locale: locale,
             contentTypeId: contentTypeId,
             revision: revision,
-            vision: vision,
+            version: version,
             contentType: contentType);
     replace(_$result);
     return _$result;

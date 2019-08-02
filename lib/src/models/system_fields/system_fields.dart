@@ -40,7 +40,7 @@ abstract class SystemFields
   int get revision;
 
   @nullable
-  int get vision;
+  int get version;
 
   /// The link describing the resource type.
   /// Not present on `Asset` or `ContentType` resources.
