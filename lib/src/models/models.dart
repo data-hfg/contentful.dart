@@ -16,3 +16,4 @@ export 'package:contentful.dart/src/models/asset/asset_file_details_image.dart';
 export 'package:contentful.dart/src/models/asset/asset.dart';
 export 'package:contentful.dart/src/models/asset/asset_file_details.dart';
 export 'package:contentful.dart/src/models/asset/asset_file.dart';
+export 'package:contentful.dart/src/models/asset/asset_fields.dart';
