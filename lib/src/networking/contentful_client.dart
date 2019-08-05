@@ -33,7 +33,7 @@ class ContentfulClient {
     );
   }
 
-  const ContentfulClient._({
+  ContentfulClient._({
     @required this.client,
     @required this.spaceId,
     this.environmentId = 'master',
@@ -71,13 +71,14 @@ class ContentfulClient {
     return fromJson(json.decode(utf8.decode(response.bodyBytes)));
   }
 
-  Future<EntryList<T>> getEntries<T extends Entry>(
+  Future<EntryList<T>> getEntries<T extends Entry>({
     Map<String, dynamic> params,
-  ) async {
+  }) async {
     final response = await client.get(_uri(path: '/entries', params: params));
     if (response.statusCode != 200) {
       throw ContentfulError(
-        message: 'Cannot get list of entries. Finished with error: $response',
+        message:
+            '''Cannot get list of entries. Finished with error: ${response.statusCode}''',
       );
     }
 

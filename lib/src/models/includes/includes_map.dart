@@ -9,10 +9,10 @@ class IncludesMap {
     json.forEach((type, json) {
       if (map[type] == null) map[type] = {};
       final list = json as List<dynamic>;
-      list.forEach((json) {
+      for (final json in list) {
         final entry = json as Map<String, dynamic>;
         map[type][entry['sys']['id']] = entry;
-      });
+      }
     });
 
     return IncludesMap(map);

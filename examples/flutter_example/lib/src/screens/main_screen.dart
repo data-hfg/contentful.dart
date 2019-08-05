@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:contentful_dart/contentful.dart';
-import 'package:flutter_example/src/utils/keys.dart';
+import 'package:flutter_example/src/repository/contentful_repository.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key key}) : super(key: key);
+  final _repo = ContentfulRepository();
 
-  // final contentful = ContentfulClient(
-  //   spaceId: Secrets.spaceId,
-  //   accessToken: Secrets.accessToken,
-  // );
+  MainScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Demo'),
+        child: FutureBuilder<void>(
+          future: null,
+          builder: (context, snapshot) {
+            _repo.testRequest();
+            return Text('data');
+          },
+        ),
       ),
     );
   }
