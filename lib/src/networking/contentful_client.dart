@@ -2,13 +2,17 @@ import 'package:contentful_dart/src/configuration/host.dart';
 import 'package:contentful_dart/src/networking/http_client.dart';
 import 'package:meta/meta.dart';
 
-final myClient = ContentfulClient(accessToken: 'cdfdf', spaceId: 'dfdfdf');
-
+/// Client object for performing requests against the Contentful Delivery
+/// and Preview APIs.
 class ContentfulClient {
   static const _baseUrl = 'cdn.contentful.com';
 
   final HttpClient client;
+
+  /// The identifier of the space this Client is set to interface with.
   final String spaceId;
+
+  /// The base domain that all URIs have for each request the client makes.
   final String host;
 
   factory ContentfulClient({
