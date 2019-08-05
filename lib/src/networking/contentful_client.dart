@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:contentful_dart/src/models/models.dart';
 import 'package:contentful_dart/src/networking/http_client.dart';
 import 'package:meta/meta.dart';
 
@@ -51,4 +55,19 @@ class ContentfulClient {
         path: '/spaces/$spaceId/$environmentId/master$path',
         queryParameters: params,
       );
+
+  Future<T> getEntry<T extends Entry>(
+    String id,
+    T Function(Map<String, dynamic>) fromJson, {
+    Map<String, dynamic> params,
+  }) async {
+    final response =
+        await client.get(_uri(path: '/entries/$id', params: params));
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+        message: 'Cannot get entry. Finished with error: $response',
+      );
+    }
+    return fromJson(json.decode(utf8.decode(response.bodyBytes)));
+  }
 }
