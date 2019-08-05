@@ -1,4 +1,4 @@
-library contentful;
+library contentful_dart;
 
 export 'package:contentful_dart/src/configuration/host.dart';
 export 'package:contentful_dart/src/models/models.dart';
