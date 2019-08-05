@@ -6,8 +6,10 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Demo'),
+    return Scaffold(
+      body: Center(
+        child: Text('Demo'),
+      ),
     );
   }
 }
