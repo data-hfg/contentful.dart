@@ -12,6 +12,7 @@ part 'system_fields.g.dart';
 /// all resources have an `id` and a `type` available.
 abstract class SystemFields
     implements Built<SystemFields, SystemFieldsBuilder> {
+  /// Describes the space.
   @nullable
   Space get space;
 
