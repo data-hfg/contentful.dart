@@ -12,6 +12,9 @@ part 'system_fields.g.dart';
 /// all resources have an `id` and a `type` available.
 abstract class SystemFields
     implements Built<SystemFields, SystemFieldsBuilder> {
+  @nullable
+  Space get space;
+
   /// The unique identifier of the resource.
   @nullable
   String get id;

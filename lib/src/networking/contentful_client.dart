@@ -46,43 +46,6 @@ class ContentfulClient {
     this.client.close();
   }
 
-  Uri _uri({
-    @required String path,
-    Map<String, dynamic> params,
-  }) =>
-      Uri(
-        scheme: 'https',
-        host: host,
-        path: '/spaces/$spaceId/$environmentId/master$path',
-        queryParameters: params,
-      );
-
-  Future<Space> getSpaceDetails({@required String spaceid}) async {
-    final response =
-        await client.get('https://cdn.contentful.com/spaces/$spaceid');
-    if (response.statusCode != 200) {
-      throw ContentfulError(
-          message:
-              '''Cannot get Space with id: $spaceid. Finished with error: ${response.body}''');
-    }
-    return Space.fromJson(response.body);
-  }
-
-  Future<T> getEntry<T extends Entry>(
-    String id,
-    T Function(Map<String, dynamic>) fromJson, {
-    Map<String, dynamic> params,
-  }) async {
-    final response =
-        await client.get(_uri(path: '/entries/$id', params: params));
-    if (response.statusCode != 200) {
-      throw ContentfulError(
-        message: '''Cannot get entry.Finished with error: ${response.body}''',
-      );
-    }
-    return fromJson(json.decode(utf8.decode(response.bodyBytes)));
-  }
-
   Future<EntryList<T>> getEntries<T extends Entry>({
     Map<String, dynamic> params,
   }) async {
@@ -102,4 +65,41 @@ class ContentfulClient {
 
     return EntryList.fromJson(jsonr);
   }
+
+  Future<T> getEntry<T extends Entry>(
+    String entryId,
+    T Function(Map<String, dynamic>) fromJson, {
+    Map<String, dynamic> params,
+  }) async {
+    final response =
+        await client.get(_uri(path: '/entries/$entryId', params: params));
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+        message:
+            '''Cannot get entry with id: $entryId. Finished with error: ${response.body}''',
+      );
+    }
+    return fromJson(json.decode(utf8.decode(response.bodyBytes)));
+  }
+
+  Future<Space> getSpaceDetails({@required String spaceid}) async {
+    final response = await client.get('https://$_baseUrl/spaces/$spaceid');
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+          message:
+              '''Cannot get Space with id: $spaceid. Finished with error: ${response.body}''');
+    }
+    return Space.fromJson(response.body);
+  }
+
+  Uri _uri({
+    @required String path,
+    Map<String, dynamic> params,
+  }) =>
+      Uri(
+        scheme: 'https',
+        host: host,
+        path: '/spaces/$spaceId/$environmentId/master$path',
+        queryParameters: params,
+      );
 }

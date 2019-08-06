@@ -19,6 +19,12 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
   Iterable<Object> serialize(Serializers serializers, SystemFields object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
+    if (object.space != null) {
+      result
+        ..add('space')
+        ..add(serializers.serialize(object.space,
+            specifiedType: const FullType(Space)));
+    }
     if (object.id != null) {
       result
         ..add('id')
@@ -87,6 +93,10 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'space':
+          result.space.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Space)) as Space);
+          break;
         case 'id':
           result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -132,6 +142,8 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
 
 class _$SystemFields extends SystemFields {
   @override
+  final Space space;
+  @override
   final String id;
   @override
   final String type;
@@ -154,7 +166,8 @@ class _$SystemFields extends SystemFields {
       (new SystemFieldsBuilder()..update(updates)).build();
 
   _$SystemFields._(
-      {this.id,
+      {this.space,
+      this.id,
       this.type,
       this.createdAt,
       this.updatedAt,
@@ -176,6 +189,7 @@ class _$SystemFields extends SystemFields {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is SystemFields &&
+        space == other.space &&
         id == other.id &&
         type == other.type &&
         createdAt == other.createdAt &&
@@ -195,7 +209,9 @@ class _$SystemFields extends SystemFields {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, id.hashCode), type.hashCode),
+                            $jc(
+                                $jc($jc($jc(0, space.hashCode), id.hashCode),
+                                    type.hashCode),
                                 createdAt.hashCode),
                             updatedAt.hashCode),
                         locale.hashCode),
@@ -208,6 +224,7 @@ class _$SystemFields extends SystemFields {
   @override
   String toString() {
     return (newBuiltValueToStringHelper('SystemFields')
+          ..add('space', space)
           ..add('id', id)
           ..add('type', type)
           ..add('createdAt', createdAt)
@@ -224,6 +241,10 @@ class _$SystemFields extends SystemFields {
 class SystemFieldsBuilder
     implements Builder<SystemFields, SystemFieldsBuilder> {
   _$SystemFields _$v;
+
+  SpaceBuilder _space;
+  SpaceBuilder get space => _$this._space ??= new SpaceBuilder();
+  set space(SpaceBuilder space) => _$this._space = space;
 
   String _id;
   String get id => _$this._id;
@@ -266,6 +287,7 @@ class SystemFieldsBuilder
 
   SystemFieldsBuilder get _$this {
     if (_$v != null) {
+      _space = _$v.space?.toBuilder();
       _id = _$v.id;
       _type = _$v.type;
       _createdAt = _$v.createdAt;
@@ -295,17 +317,31 @@ class SystemFieldsBuilder
 
   @override
   _$SystemFields build() {
-    final _$result = _$v ??
-        new _$SystemFields._(
-            id: id,
-            type: type,
-            createdAt: createdAt,
-            updatedAt: updatedAt,
-            locale: locale,
-            contentTypeId: contentTypeId,
-            revision: revision,
-            version: version,
-            contentType: contentType);
+    _$SystemFields _$result;
+    try {
+      _$result = _$v ??
+          new _$SystemFields._(
+              space: _space?.build(),
+              id: id,
+              type: type,
+              createdAt: createdAt,
+              updatedAt: updatedAt,
+              locale: locale,
+              contentTypeId: contentTypeId,
+              revision: revision,
+              version: version,
+              contentType: contentType);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'space';
+        _space?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'SystemFields', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

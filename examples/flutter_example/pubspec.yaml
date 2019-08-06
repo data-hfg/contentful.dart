@@ -13,6 +13,7 @@ dependencies:
   contentful_dart:
     path: ../../
   cupertino_icons: ^0.1.2
+  meta: ^1.1.6
 
 flutter:
   uses-material-design: true
