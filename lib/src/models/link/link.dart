@@ -17,9 +17,11 @@ abstract class Link implements Built<Link, LinkBuilder> {
   SystemFields get sys;
 
   /// The Link points to an `Asset`.
+  @nullable
   Asset get asset;
 
   /// The Link points to an `Entry`.
+  @nullable
   Entry get entry;
 
   Link._();

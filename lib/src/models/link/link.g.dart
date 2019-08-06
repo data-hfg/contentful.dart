@@ -21,12 +21,19 @@ class _$LinkSerializer implements StructuredSerializer<Link> {
       'sys',
       serializers.serialize(object.sys,
           specifiedType: const FullType(SystemFields)),
-      'asset',
-      serializers.serialize(object.asset, specifiedType: const FullType(Asset)),
-      'entry',
-      serializers.serialize(object.entry, specifiedType: const FullType(Entry)),
     ];
-
+    if (object.asset != null) {
+      result
+        ..add('asset')
+        ..add(serializers.serialize(object.asset,
+            specifiedType: const FullType(Asset)));
+    }
+    if (object.entry != null) {
+      result
+        ..add('entry')
+        ..add(serializers.serialize(object.entry,
+            specifiedType: const FullType(Entry)));
+    }
     return result;
   }
 
@@ -74,12 +81,6 @@ class _$Link extends Link {
   _$Link._({this.sys, this.asset, this.entry}) : super._() {
     if (sys == null) {
       throw new BuiltValueNullFieldError('Link', 'sys');
-    }
-    if (asset == null) {
-      throw new BuiltValueNullFieldError('Link', 'asset');
-    }
-    if (entry == null) {
-      throw new BuiltValueNullFieldError('Link', 'entry');
     }
   }
 
@@ -159,14 +160,14 @@ class LinkBuilder implements Builder<Link, LinkBuilder> {
     _$Link _$result;
     try {
       _$result = _$v ??
-          new _$Link._(sys: sys.build(), asset: asset.build(), entry: entry);
+          new _$Link._(sys: sys.build(), asset: _asset?.build(), entry: entry);
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'sys';
         sys.build();
         _$failedField = 'asset';
-        asset.build();
+        _asset?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Link', _$failedField, e.toString());

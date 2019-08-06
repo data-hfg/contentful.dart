@@ -12,49 +12,80 @@ part 'system_fields.g.dart';
 /// all resources have an `id` and a `type` available.
 abstract class SystemFields
     implements Built<SystemFields, SystemFieldsBuilder> {
-  /// Describes the space.
-  @nullable
-  Space get space;
+  static Serializer<SystemFields> get serializer => _$systemFieldsSerializer;
 
-  /// The unique identifier of the resource.
-  @nullable
-  String get id;
+  factory SystemFields([updates(SystemFieldsBuilder b)]) = _$SystemFields;
 
-  /// The type identifier of the resource.
-  @nullable
-  String get type;
+  SystemFields._();
 
-  /// Describes the date the resource was created.
+  /// The link describing the resource type.
+  /// Not present on `Asset` or `ContentType` resources.
   @nullable
-  DateTime get createdAt;
-
-  /// Describes the date the resource was last updated.
-  @nullable
-  DateTime get updatedAt;
-
-  /// The code for the currently selected locale.
-  @nullable
-  String get locale;
+  String get contentType;
 
   /// The identifier for the content type, if the resource is an `Entry`.
   @nullable
   String get contentTypeId;
 
+  /// Describes the date the resource was created.
+  @nullable
+  DateTime get createdAt;
+
+  /// Link to creating user.
+  @nullable
+  String get createdBy;
+
+  ///  Time resource was first published.
+  @nullable
+  DateTime get firstPublishedAt;
+
+  /// The unique identifier of the resource.
+  @nullable
+  String get id;
+
+  /// The code for the currently selected locale.
+  @nullable
+  String get locale; // Link
+
+  /// Time resource was published.
+  @nullable
+  DateTime get publishedAt;
+
+  /// Link to publishing user.
+  @nullable
+  String get publishedBy;
+
+  /// Number of times resource was published.
+  @nullable
+  int get publishedCounter;
+
+  /// Published version of resource.
+  @nullable
+  int get publishedVersion;
+
   /// The number denoting what the published version of the resource is.
   @nullable
   int get revision;
 
+  /// Describes the space.
+  @nullable
+  Space get space;
+
+  /// The type identifier of the resource.
+  @nullable
+  String get type;
+
+  /// Describes the date the resource was last updated.
+  @nullable
+  DateTime get updatedAt;
+
+  /// Link to updating user.
+  @nullable
+  String get updatedBy;
+
+  /// Current version of resource.
   @nullable
   int get version;
-
-  /// The link describing the resource type.
-  /// Not present on `Asset` or `ContentType` resources.
-  @nullable
-  String get contentType; // Link
-
-  SystemFields._();
-
-  factory SystemFields([updates(SystemFieldsBuilder b)]) = _$SystemFields;
 
   String toJson() {
     return json
@@ -65,6 +96,4 @@ abstract class SystemFields
     return serializers.deserializeWith(
         SystemFields.serializer, json.decode(jsonString));
   }
-
-  static Serializer<SystemFields> get serializer => _$systemFieldsSerializer;
 }
