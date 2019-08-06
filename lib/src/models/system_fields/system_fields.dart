@@ -17,6 +17,7 @@ abstract class SystemFields
   String get id;
 
   /// The type identifier of the resource.
+  @nullable
   String get type;
 
   /// Describes the date the resource was created.

@@ -18,14 +18,17 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
   @override
   Iterable<Object> serialize(Serializers serializers, SystemFields object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
-      'type',
-      serializers.serialize(object.type, specifiedType: const FullType(String)),
-    ];
+    final result = <Object>[];
     if (object.id != null) {
       result
         ..add('id')
         ..add(serializers.serialize(object.id,
+            specifiedType: const FullType(String)));
+    }
+    if (object.type != null) {
+      result
+        ..add('type')
+        ..add(serializers.serialize(object.type,
             specifiedType: const FullType(String)));
     }
     if (object.createdAt != null) {
@@ -160,11 +163,7 @@ class _$SystemFields extends SystemFields {
       this.revision,
       this.version,
       this.contentType})
-      : super._() {
-    if (type == null) {
-      throw new BuiltValueNullFieldError('SystemFields', 'type');
-    }
-  }
+      : super._();
 
   @override
   SystemFields rebuild(void Function(SystemFieldsBuilder) updates) =>

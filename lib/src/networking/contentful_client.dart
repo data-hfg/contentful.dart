@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
 
 import 'package:contentful_dart/src/models/models.dart';
 import 'package:contentful_dart/src/networking/http_client.dart';
@@ -56,6 +57,17 @@ class ContentfulClient {
         queryParameters: params,
       );
 
+  Future<Space> getSpaceDetails({@required String spaceid}) async {
+    final response =
+        await client.get('https://cdn.contentful.com/spaces/$spaceid');
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+          message:
+              '''Cannot get Space with id: $spaceid. Finished with error: ${response.body}''');
+    }
+    return Space.fromJson(response.body);
+  }
+
   Future<T> getEntry<T extends Entry>(
     String id,
     T Function(Map<String, dynamic>) fromJson, {
@@ -65,7 +77,7 @@ class ContentfulClient {
         await client.get(_uri(path: '/entries/$id', params: params));
     if (response.statusCode != 200) {
       throw ContentfulError(
-        message: 'Cannot get entry. Finished with error: $response',
+        message: '''Cannot get entry.Finished with error: ${response.body}''',
       );
     }
     return fromJson(json.decode(utf8.decode(response.bodyBytes)));
@@ -78,7 +90,7 @@ class ContentfulClient {
     if (response.statusCode != 200) {
       throw ContentfulError(
         message:
-            '''Cannot get list of entries. Finished with error: ${response.statusCode}''',
+            '''Cannot get list of entries. Finished with error: ${response.body}''',
       );
     }
 

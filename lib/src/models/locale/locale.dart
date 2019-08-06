@@ -19,6 +19,7 @@ abstract class Locale implements Built<Locale, LocaleBuilder> {
   @nullable
   String get fallbackCode;
 
+  @nullable
   SystemFields get sys;
 
   Locale._();

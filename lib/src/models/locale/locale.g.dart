@@ -25,15 +25,18 @@ class _$LocaleSerializer implements StructuredSerializer<Locale> {
       'default',
       serializers.serialize(object.isDefault,
           specifiedType: const FullType(bool)),
-      'sys',
-      serializers.serialize(object.sys,
-          specifiedType: const FullType(SystemFields)),
     ];
     if (object.fallbackCode != null) {
       result
         ..add('fallbackCode')
         ..add(serializers.serialize(object.fallbackCode,
             specifiedType: const FullType(String)));
+    }
+    if (object.sys != null) {
+      result
+        ..add('sys')
+        ..add(serializers.serialize(object.sys,
+            specifiedType: const FullType(SystemFields)));
     }
     return result;
   }
@@ -102,9 +105,6 @@ class _$Locale extends Locale {
     }
     if (isDefault == null) {
       throw new BuiltValueNullFieldError('Locale', 'isDefault');
-    }
-    if (sys == null) {
-      throw new BuiltValueNullFieldError('Locale', 'sys');
     }
   }
 
@@ -206,12 +206,12 @@ class LocaleBuilder implements Builder<Locale, LocaleBuilder> {
               name: name,
               isDefault: isDefault,
               fallbackCode: fallbackCode,
-              sys: sys.build());
+              sys: _sys?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'sys';
-        sys.build();
+        _sys?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Locale', _$failedField, e.toString());

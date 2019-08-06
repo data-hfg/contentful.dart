@@ -6,7 +6,9 @@ class ContentfulRepository {
 
   ContentfulRepository()
       : client = ContentfulClient(
-            accessToken: Secrets.accessToken, spaceId: Secrets.spaceId);
+          accessToken: Secrets.accessToken,
+          spaceId: Secrets.spaceId,
+        );
 
   void testRequest() async {
     try {
@@ -14,6 +16,14 @@ class ContentfulRepository {
         'contentType': 'widgetProducts',
       });
       print('Widget Products: $widgetProducts');
+    } on ContentfulError catch (error) {
+      throw ContentfulError(message: error.message);
+    }
+  }
+
+  Future<Space> getCurrentSpaceDetails() async {
+    try {
+      return await client.getSpaceDetails(spaceid: Secrets.spaceId);
     } on ContentfulError catch (error) {
       throw ContentfulError(message: error.message);
     }
