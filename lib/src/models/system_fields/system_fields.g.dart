@@ -35,7 +35,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
       result
         ..add('createdAt')
         ..add(serializers.serialize(object.createdAt,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
     }
     if (object.createdBy != null) {
       result
@@ -47,7 +47,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
       result
         ..add('firstPublishedAt')
         ..add(serializers.serialize(object.firstPublishedAt,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
     }
     if (object.id != null) {
       result
@@ -65,7 +65,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
       result
         ..add('publishedAt')
         ..add(serializers.serialize(object.publishedAt,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
     }
     if (object.publishedBy != null) {
       result
@@ -107,7 +107,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
       result
         ..add('updatedAt')
         ..add(serializers.serialize(object.updatedAt,
-            specifiedType: const FullType(DateTime)));
+            specifiedType: const FullType(String)));
     }
     if (object.updatedBy != null) {
       result
@@ -145,7 +145,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
           break;
         case 'createdAt':
           result.createdAt = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'createdBy':
           result.createdBy = serializers.deserialize(value,
@@ -153,7 +153,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
           break;
         case 'firstPublishedAt':
           result.firstPublishedAt = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
@@ -165,7 +165,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
           break;
         case 'publishedAt':
           result.publishedAt = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'publishedBy':
           result.publishedBy = serializers.deserialize(value,
@@ -193,7 +193,7 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
           break;
         case 'updatedAt':
           result.updatedAt = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'updatedBy':
           result.updatedBy = serializers.deserialize(value,
@@ -216,17 +216,17 @@ class _$SystemFields extends SystemFields {
   @override
   final String contentTypeId;
   @override
-  final DateTime createdAt;
+  final String createdAt;
   @override
   final String createdBy;
   @override
-  final DateTime firstPublishedAt;
+  final String firstPublishedAt;
   @override
   final String id;
   @override
   final String locale;
   @override
-  final DateTime publishedAt;
+  final String publishedAt;
   @override
   final String publishedBy;
   @override
@@ -240,7 +240,7 @@ class _$SystemFields extends SystemFields {
   @override
   final String type;
   @override
-  final DateTime updatedAt;
+  final String updatedAt;
   @override
   final String updatedBy;
   @override
@@ -379,17 +379,17 @@ class SystemFieldsBuilder
   set contentTypeId(String contentTypeId) =>
       _$this._contentTypeId = contentTypeId;
 
-  DateTime _createdAt;
-  DateTime get createdAt => _$this._createdAt;
-  set createdAt(DateTime createdAt) => _$this._createdAt = createdAt;
+  String _createdAt;
+  String get createdAt => _$this._createdAt;
+  set createdAt(String createdAt) => _$this._createdAt = createdAt;
 
   String _createdBy;
   String get createdBy => _$this._createdBy;
   set createdBy(String createdBy) => _$this._createdBy = createdBy;
 
-  DateTime _firstPublishedAt;
-  DateTime get firstPublishedAt => _$this._firstPublishedAt;
-  set firstPublishedAt(DateTime firstPublishedAt) =>
+  String _firstPublishedAt;
+  String get firstPublishedAt => _$this._firstPublishedAt;
+  set firstPublishedAt(String firstPublishedAt) =>
       _$this._firstPublishedAt = firstPublishedAt;
 
   String _id;
@@ -400,9 +400,9 @@ class SystemFieldsBuilder
   String get locale => _$this._locale;
   set locale(String locale) => _$this._locale = locale;
 
-  DateTime _publishedAt;
-  DateTime get publishedAt => _$this._publishedAt;
-  set publishedAt(DateTime publishedAt) => _$this._publishedAt = publishedAt;
+  String _publishedAt;
+  String get publishedAt => _$this._publishedAt;
+  set publishedAt(String publishedAt) => _$this._publishedAt = publishedAt;
 
   String _publishedBy;
   String get publishedBy => _$this._publishedBy;
@@ -430,9 +430,9 @@ class SystemFieldsBuilder
   String get type => _$this._type;
   set type(String type) => _$this._type = type;
 
-  DateTime _updatedAt;
-  DateTime get updatedAt => _$this._updatedAt;
-  set updatedAt(DateTime updatedAt) => _$this._updatedAt = updatedAt;
+  String _updatedAt;
+  String get updatedAt => _$this._updatedAt;
+  set updatedAt(String updatedAt) => _$this._updatedAt = updatedAt;
 
   String _updatedBy;
   String get updatedBy => _$this._updatedBy;

@@ -19,6 +19,7 @@ abstract class Space implements Built<Space, SpaceBuilder> {
   BuiltList<Locale> get locales;
 
   /// The name of this Space.
+  @nullable
   String get name;
 
   Space._();

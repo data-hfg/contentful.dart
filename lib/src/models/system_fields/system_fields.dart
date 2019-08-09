@@ -29,7 +29,7 @@ abstract class SystemFields
 
   /// Describes the date the resource was created.
   @nullable
-  DateTime get createdAt;
+  String get createdAt;
 
   /// Link to creating user.
   @nullable
@@ -37,7 +37,7 @@ abstract class SystemFields
 
   ///  Time resource was first published.
   @nullable
-  DateTime get firstPublishedAt;
+  String get firstPublishedAt;
 
   /// The unique identifier of the resource.
   @nullable
@@ -49,7 +49,7 @@ abstract class SystemFields
 
   /// Time resource was published.
   @nullable
-  DateTime get publishedAt;
+  String get publishedAt;
 
   /// Link to publishing user.
   @nullable
@@ -77,7 +77,7 @@ abstract class SystemFields
 
   /// Describes the date the resource was last updated.
   @nullable
-  DateTime get updatedAt;
+  String get updatedAt;
 
   /// Link to updating user.
   @nullable

@@ -26,8 +26,8 @@
             "tlh": "Quch vIghro"
         },
         "likes": {
-        "en-US": [
-            "cheezburger"
+            "en-US": [
+                "cheezburger"
             ]
         },
         "color": {
@@ -36,9 +36,9 @@
         "bestFriend": {
             "en-US": {
                 "sys": {
-                "type": "Link",
-                "linkType": "Entry",
-                "id": "nyancat"
+                    "type": "Link",
+                    "linkType": "Entry",
+                    "id": "nyancat"
                 }
             }
         },
@@ -51,9 +51,9 @@
         "image": {
             "en-US": {
                 "sys": {
-                "type": "Link",
-                "linkType": "Asset",
-                "id": "happycat"
+                    "type": "Link",
+                    "linkType": "Asset",
+                    "id": "happycat"
                 }
             }
         }

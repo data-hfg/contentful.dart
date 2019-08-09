@@ -25,10 +25,13 @@ class _$SpaceSerializer implements StructuredSerializer<Space> {
       serializers.serialize(object.locales,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Locale)])),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
-
+    if (object.name != null) {
+      result
+        ..add('name')
+        ..add(serializers.serialize(object.name,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -81,9 +84,6 @@ class _$Space extends Space {
     }
     if (locales == null) {
       throw new BuiltValueNullFieldError('Space', 'locales');
-    }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('Space', 'name');
     }
   }
 
