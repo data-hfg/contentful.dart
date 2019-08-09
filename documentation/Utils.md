@@ -1,11 +1,15 @@
 # Utils
 
+## Run tests
+
+```sh
+pub run test test/
+```
+
 ## Collect Test Coverage
 
 ```sh
 flutter test --coverage
-
-pub run test test/
 ```
 
 ## Generate Html for Test Coverage

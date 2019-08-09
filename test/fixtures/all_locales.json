@@ -23,9 +23,9 @@
       "default": false,
       "fallbackCode": "en-US",
       "sys": {
-          "id": "3zpZmkZrHTIekHmXgflXaV",
-          "type": "Locale",
-          "version": 0
+        "id": "3zpZmkZrHTIekHmXgflXaV",
+        "type": "Locale",
+        "version": 0
       }
     }
   ]
