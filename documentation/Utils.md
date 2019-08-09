@@ -4,6 +4,8 @@
 
 ```sh
 flutter test --coverage
+
+pub run test test/
 ```
 
 ## Generate Html for Test Coverage
