@@ -7,6 +7,9 @@ dart_task:
   - dartfmt
   # - dartanalyzer
 
+script: ./scripts/runTests.sh
+after_success: bash <(curl -s https://codecov.io/bash) -f lcov.info
+
 # Only building develop means that we don't run two builds for each pull request.
 branches:
   only: [develop]
