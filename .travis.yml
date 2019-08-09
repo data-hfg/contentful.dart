@@ -7,6 +7,9 @@ dart_task:
   - dartfmt
   # - dartanalyzer
 
+before_script:
+  - pub global activate coverage
+
 script: ./scripts/runTests.sh
 after_success: bash <(curl -s https://codecov.io/bash) -f lcov.info
 
