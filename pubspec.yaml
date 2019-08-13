@@ -7,7 +7,7 @@ homepage: https://github.com/data-hfg/contentful_dart.git
 issue_tracker: https://github.com/data-hfg/contentful_dart/issues
 
 environment:
-  sdk: '>=2.4.1 <3.0.0'
+  sdk: '>=2.4.0 <3.0.0'
 
 dependencies:
   built_collection: ^4.2.2

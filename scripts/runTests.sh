@@ -27,41 +27,56 @@ runTests () {
   cd $1;
   if [ -f "pubspec.yaml" ] && [ -d "test" ]; then
     echo "running tests in $1"
-    flutter packages get
-   # check if build_runner needs to be run
+    # check if build_runner needs to be run
     if grep build_runner pubspec.yaml > /dev/null ; then
       flutter packages pub run build_runner build --delete-conflicting-outputs
     fi
 
     escapedPath="$(echo $1 | sed 's/\//\\\//g')"
 
-    # run tests with coverage
-    if grep flutter pubspec.yaml > /dev/null; then
-      echo "run flutter tests"
-      if [ -f "test/all_tests.dart" ]; then
-        flutter test --coverage test/all_tests.dart || error=true
-      else
-        flutter test --coverage || error=true
-      fi
-      if [ -d "coverage" ]; then
-        # combine line coverage info from package tests to a common file
-        sed "s/^SF:lib/SF:$escapedPath\/lib/g" coverage/lcov.info >> $2/lcov.info
-        rm -rf "coverage"
-      fi
-    else
-      # pure dart
-      echo "run dart tests"
-      pub get
-      pub global run coverage:collect_coverage --port=8111 -o coverage.json --resume-isolates --wait-paused &
-      dart --pause-isolates-on-exit --enable-vm-service=8111 "test/all_tests.dart" || error=true
-      pub global run coverage:format_coverage --packages=.packages -i coverage.json --report-on lib --lcov --out lcov.info
-      if [ -f "lcov.info" ]; then
-        # combine line coverage info from package tests to a common file
-        sed "s/^SF:.*lib/SF:$escapedPath\/lib/g" lcov.info >> $2/lcov.info
-        rm lcov.info
-      fi
-      rm -f coverage.json
-    fi
+    echo "run dart tests"
+    pub get
+    rm -f temp.txt
+    dart --pause-isolates-on-exit --enable-vm-service=8114 "test/all.dart" | tee -a temp.txt
+    url=$(cat temp.txt | awk 'NR==1{print '"\$4"'}')
+    echo "url: $url"
+    pub global run coverage:collect_coverage --uri=$url -o coverage/coverage.json --resume-isolates
+    pub global run coverage:format_coverage -l -i coverage/coverage.json -o coverage/lcov.info --packages=.packages --report-on=lib
+    rm -f temp.txt
+
+    # # run tests with coverage
+    # if grep flutter pubspec.yaml > /dev/null; then
+    #   echo "run flutter tests"
+    #   if [ -f "test/all_tests.dart" ]; then
+    #     flutter test --coverage test/all_tests.dart || error=true
+    #   else
+    #     flutter test --coverage || error=true
+    #   fi
+    #   if [ -d "coverage" ]; then
+    #     # combine line coverage info from package tests to a common file
+    #     sed "s/^SF:lib/SF:$escapedPath\/lib/g" coverage/lcov.info >> $2/lcov.info
+    #     rm -rf "coverage"
+    #   fi
+    # else
+    # #   pure dart
+    # #   echo "run dart tests"
+    # #   pub get
+    # #   dart --pause-isolates-on-exit --enable-vm-service=8111 "test/all.dart" | tee -a temp.txt &
+    # #   url=$(cat temp.txt | awk 'NR==1{print '"\$4"'}') &
+    # #   echo $url
+    # #   pub global run coverage:collect_coverage --uri=$url -o coverage/coverage.json --resume-isolates
+    # #   pub global run coverage:format_coverage -l -i coverage/coverage.json -o coverage/lcov.info --packages=.packages --report-on=lib
+
+    # #   nohup pub global run coverage:collect_coverage --port=8111 -o coverage.json --resume-isolates --wait-paused &
+    # #   dart --pause-isolates-on-exit --enable-vm-service=8111 "test/all.dart" || error=true
+    # #   pub global run coverage:format_coverage --packages=.packages -i coverage.json --report-on lib --lcov --out lcov.info
+    # #   if [ -f "lcov.info" ]; then
+    # #     # combine line coverage info from package tests to a common file
+    # #     sed "s/^SF:.*lib/SF:$escapedPath\/lib/g" lcov.info >> $2/lcov.info
+    # #     rm lcov.info
+    # #   fi
+    # #   rm -f coverage.json
+    # fi
   fi
   cd - > /dev/null
 }

@@ -6,6 +6,10 @@
 pub run test test/
 ```
 
+```sh
+scripts/runTests.sh
+```
+
 ## Collect Test Coverage
 
 ```sh
