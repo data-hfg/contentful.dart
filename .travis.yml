@@ -10,6 +10,9 @@ dart_task:
 before_script:
   - pub global activate coverage
 
+script:
+  - dart test/all.dart
+
 # script: ./scripts/runTests.sh
 # after_success: bash <(curl -s https://codecov.io/bash) -f lcov.info
 
