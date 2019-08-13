@@ -10,8 +10,8 @@ dart_task:
 before_script:
   - pub global activate coverage
 
-script: ./scripts/runTests.sh
-after_success: bash <(curl -s https://codecov.io/bash) -f lcov.info
+# script: ./scripts/runTests.sh
+# after_success: bash <(curl -s https://codecov.io/bash) -f lcov.info
 
 # Only building develop means that we don't run two builds for each pull request.
 branches:
