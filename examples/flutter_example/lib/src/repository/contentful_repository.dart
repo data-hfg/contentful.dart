@@ -1,5 +1,4 @@
-import 'package:contentful_dart/contentful.dart';
-import 'package:meta/meta.dart';
+import 'package:contentful_dart/contentful_dart.dart';
 import 'package:flutter_example/src/utils/keys.dart';
 
 class ContentfulRepository {
