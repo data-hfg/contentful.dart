@@ -10,6 +10,10 @@ pub run test test/
 scripts/runTests.sh
 ```
 
+```sh
+dart test/all.dart
+```
+
 ## Collect Test Coverage
 
 ```sh
