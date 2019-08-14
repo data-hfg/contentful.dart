@@ -1,7 +1,7 @@
 # Contentful Dart - Dart Delivery SDK for Contentful
 
 [![Build Status](https://travis-ci.org/data-hfg/contentful.dart.svg?branch=develop)](https://travis-ci.org/data-hfg/contentful.dart)
-[![Version](https://img.shields.io/badge/version-0.0.1-blue.svg)](https://github.com/data-hfg/contentful.dart)
+[![Version](https://img.shields.io/badge/version-0.0.5-blue.svg)](https://github.com/data-hfg/contentful.dart)
 [![codecov](https://codecov.io/gh/data-hfg/contentful.dart/branch/develop/graph/badge.svg)](https://codecov.io/gh/data-hfg/contentful.dart)
 
 **What is Contentful?**
@@ -27,7 +27,8 @@ For information about the Content Delivery API, check out the [Content Delivery 
 ### Tutorials & other resources
 
 * This library is a wrapper around our Contentful Delivery REST API. Some more specific details such as search parameters and pagination are better explained on the [REST API reference](https://www.contentful.com/developers/docs/references/content-delivery-api/), and you can also get a better understanding of how the requests look under the hood.
-* Check the [Contentful for Swift](https://www.contentful.com/developers/docs/ios/tutorials/) page for Tutorials, Demo Apps, and more information on other ways of using Swift with Contentful
+
+* Check the [Contentful](https://www.contentful.com/developers/docs/platforms/) page for Tutorials, Demo Apps.
 
 #### Example application
 

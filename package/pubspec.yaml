@@ -1,6 +1,6 @@
 name: contentful_dart
 description: A delightful Dart interface to Contentful's content delivery API.
-version: 0.0.3
+version: 0.0.5
 author: Sasha Prokhorenko <djminikin@gmail.com>
 repository: https://github.com/data-hfg/contentful.dart.git
 homepage: https://github.com/data-hfg/contentful.dart.git
