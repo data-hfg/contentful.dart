@@ -1,4 +1,4 @@
-import 'package:contentful_dart/contentful.dart';
+import 'package:contentful_dart/contentful_dart.dart';
 import 'package:test/test.dart';
 
 import '../utils/load_fixture.dart';
