@@ -21,7 +21,7 @@ pub run test_coverage
 ## Collect Test Coverage
 
 ```sh
-flutter test --coverage
+genhtml coverage/lcov.info -o coverage
 ```
 
 ## Generate Html for Test Coverage

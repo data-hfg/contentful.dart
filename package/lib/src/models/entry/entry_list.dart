@@ -11,14 +11,16 @@ part 'entry_list.g.dart';
 
 abstract class EntryList<T extends Entry>
     implements Built<EntryList<T>, EntryListBuilder<T>> {
-  int get total;
-  int get skip;
-  int get limit;
+  static Serializer<EntryList> get serializer => _$entryListSerializer;
+  factory EntryList([updates(EntryListBuilder<T> b)]) = _$EntryList<T>;
+  EntryList._();
   BuiltList<T> get items;
 
-  EntryList._();
+  int get limit;
 
-  factory EntryList([updates(EntryListBuilder<T> b)]) = _$EntryList<T>;
+  int get skip;
+
+  int get total;
 
   String toJson() {
     return json.encode(serializers.serializeWith(EntryList.serializer, this));
@@ -28,6 +30,4 @@ abstract class EntryList<T extends Entry>
     return serializers.deserializeWith(
         EntryList.serializer, json.decode(jsonString));
   }
-
-  static Serializer<EntryList> get serializer => _$entryListSerializer;
 }

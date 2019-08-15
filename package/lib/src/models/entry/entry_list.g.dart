@@ -24,15 +24,15 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
         isUnderspecified ? FullType.object : specifiedType.parameters[0];
 
     final result = <Object>[
-      'total',
-      serializers.serialize(object.total, specifiedType: const FullType(int)),
-      'skip',
-      serializers.serialize(object.skip, specifiedType: const FullType(int)),
-      'limit',
-      serializers.serialize(object.limit, specifiedType: const FullType(int)),
       'items',
       serializers.serialize(object.items,
           specifiedType: new FullType(BuiltList, [parameterT])),
+      'limit',
+      serializers.serialize(object.limit, specifiedType: const FullType(int)),
+      'skip',
+      serializers.serialize(object.skip, specifiedType: const FullType(int)),
+      'total',
+      serializers.serialize(object.total, specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -57,22 +57,22 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'total':
-          result.total = serializers.deserialize(value,
+        case 'items':
+          result.items.replace(serializers.deserialize(value,
+                  specifiedType: new FullType(BuiltList, [parameterT]))
+              as BuiltList<dynamic>);
+          break;
+        case 'limit':
+          result.limit = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
         case 'skip':
           result.skip = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
-        case 'limit':
-          result.limit = serializers.deserialize(value,
+        case 'total':
+          result.total = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          break;
-        case 'items':
-          result.items.replace(serializers.deserialize(value,
-                  specifiedType: new FullType(BuiltList, [parameterT]))
-              as BuiltList<dynamic>);
           break;
       }
     }
@@ -83,29 +83,29 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
 
 class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   @override
-  final int total;
-  @override
-  final int skip;
+  final BuiltList<T> items;
   @override
   final int limit;
   @override
-  final BuiltList<T> items;
+  final int skip;
+  @override
+  final int total;
 
   factory _$EntryList([void Function(EntryListBuilder<T>) updates]) =>
       (new EntryListBuilder<T>()..update(updates)).build();
 
-  _$EntryList._({this.total, this.skip, this.limit, this.items}) : super._() {
-    if (total == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'total');
-    }
-    if (skip == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'skip');
+  _$EntryList._({this.items, this.limit, this.skip, this.total}) : super._() {
+    if (items == null) {
+      throw new BuiltValueNullFieldError('EntryList', 'items');
     }
     if (limit == null) {
       throw new BuiltValueNullFieldError('EntryList', 'limit');
     }
-    if (items == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'items');
+    if (skip == null) {
+      throw new BuiltValueNullFieldError('EntryList', 'skip');
+    }
+    if (total == null) {
+      throw new BuiltValueNullFieldError('EntryList', 'total');
     }
     if (T == dynamic) {
       throw new BuiltValueMissingGenericsError('EntryList', 'T');
@@ -123,26 +123,26 @@ class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is EntryList &&
-        total == other.total &&
-        skip == other.skip &&
+        items == other.items &&
         limit == other.limit &&
-        items == other.items;
+        skip == other.skip &&
+        total == other.total;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, total.hashCode), skip.hashCode), limit.hashCode),
-        items.hashCode));
+        $jc($jc($jc(0, items.hashCode), limit.hashCode), skip.hashCode),
+        total.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('EntryList')
-          ..add('total', total)
-          ..add('skip', skip)
+          ..add('items', items)
           ..add('limit', limit)
-          ..add('items', items))
+          ..add('skip', skip)
+          ..add('total', total))
         .toString();
   }
 }
@@ -151,30 +151,30 @@ class EntryListBuilder<T extends Entry<dynamic>>
     implements Builder<EntryList<T>, EntryListBuilder<T>> {
   _$EntryList<T> _$v;
 
-  int _total;
-  int get total => _$this._total;
-  set total(int total) => _$this._total = total;
-
-  int _skip;
-  int get skip => _$this._skip;
-  set skip(int skip) => _$this._skip = skip;
+  ListBuilder<T> _items;
+  ListBuilder<T> get items => _$this._items ??= new ListBuilder<T>();
+  set items(ListBuilder<T> items) => _$this._items = items;
 
   int _limit;
   int get limit => _$this._limit;
   set limit(int limit) => _$this._limit = limit;
 
-  ListBuilder<T> _items;
-  ListBuilder<T> get items => _$this._items ??= new ListBuilder<T>();
-  set items(ListBuilder<T> items) => _$this._items = items;
+  int _skip;
+  int get skip => _$this._skip;
+  set skip(int skip) => _$this._skip = skip;
+
+  int _total;
+  int get total => _$this._total;
+  set total(int total) => _$this._total = total;
 
   EntryListBuilder();
 
   EntryListBuilder<T> get _$this {
     if (_$v != null) {
-      _total = _$v.total;
-      _skip = _$v.skip;
-      _limit = _$v.limit;
       _items = _$v.items?.toBuilder();
+      _limit = _$v.limit;
+      _skip = _$v.skip;
+      _total = _$v.total;
       _$v = null;
     }
     return this;
@@ -199,7 +199,7 @@ class EntryListBuilder<T extends Entry<dynamic>>
     try {
       _$result = _$v ??
           new _$EntryList<T>._(
-              total: total, skip: skip, limit: limit, items: items.build());
+              items: items.build(), limit: limit, skip: skip, total: total);
     } catch (_) {
       String _$failedField;
       try {

@@ -70,5 +70,26 @@ void main() {
         throwsA(const TypeMatcher<ContentfulError>()),
       );
     });
+
+    test('getEntry return Entry model', () async {
+      when(
+        mockClient.get(
+          startsWith('https://$_baseUrl/spaces/$_spaceid'),
+        ),
+      ).thenAnswer(
+        (_) async => http.Response(
+          loadFixture('error'),
+          404,
+          headers: {'content-type': 'application/json; charset=UTF-8'},
+        ),
+      );
+
+      expect(
+        () => contentfulClient.getSpaceDetails(
+          spaceid: _spaceid,
+        ),
+        throwsA(const TypeMatcher<ContentfulError>()),
+      );
+    });
   });
 }
