@@ -12,7 +12,9 @@ part 'entry_list.g.dart';
 abstract class EntryList<T extends Entry>
     implements Built<EntryList<T>, EntryListBuilder<T>> {
   static Serializer<EntryList> get serializer => _$entryListSerializer;
+
   factory EntryList([updates(EntryListBuilder<T> b)]) = _$EntryList<T>;
+
   EntryList._();
   BuiltList<T> get items;
 

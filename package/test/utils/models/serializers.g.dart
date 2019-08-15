@@ -7,14 +7,8 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(Locale.serializer)
       ..add(Post.serializer)
       ..add(PostField.serializer)
-      ..add(Space.serializer)
-      ..add(SystemFields.serializer)
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(Locale)]),
-          () => new ListBuilder<Locale>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Post)]),
           () => new ListBuilder<Post>()))

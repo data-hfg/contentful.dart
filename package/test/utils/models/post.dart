@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:contentful_dart/src/models/entry/entry.dart';
 import 'package:contentful_dart/src/models/system_fields/system_fields.dart';
 
 import './serializers.dart';
@@ -11,7 +12,9 @@ import 'post_field.dart';
 
 part 'post.g.dart';
 
-abstract class Post implements Built<Post, PostBuilder> {
+abstract class Post extends Object
+    with Entry<PostField>
+    implements Built<Post, PostBuilder> {
   SystemFields get sys;
   PostField get fields;
 
