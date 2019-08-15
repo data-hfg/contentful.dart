@@ -14,6 +14,10 @@ scripts/runTests.sh
 dart test/all.dart
 ```
 
+```sh
+pub run test_coverage
+```
+
 ## Collect Test Coverage
 
 ```sh

@@ -12,7 +12,7 @@ class ContentfulClient {
   static const _baseUrl = 'cdn.contentful.com';
 
   /// HttpClient
-  final HttpClient client;
+  final ContentfulHttpClient client;
 
   /// The base domain that all URIs have for each request the client makes.
   final String host;
@@ -24,10 +24,10 @@ class ContentfulClient {
   final String environmentId;
 
   factory ContentfulClient({
+    @required ContentfulHttpClient client,
     @required String spaceId,
     @required String accessToken,
   }) {
-    final client = HttpClient(accessToken: accessToken);
     return ContentfulClient._(
       client: client,
       spaceId: spaceId,
