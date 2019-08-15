@@ -57,17 +57,18 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          loadFixture('space'),
+          loadFixture('error'),
           404,
           headers: {'content-type': 'application/json; charset=UTF-8'},
         ),
       );
 
-      final _ = await contentfulClient.getSpaceDetails(
-        spaceid: _spaceid,
+      expect(
+        () => contentfulClient.getSpaceDetails(
+          spaceid: _spaceid,
+        ),
+        throwsA(const TypeMatcher<ContentfulError>()),
       );
-
-      throwsA(const TypeMatcher<ContentfulError>());
     });
   });
 }
