@@ -12,8 +12,14 @@ import 'post.dart';
 part 'post_field.g.dart';
 
 abstract class PostField implements Built<PostField, PostFieldBuilder> {
+  /// Post title
   String get title;
-  String get slug;
+
+  /// Post slug
+  String get id;
+
+  /// Related posts
+  @nullable
   BuiltList<Post> get relatedPosts;
 
   PostField._();

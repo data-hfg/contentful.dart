@@ -7,6 +7,7 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import '../utils/load_fixture.dart';
+import '../utils/models/post.dart';
 
 class MockClient extends Mock implements ContentfulHttpClient {}
 
@@ -69,21 +70,60 @@ void main() {
     });
 
     test('getEntry return Entry model', () async {
+      final params = {
+        'contentType': 'post',
+        'fields.id': '5ETMRzkl9KM4omyMwKAOki9'
+      };
+
       when(
         mockClient.get(
-          startsWith('https://$_baseUrl/spaces/$_spaceid'),
+          startsWith(
+              'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          loadFixture('error'),
+          loadFixture('post'),
           200,
           headers: {'content-type': 'application/json; charset=UTF-8'},
         ),
       );
 
-      //final response = await contentfulClient.getEntry<Post>()
+      final response = await contentfulClient.getEntry<Post>(
+        entryId: 'mock_entry_id',
+        params: params,
+        fromJson: Post.fromJson,
+      );
 
-      //expect(response, const TypeMatcher<Space>());
+      expect(response, const TypeMatcher<Post>());
+    });
+
+    test('getEntry  throw ContentfulError', () async {
+      final params = {
+        'contentType': 'post',
+        'fields.id': '5ETMRzkl9KM4omyMwKAOki9'
+      };
+      when(
+        mockClient.get(
+          startsWith(
+            'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9',
+          ),
+        ),
+      ).thenAnswer(
+        (_) async => http.Response(
+          loadFixture('error'),
+          404,
+          headers: {'content-type': 'application/json; charset=UTF-8'},
+        ),
+      );
+
+      expect(
+        () => contentfulClient.getEntry<Post>(
+          entryId: 'mock_entry_id',
+          params: params,
+          fromJson: Post.fromJson,
+        ),
+        throwsA(const TypeMatcher<ContentfulError>()),
+      );
     });
   });
 }

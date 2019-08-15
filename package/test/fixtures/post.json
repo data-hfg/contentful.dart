@@ -1,0 +1,21 @@
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "cfexampleapi"
+      }
+    },
+    "id": "ge1xHyH3QOWucKWCCAgIG",
+    "type": "Entry",
+    "createdAt": "2014-02-21T13:43:23.210Z",
+    "updatedAt": "2014-02-21T13:43:23.210Z",
+    "revision": 1,
+    "locale": "en-US"
+  },
+  "fields": {
+    "title": "Summer in Paris 2019",
+    "id": "5ETMRzkl9KM4omyMwKAOki9"
+  }
+}

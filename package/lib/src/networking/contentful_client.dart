@@ -47,7 +47,8 @@ class ContentfulClient {
   }
 
   Future<EntryList<T>> getEntries<T extends Entry>({
-    Map<String, dynamic> params,
+    @required Map<String, dynamic> params,
+    @required T Function(Map<String, dynamic>) fromJson,
   }) async {
     final response = await client.get(_uri(path: '/entries', params: params));
     if (response.statusCode != 200) {
@@ -66,20 +67,22 @@ class ContentfulClient {
     return EntryList.fromJson(jsonr);
   }
 
-  Future<T> getEntry<T extends Entry>(
-    String entryId,
-    T Function(Map<String, dynamic>) fromJson, {
-    Map<String, dynamic> params,
+  Future<T> getEntry<T extends Entry>({
+    @required String entryId,
+    @required Map<String, dynamic> params,
+    @required T Function(String jsonString) fromJson,
   }) async {
-    final response =
-        await client.get(_uri(path: '/entries/$entryId', params: params));
+    final response = await client.get(_uri(
+      path: 'entries/$entryId',
+      params: params,
+    ));
     if (response.statusCode != 200) {
       throw ContentfulError(
         message:
             '''Cannot get entry with id: $entryId. Finished with error: ${response.body}''',
       );
     }
-    return fromJson(json.decode(utf8.decode(response.bodyBytes)));
+    return fromJson(response.body);
   }
 
   Future<Space> getSpaceDetails({@required String spaceid}) async {
@@ -92,14 +95,16 @@ class ContentfulClient {
     return Space.fromJson(response.body);
   }
 
-  Uri _uri({
+  String _uri({
     @required String path,
     Map<String, dynamic> params,
-  }) =>
-      Uri(
-        scheme: 'https',
-        host: host,
-        path: '/spaces/$spaceId/$environmentId/master$path',
-        queryParameters: params,
-      );
+  }) {
+    final url = Uri(
+      scheme: 'https',
+      host: host,
+      path: '/spaces/$spaceId/$environmentId/$path',
+      queryParameters: params,
+    );
+    return url.toString();
+  }
 }

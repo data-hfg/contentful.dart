@@ -21,14 +21,16 @@ class _$PostFieldSerializer implements StructuredSerializer<PostField> {
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
-      'slug',
-      serializers.serialize(object.slug, specifiedType: const FullType(String)),
-      'relatedPosts',
-      serializers.serialize(object.relatedPosts,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Post)])),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
     ];
-
+    if (object.relatedPosts != null) {
+      result
+        ..add('relatedPosts')
+        ..add(serializers.serialize(object.relatedPosts,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Post)])));
+    }
     return result;
   }
 
@@ -47,8 +49,8 @@ class _$PostFieldSerializer implements StructuredSerializer<PostField> {
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'slug':
-          result.slug = serializers.deserialize(value,
+        case 'id':
+          result.id = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'relatedPosts':
@@ -68,22 +70,19 @@ class _$PostField extends PostField {
   @override
   final String title;
   @override
-  final String slug;
+  final String id;
   @override
   final BuiltList<Post> relatedPosts;
 
   factory _$PostField([void Function(PostFieldBuilder) updates]) =>
       (new PostFieldBuilder()..update(updates)).build();
 
-  _$PostField._({this.title, this.slug, this.relatedPosts}) : super._() {
+  _$PostField._({this.title, this.id, this.relatedPosts}) : super._() {
     if (title == null) {
       throw new BuiltValueNullFieldError('PostField', 'title');
     }
-    if (slug == null) {
-      throw new BuiltValueNullFieldError('PostField', 'slug');
-    }
-    if (relatedPosts == null) {
-      throw new BuiltValueNullFieldError('PostField', 'relatedPosts');
+    if (id == null) {
+      throw new BuiltValueNullFieldError('PostField', 'id');
     }
   }
 
@@ -99,21 +98,21 @@ class _$PostField extends PostField {
     if (identical(other, this)) return true;
     return other is PostField &&
         title == other.title &&
-        slug == other.slug &&
+        id == other.id &&
         relatedPosts == other.relatedPosts;
   }
 
   @override
   int get hashCode {
     return $jf(
-        $jc($jc($jc(0, title.hashCode), slug.hashCode), relatedPosts.hashCode));
+        $jc($jc($jc(0, title.hashCode), id.hashCode), relatedPosts.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('PostField')
           ..add('title', title)
-          ..add('slug', slug)
+          ..add('id', id)
           ..add('relatedPosts', relatedPosts))
         .toString();
   }
@@ -126,9 +125,9 @@ class PostFieldBuilder implements Builder<PostField, PostFieldBuilder> {
   String get title => _$this._title;
   set title(String title) => _$this._title = title;
 
-  String _slug;
-  String get slug => _$this._slug;
-  set slug(String slug) => _$this._slug = slug;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   ListBuilder<Post> _relatedPosts;
   ListBuilder<Post> get relatedPosts =>
@@ -141,7 +140,7 @@ class PostFieldBuilder implements Builder<PostField, PostFieldBuilder> {
   PostFieldBuilder get _$this {
     if (_$v != null) {
       _title = _$v.title;
-      _slug = _$v.slug;
+      _id = _$v.id;
       _relatedPosts = _$v.relatedPosts?.toBuilder();
       _$v = null;
     }
@@ -167,12 +166,12 @@ class PostFieldBuilder implements Builder<PostField, PostFieldBuilder> {
     try {
       _$result = _$v ??
           new _$PostField._(
-              title: title, slug: slug, relatedPosts: relatedPosts.build());
+              title: title, id: id, relatedPosts: _relatedPosts?.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'relatedPosts';
-        relatedPosts.build();
+        _relatedPosts?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'PostField', _$failedField, e.toString());
