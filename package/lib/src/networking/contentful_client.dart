@@ -48,7 +48,7 @@ class ContentfulClient {
 
   Future<EntryList<T>> getEntries<T extends Entry>({
     @required Map<String, dynamic> params,
-    @required T Function(Map<String, dynamic>) fromJson,
+    @required T Function(String jsonString) fromJson,
   }) async {
     final response = await client.get(_uri(path: '/entries', params: params));
     if (response.statusCode != 200) {
