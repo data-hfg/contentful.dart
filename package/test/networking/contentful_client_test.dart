@@ -126,4 +126,10 @@ void main() {
       );
     });
   });
+
+  test('Close client', () async {
+    contentfulClient.close();
+
+    expect(contentfulClient.client.accessToken, const TypeMatcher<Null>());
+  });
 }
