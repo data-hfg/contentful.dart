@@ -5,8 +5,15 @@ import '../utils/load_fixture.dart';
 
 void main() {
   group('Location Tests', () {
-    test('returns Location from json string', () {
-      final location = Space.fromJson(loadFixture('location'));
+    test('returns instance of Location from json', () {
+      final location = Location.fromJson(loadFixture('location'));
+
+      expect(location, const TypeMatcher<Location>());
+    });
+
+    test('returns json string from Location', () {
+      final location = Location.fromJson(loadFixture('location'));
+
       final locationString = location.toJson();
 
       expect(locationString, const TypeMatcher<String>());
