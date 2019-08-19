@@ -33,6 +33,7 @@ abstract class Field implements Built<Field, FieldBuilder> {
   /// The item type of this Field (a subtype if `type` is `Array` or `Link`)
   /// For `Array`s, itemType is inferred via items.type.
   /// For `Link`s, itemType is inferred via "linkType".
+  @nullable
   FieldType get itemType;
 
   Field._();

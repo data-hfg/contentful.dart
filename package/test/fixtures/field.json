@@ -1,0 +1,10 @@
+{
+  "id": "description",
+  "name": "Description",
+  "type": "Text",
+  "localized": false,
+  "required": true,
+  "validations": [],
+  "disabled": false,
+  "omitted": false
+}

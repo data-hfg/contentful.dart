@@ -34,11 +34,13 @@ class _$FieldSerializer implements StructuredSerializer<Field> {
       'type',
       serializers.serialize(object.type,
           specifiedType: const FullType(FieldType)),
-      'itemType',
-      serializers.serialize(object.itemType,
-          specifiedType: const FullType(FieldType)),
     ];
-
+    if (object.itemType != null) {
+      result
+        ..add('itemType')
+        ..add(serializers.serialize(object.itemType,
+            specifiedType: const FullType(FieldType)));
+    }
     return result;
   }
 
@@ -133,9 +135,6 @@ class _$Field extends Field {
     }
     if (type == null) {
       throw new BuiltValueNullFieldError('Field', 'type');
-    }
-    if (itemType == null) {
-      throw new BuiltValueNullFieldError('Field', 'itemType');
     }
   }
 

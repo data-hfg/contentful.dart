@@ -21,3 +21,7 @@ pub run test_coverage
 ```sh
 genhtml coverage/lcov.info -o coverage/output/
 ```
+
+```sh
+pub run test_coverage && genhtml coverage/lcov.info -o coverage/output/
+```
