@@ -12,7 +12,7 @@ void main() {
     });
 
     test('returns json string from SystemFields', () {
-      final sys = SystemFields.fromJson(loadFixture('location'));
+      final sys = SystemFields.fromJson(loadFixture('sys'));
 
       final sysString = sys.toJson();
 
