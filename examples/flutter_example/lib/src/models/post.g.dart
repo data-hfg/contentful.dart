@@ -18,8 +18,12 @@ class _$PostSerializer implements StructuredSerializer<Post> {
   Iterable<Object> serialize(Serializers serializers, Post object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'fields',
+      serializers.serialize(object.fields,
+          specifiedType: const FullType(PostFields)),
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
     ];
 
     return result;
@@ -36,9 +40,13 @@ class _$PostSerializer implements StructuredSerializer<Post> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'fields':
+          result.fields.replace(serializers.deserialize(value,
+              specifiedType: const FullType(PostFields)) as PostFields);
+          break;
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
       }
     }
@@ -49,14 +57,19 @@ class _$PostSerializer implements StructuredSerializer<Post> {
 
 class _$Post extends Post {
   @override
-  final String id;
+  final PostFields fields;
+  @override
+  final SystemFields sys;
 
   factory _$Post([void Function(PostBuilder) updates]) =>
       (new PostBuilder()..update(updates)).build();
 
-  _$Post._({this.id}) : super._() {
-    if (id == null) {
-      throw new BuiltValueNullFieldError('Post', 'id');
+  _$Post._({this.fields, this.sys}) : super._() {
+    if (fields == null) {
+      throw new BuiltValueNullFieldError('Post', 'fields');
+    }
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('Post', 'sys');
     }
   }
 
@@ -70,32 +83,40 @@ class _$Post extends Post {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Post && id == other.id;
+    return other is Post && fields == other.fields && sys == other.sys;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, id.hashCode));
+    return $jf($jc($jc(0, fields.hashCode), sys.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Post')..add('id', id)).toString();
+    return (newBuiltValueToStringHelper('Post')
+          ..add('fields', fields)
+          ..add('sys', sys))
+        .toString();
   }
 }
 
 class PostBuilder implements Builder<Post, PostBuilder> {
   _$Post _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  PostFieldsBuilder _fields;
+  PostFieldsBuilder get fields => _$this._fields ??= new PostFieldsBuilder();
+  set fields(PostFieldsBuilder fields) => _$this._fields = fields;
+
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   PostBuilder();
 
   PostBuilder get _$this {
     if (_$v != null) {
-      _id = _$v.id;
+      _fields = _$v.fields?.toBuilder();
+      _sys = _$v.sys?.toBuilder();
       _$v = null;
     }
     return this;
@@ -116,7 +137,22 @@ class PostBuilder implements Builder<Post, PostBuilder> {
 
   @override
   _$Post build() {
-    final _$result = _$v ?? new _$Post._(id: id);
+    _$Post _$result;
+    try {
+      _$result = _$v ?? new _$Post._(fields: fields.build(), sys: sys.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'fields';
+        fields.build();
+        _$failedField = 'sys';
+        sys.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Post', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

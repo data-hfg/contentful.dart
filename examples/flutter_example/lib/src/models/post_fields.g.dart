@@ -18,23 +18,29 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
   Iterable<Object> serialize(Serializers serializers, PostFields object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
-      'slug',
-      serializers.serialize(object.slug, specifiedType: const FullType(String)),
+      'author',
+      serializers.serialize(object.author,
+          specifiedType: const FullType(SystemFields)),
+      'body',
+      serializers.serialize(object.body, specifiedType: const FullType(String)),
       'description',
       serializers.serialize(object.description,
           specifiedType: const FullType(String)),
-      'body',
-      serializers.serialize(object.body, specifiedType: const FullType(String)),
+      'heroImage',
+      serializers.serialize(object.heroImage,
+          specifiedType: const FullType(SystemFields)),
       'publishDate',
       serializers.serialize(object.publishDate,
           specifiedType: const FullType(String)),
+      'slug',
+      serializers.serialize(object.slug, specifiedType: const FullType(String)),
       'tags',
       serializers.serialize(object.tags,
           specifiedType:
               const FullType(BuiltList, const [const FullType(String)])),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -51,24 +57,28 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'author':
+          result.author.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
-        case 'slug':
-          result.slug = serializers.deserialize(value,
+        case 'body':
+          result.body = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'description':
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'body':
-          result.body = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'heroImage':
+          result.heroImage.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
         case 'publishDate':
           result.publishDate = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'slug':
+          result.slug = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'tags':
@@ -76,6 +86,10 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
                   specifiedType:
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<dynamic>);
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -86,46 +100,58 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
 
 class _$PostFields extends PostFields {
   @override
-  final String title;
-  @override
-  final String slug;
-  @override
-  final String description;
+  final SystemFields author;
   @override
   final String body;
   @override
+  final String description;
+  @override
+  final SystemFields heroImage;
+  @override
   final String publishDate;
   @override
+  final String slug;
+  @override
   final BuiltList<String> tags;
+  @override
+  final String title;
 
   factory _$PostFields([void Function(PostFieldsBuilder) updates]) =>
       (new PostFieldsBuilder()..update(updates)).build();
 
   _$PostFields._(
-      {this.title,
-      this.slug,
-      this.description,
+      {this.author,
       this.body,
+      this.description,
+      this.heroImage,
       this.publishDate,
-      this.tags})
+      this.slug,
+      this.tags,
+      this.title})
       : super._() {
-    if (title == null) {
-      throw new BuiltValueNullFieldError('PostFields', 'title');
-    }
-    if (slug == null) {
-      throw new BuiltValueNullFieldError('PostFields', 'slug');
-    }
-    if (description == null) {
-      throw new BuiltValueNullFieldError('PostFields', 'description');
+    if (author == null) {
+      throw new BuiltValueNullFieldError('PostFields', 'author');
     }
     if (body == null) {
       throw new BuiltValueNullFieldError('PostFields', 'body');
     }
+    if (description == null) {
+      throw new BuiltValueNullFieldError('PostFields', 'description');
+    }
+    if (heroImage == null) {
+      throw new BuiltValueNullFieldError('PostFields', 'heroImage');
+    }
     if (publishDate == null) {
       throw new BuiltValueNullFieldError('PostFields', 'publishDate');
     }
+    if (slug == null) {
+      throw new BuiltValueNullFieldError('PostFields', 'slug');
+    }
     if (tags == null) {
       throw new BuiltValueNullFieldError('PostFields', 'tags');
+    }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('PostFields', 'title');
     }
   }
 
@@ -140,12 +166,14 @@ class _$PostFields extends PostFields {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PostFields &&
-        title == other.title &&
-        slug == other.slug &&
-        description == other.description &&
+        author == other.author &&
         body == other.body &&
+        description == other.description &&
+        heroImage == other.heroImage &&
         publishDate == other.publishDate &&
-        tags == other.tags;
+        slug == other.slug &&
+        tags == other.tags &&
+        title == other.title;
   }
 
   @override
@@ -153,22 +181,28 @@ class _$PostFields extends PostFields {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, title.hashCode), slug.hashCode),
-                    description.hashCode),
-                body.hashCode),
-            publishDate.hashCode),
-        tags.hashCode));
+                $jc(
+                    $jc(
+                        $jc($jc($jc(0, author.hashCode), body.hashCode),
+                            description.hashCode),
+                        heroImage.hashCode),
+                    publishDate.hashCode),
+                slug.hashCode),
+            tags.hashCode),
+        title.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('PostFields')
-          ..add('title', title)
-          ..add('slug', slug)
-          ..add('description', description)
+          ..add('author', author)
           ..add('body', body)
+          ..add('description', description)
+          ..add('heroImage', heroImage)
           ..add('publishDate', publishDate)
-          ..add('tags', tags))
+          ..add('slug', slug)
+          ..add('tags', tags)
+          ..add('title', title))
         .toString();
   }
 }
@@ -176,40 +210,52 @@ class _$PostFields extends PostFields {
 class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
   _$PostFields _$v;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
-
-  String _slug;
-  String get slug => _$this._slug;
-  set slug(String slug) => _$this._slug = slug;
-
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  SystemFieldsBuilder _author;
+  SystemFieldsBuilder get author =>
+      _$this._author ??= new SystemFieldsBuilder();
+  set author(SystemFieldsBuilder author) => _$this._author = author;
 
   String _body;
   String get body => _$this._body;
   set body(String body) => _$this._body = body;
 
+  String _description;
+  String get description => _$this._description;
+  set description(String description) => _$this._description = description;
+
+  SystemFieldsBuilder _heroImage;
+  SystemFieldsBuilder get heroImage =>
+      _$this._heroImage ??= new SystemFieldsBuilder();
+  set heroImage(SystemFieldsBuilder heroImage) => _$this._heroImage = heroImage;
+
   String _publishDate;
   String get publishDate => _$this._publishDate;
   set publishDate(String publishDate) => _$this._publishDate = publishDate;
+
+  String _slug;
+  String get slug => _$this._slug;
+  set slug(String slug) => _$this._slug = slug;
 
   ListBuilder<String> _tags;
   ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
   set tags(ListBuilder<String> tags) => _$this._tags = tags;
 
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
+
   PostFieldsBuilder();
 
   PostFieldsBuilder get _$this {
     if (_$v != null) {
-      _title = _$v.title;
-      _slug = _$v.slug;
-      _description = _$v.description;
+      _author = _$v.author?.toBuilder();
       _body = _$v.body;
+      _description = _$v.description;
+      _heroImage = _$v.heroImage?.toBuilder();
       _publishDate = _$v.publishDate;
+      _slug = _$v.slug;
       _tags = _$v.tags?.toBuilder();
+      _title = _$v.title;
       _$v = null;
     }
     return this;
@@ -234,15 +280,23 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
     try {
       _$result = _$v ??
           new _$PostFields._(
-              title: title,
-              slug: slug,
-              description: description,
+              author: author.build(),
               body: body,
+              description: description,
+              heroImage: heroImage.build(),
               publishDate: publishDate,
-              tags: tags.build());
+              slug: slug,
+              tags: tags.build(),
+              title: title);
     } catch (_) {
       String _$failedField;
       try {
+        _$failedField = 'author';
+        author.build();
+
+        _$failedField = 'heroImage';
+        heroImage.build();
+
         _$failedField = 'tags';
         tags.build();
       } catch (e) {
