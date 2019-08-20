@@ -6,6 +6,7 @@ class ContentfulRepository {
 
   ContentfulRepository()
       : client = ContentfulClient(
+          client: ContentfulHttpClient(),
           accessToken: Secrets.accessToken,
           spaceId: Secrets.spaceId,
         );

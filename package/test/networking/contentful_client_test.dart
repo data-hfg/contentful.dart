@@ -1,6 +1,6 @@
 import 'package:contentful_dart/src/models/models.dart';
 import 'package:contentful_dart/src/networking/contentful_client.dart';
-import 'package:contentful_dart/src/networking/http_client.dart';
+import 'package:contentful_dart/src/networking/contentful_http_client.dart';
 import 'package:http/http.dart' as http;
 import 'package:matcher/matcher.dart';
 import 'package:mockito/mockito.dart';

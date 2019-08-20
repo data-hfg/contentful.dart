@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:contentful_dart/src/models/models.dart';
-import 'package:contentful_dart/src/networking/http_client.dart';
+import 'package:contentful_dart/src/networking/contentful_http_client.dart';
 import 'package:meta/meta.dart';
 
 /// Client object for performing requests against the Contentful Delivery
