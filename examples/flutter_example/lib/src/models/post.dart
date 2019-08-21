@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful_dart/contentful_dart.dart' show SystemFields;
+import 'package:contentful_dart/contentful_dart.dart';
 import 'package:flutter_example/src/models/post_fields.dart';
 import 'package:flutter_example/src/models/serializers.dart';
 
