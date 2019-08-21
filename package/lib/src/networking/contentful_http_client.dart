@@ -8,7 +8,7 @@ class ContentfulHttpClient extends http.BaseClient {
   final String accessToken;
 
   factory ContentfulHttpClient({
-    @required http.Client client,
+    http.Client client,
     @required String accessToken,
   }) {
     final client = http.Client();

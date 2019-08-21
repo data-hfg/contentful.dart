@@ -9,9 +9,10 @@ import 'package:meta/meta.dart';
 /// Client object for performing requests against the Contentful Delivery
 /// and Preview APIs.
 class ContentfulClient {
+  /// Base Url
   static const _baseUrl = 'cdn.contentful.com';
 
-  /// HttpClient
+  /// ContentfulHttpClient
   final ContentfulHttpClient client;
 
   /// The base domain that all URIs have for each request the client makes.
@@ -26,7 +27,6 @@ class ContentfulClient {
   factory ContentfulClient({
     @required ContentfulHttpClient client,
     @required String spaceId,
-    @required String accessToken,
   }) {
     return ContentfulClient._(
       client: client,
