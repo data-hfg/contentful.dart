@@ -19,11 +19,12 @@ abstract class AssetFile implements Built<AssetFile, AssetFileBuilder> {
   factory AssetFile([updates(AssetFileBuilder b)]) = _$AssetFile;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AssetFile.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(AssetFile.serializer, this));
   }
 
   static AssetFile fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         AssetFile.serializer, json.decode(jsonString));
   }
 

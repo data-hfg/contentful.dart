@@ -23,11 +23,12 @@ abstract class Location implements Built<Location, LocationBuilder> {
   factory Location([updates(LocationBuilder b)]) = _$Location;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Location.serializer, this));
+    return json
+        .encode(contentfulSerializers.serializeWith(Location.serializer, this));
   }
 
   static Location fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         Location.serializer, json.decode(jsonString));
   }
 

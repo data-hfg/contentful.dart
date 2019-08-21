@@ -19,12 +19,12 @@ abstract class AssetFileDetails
       _$AssetFileDetails;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(AssetFileDetails.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(AssetFileDetails.serializer, this));
   }
 
   static AssetFileDetails fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         AssetFileDetails.serializer, json.decode(jsonString));
   }
 

@@ -1,11 +1,11 @@
-library serializers;
+library contentful_serializers;
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:contentful_dart/src/models/models.dart';
 
-part 'serializers.g.dart';
+part 'contentful_serializers.g.dart';
 
 @SerializersFor([
   AllLocales,
@@ -25,11 +25,12 @@ part 'serializers.g.dart';
   Space,
   SystemFields,
 ])
-final Serializers serializers =
-    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+final Serializers contentfulSerializers = (_$contentfulSerializers.toBuilder()
+      ..addPlugin(StandardJsonPlugin()))
+    .build();
 
-T deserialize<T>(dynamic value) =>
-    serializers.deserializeWith<T>(serializers.serializerForType(T), value);
+T deserialize<T>(dynamic value) => contentfulSerializers.deserializeWith<T>(
+    contentfulSerializers.serializerForType(T), value);
 
 BuiltList<T> deserializeListOf<T>(dynamic items) => BuiltList.from(
     items.map((item) => deserialize<T>(item)).toList(growable: false));

@@ -25,11 +25,12 @@ abstract class AllLocales implements Built<AllLocales, AllLocalesBuilder> {
   factory AllLocales([updates(AllLocalesBuilder b)]) = _$AllLocales;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AllLocales.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(AllLocales.serializer, this));
   }
 
   static AllLocales fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         AllLocales.serializer, json.decode(jsonString));
   }
 

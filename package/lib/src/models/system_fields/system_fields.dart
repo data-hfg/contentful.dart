@@ -88,12 +88,12 @@ abstract class SystemFields
   int get version;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(SystemFields.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(SystemFields.serializer, this));
   }
 
   static SystemFields fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         SystemFields.serializer, json.decode(jsonString));
   }
 }

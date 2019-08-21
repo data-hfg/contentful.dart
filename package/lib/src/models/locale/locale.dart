@@ -5,7 +5,6 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:contentful_dart/src/models/models.dart';
-import 'package:contentful_dart/src/models/serializers/serializers.dart';
 
 part 'locale.g.dart';
 
@@ -27,11 +26,12 @@ abstract class Locale implements Built<Locale, LocaleBuilder> {
   factory Locale([updates(LocaleBuilder b)]) = _$Locale;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Locale.serializer, this));
+    return json
+        .encode(contentfulSerializers.serializeWith(Locale.serializer, this));
   }
 
   static Locale fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         Locale.serializer, json.decode(jsonString));
   }
 

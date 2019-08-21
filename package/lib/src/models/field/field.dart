@@ -41,11 +41,12 @@ abstract class Field implements Built<Field, FieldBuilder> {
   factory Field([updates(FieldBuilder b)]) = _$Field;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Field.serializer, this));
+    return json
+        .encode(contentfulSerializers.serializeWith(Field.serializer, this));
   }
 
   static Field fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         Field.serializer, json.decode(jsonString));
   }
 

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of serializers;
+part of contentful_serializers;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$contentfulSerializers = (new Serializers().toBuilder()
       ..add(AllLocales.serializer)
       ..add(Asset.serializer)
       ..add(AssetFields.serializer)

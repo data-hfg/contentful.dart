@@ -27,11 +27,12 @@ abstract class Space implements Built<Space, SpaceBuilder> {
   factory Space([updates(SpaceBuilder b)]) = _$Space;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Space.serializer, this));
+    return json
+        .encode(contentfulSerializers.serializeWith(Space.serializer, this));
   }
 
   static Space fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         Space.serializer, json.decode(jsonString));
   }
 

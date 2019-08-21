@@ -29,11 +29,12 @@ abstract class Link implements Built<Link, LinkBuilder> {
   factory Link([updates(LinkBuilder b)]) = _$Link;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Link.serializer, this));
+    return json
+        .encode(contentfulSerializers.serializeWith(Link.serializer, this));
   }
 
   static Link fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         Link.serializer, json.decode(jsonString));
   }
 

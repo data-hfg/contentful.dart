@@ -25,11 +25,12 @@ abstract class EntryList<T extends Entry>
   int get total;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(EntryList.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(EntryList.serializer, this));
   }
 
   static EntryList fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         EntryList.serializer, json.decode(jsonString));
   }
 }

@@ -34,11 +34,12 @@ abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
   factory ContentType([updates(ContentTypeBuilder b)]) = _$ContentType;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(ContentType.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(ContentType.serializer, this));
   }
 
   static ContentType fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         ContentType.serializer, json.decode(jsonString));
   }
 

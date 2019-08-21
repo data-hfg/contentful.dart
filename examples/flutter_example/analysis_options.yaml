@@ -1,0 +1,10 @@
+include: package:pedantic/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - src/*.g.dart
+  errors:
+    missing_required_param: error
+    always_put_required_named_parameters_first: error
+    no_duplicate_case_values: error
+    avoid_relative_lib_imports: error

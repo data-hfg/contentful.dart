@@ -17,11 +17,12 @@ abstract class AssetFields implements Built<AssetFields, AssetFieldsBuilder> {
   factory AssetFields([updates(AssetFieldsBuilder b)]) = _$AssetFields;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(AssetFields.serializer, this));
+    return json.encode(
+        contentfulSerializers.serializeWith(AssetFields.serializer, this));
   }
 
   static AssetFields fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return contentfulSerializers.deserializeWith(
         AssetFields.serializer, json.decode(jsonString));
   }
 
