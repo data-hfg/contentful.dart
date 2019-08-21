@@ -12,6 +12,15 @@ class _MainScreenState extends State<MainScreen> {
   final _repo = ContentfulRepository();
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('data'),
+      ),
+    );
+  }
+
+  @override
   void initState() {
     _getSpace();
     super.initState();
@@ -20,14 +29,5 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> _getSpace() async {
     final space = await _repo.getCurrentSpaceDetails();
     print(space);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('data'),
-      ),
-    );
   }
 }
