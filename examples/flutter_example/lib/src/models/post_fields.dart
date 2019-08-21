@@ -14,10 +14,15 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
   static Serializer<PostFields> get serializer => _$postFieldsSerializer;
   factory PostFields([updates(PostFieldsBuilder b)]) = _$PostFields;
   PostFields._();
+
   SystemFields get author;
+
   String get body;
+
   String get description;
+
   SystemFields get heroImage;
+
   String get publishDate;
 
   String get slug;
