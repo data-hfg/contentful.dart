@@ -131,4 +131,45 @@ void main() {
 
     expect(contentfulClient.client.accessToken, const TypeMatcher<Null>());
   });
+
+  test('Get ContentTypes return ContentTypeResponse', () async {
+    when(
+      mockClient.get(
+        startsWith('https://$_baseUrl/spaces/$_spaceid/content_types'),
+      ),
+    ).thenAnswer(
+      (_) async => http.Response(
+        loadFixture('content_type_response'),
+        200,
+        headers: {'content-type': 'application/json; charset=UTF-8'},
+      ),
+    );
+
+    final response = await contentfulClient.getContentTypes(
+      spaceid: _spaceid,
+    );
+
+    expect(response, const TypeMatcher<ContentTypeResponse>());
+  });
+
+  test('Get ContentTypes throw ContentfulError', () async {
+    when(
+      mockClient.get(
+        startsWith('https://$_baseUrl/spaces/$_spaceid/content_types'),
+      ),
+    ).thenAnswer(
+      (_) async => http.Response(
+        loadFixture('error'),
+        404,
+        headers: {'content-type': 'application/json; charset=UTF-8'},
+      ),
+    );
+
+    expect(
+      () => contentfulClient.getContentTypes(
+        spaceid: _spaceid,
+      ),
+      throwsA(const TypeMatcher<ContentfulError>()),
+    );
+  });
 }
