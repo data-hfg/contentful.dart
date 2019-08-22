@@ -83,6 +83,7 @@ class _$ContentType extends ContentType {
   @override
   final String description;
   String __type;
+  String __contentId;
 
   factory _$ContentType([void Function(ContentTypeBuilder) updates]) =>
       (new ContentTypeBuilder()..update(updates)).build();
@@ -102,6 +103,9 @@ class _$ContentType extends ContentType {
 
   @override
   String get type => __type ??= super.type;
+
+  @override
+  String get contentId => __contentId ??= super.contentId;
 
   @override
   ContentType rebuild(void Function(ContentTypeBuilder) updates) =>

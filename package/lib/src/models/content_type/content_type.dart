@@ -29,6 +29,10 @@ abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
   @memoized
   String get type => sys.type;
 
+  /// Resource type ("ContentTypeId").
+  @memoized
+  String get contentId => sys.id;
+
   ContentType._();
 
   factory ContentType([updates(ContentTypeBuilder b)]) = _$ContentType;
