@@ -9,8 +9,11 @@ import 'package:meta/meta.dart';
 /// Client object for performing requests against the Contentful Delivery
 /// and Preview APIs.
 class ContentfulClient {
-  /// Base Url
-  static const _baseUrl = 'cdn.contentful.com';
+  /// Base delivery host
+  static const _delivery = 'cdn.contentful.com';
+
+  /// Base preview host
+  static const _preview = 'preview.contentful.com';
 
   /// ContentfulHttpClient
   final ContentfulHttpClient client;
@@ -34,13 +37,11 @@ class ContentfulClient {
     );
   }
 
-  ContentfulClient._({
+  const ContentfulClient._({
     @required this.client,
     @required this.spaceId,
-    this.environmentId = 'master',
-    this.host = _baseUrl,
-  })  : assert(client != null),
-        assert(spaceId != null);
+  })  : this.host = _delivery,
+        this.environmentId = 'master';
 
   void close() {
     this.client.close();
@@ -86,7 +87,7 @@ class ContentfulClient {
   }
 
   Future<Space> getSpaceDetails({@required String spaceid}) async {
-    final response = await client.get('https://$_baseUrl/spaces/$spaceid');
+    final response = await client.get('https://$_delivery/spaces/$spaceid');
     if (response.statusCode != 200) {
       throw ContentfulError(
           message:
@@ -98,7 +99,7 @@ class ContentfulClient {
   Future<ContentTypeResponse> getContentTypes(
       {@required String spaceid}) async {
     final response =
-        await client.get('https://$_baseUrl/spaces/$spaceid/content_types');
+        await client.get('https://$_delivery/spaces/$spaceid/content_types');
     if (response.statusCode != 200) {
       throw ContentfulError(
           message:
