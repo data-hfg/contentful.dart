@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> _getSpace() async {
-    final space = await _repo.getCurrentSpaceDetails();
+    final space = await _repo.getContentTypes();
     print(space);
   }
 }

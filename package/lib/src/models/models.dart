@@ -4,6 +4,7 @@ export 'package:contentful_dart/src/models/asset/asset_file.dart';
 export 'package:contentful_dart/src/models/asset/asset_file_details.dart';
 export 'package:contentful_dart/src/models/asset/asset_file_details_image.dart';
 export 'package:contentful_dart/src/models/content_type/content_type.dart';
+export 'package:contentful_dart/src/models/content_type/content_type_response.dart';
 export 'package:contentful_dart/src/models/endpoint/endpoint.dart';
 export 'package:contentful_dart/src/models/entry/entry.dart';
 export 'package:contentful_dart/src/models/entry/entry_list.dart';

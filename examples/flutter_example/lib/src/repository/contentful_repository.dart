@@ -17,4 +17,12 @@ class ContentfulRepository {
       throw ContentfulError(message: error.message);
     }
   }
+
+  Future<ContentTypeResponse> getContentTypes() async {
+    try {
+      return await _contentfulClient.getContentTypes(spaceid: Secrets.spaceId);
+    } on ContentfulError catch (error) {
+      throw ContentfulError(message: error.message);
+    }
+  }
 }

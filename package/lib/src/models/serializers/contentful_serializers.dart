@@ -15,6 +15,7 @@ part 'contentful_serializers.g.dart';
   AssetFileDetails,
   AssetFileDetailsImage,
   ContentType,
+  ContentTypeResponse,
   Endpoint,
   EntryList,
   Field,

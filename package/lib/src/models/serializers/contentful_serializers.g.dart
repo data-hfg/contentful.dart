@@ -14,6 +14,7 @@ Serializers _$contentfulSerializers = (new Serializers().toBuilder()
       ..add(AssetFileDetails.serializer)
       ..add(AssetFileDetailsImage.serializer)
       ..add(ContentType.serializer)
+      ..add(ContentTypeResponse.serializer)
       ..add(Endpoint.serializer)
       ..add(EntryList.serializer)
       ..add(Field.serializer)
@@ -23,6 +24,9 @@ Serializers _$contentfulSerializers = (new Serializers().toBuilder()
       ..add(Location.serializer)
       ..add(Space.serializer)
       ..add(SystemFields.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(ContentType)]),
+          () => new ListBuilder<ContentType>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Field)]),
           () => new ListBuilder<Field>())

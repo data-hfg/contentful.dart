@@ -95,6 +95,18 @@ class ContentfulClient {
     return Space.fromJson(response.body);
   }
 
+  Future<ContentTypeResponse> getContentTypes(
+      {@required String spaceid}) async {
+    final response =
+        await client.get('https://$_baseUrl/spaces/$spaceid/content_types');
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+          message:
+              '''Cannot get Content Types for space id: $spaceid. Finished with error: ${response.body}''');
+    }
+    return ContentTypeResponse.fromJson(response.body);
+  }
+
   String _uri({
     @required String path,
     Map<String, dynamic> params,
