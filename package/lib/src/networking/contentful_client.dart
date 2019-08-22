@@ -59,13 +59,13 @@ class ContentfulClient {
       );
     }
 
-    final jsonr = json.decode(utf8.decode(response.bodyBytes));
-    if (jsonr['includes'] != null) {
-      final includes = Includes.fromJson(jsonr['includes']);
-      jsonr['items'] = includes.resolveLinks(jsonr['items']);
+    final jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+    if (jsonResponse['includes'] != null) {
+      final includes = Includes.fromJson(jsonResponse['includes']);
+      jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
     }
 
-    return EntryList.fromJson(jsonr);
+    return EntryList.fromJson(jsonResponse);
   }
 
   Future<T> getEntry<T extends Entry>({

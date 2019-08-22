@@ -22,6 +22,8 @@ abstract class EntryList<T extends Entry>
 
   int get skip;
 
+  SystemFields get sys;
+
   int get total;
 
   String toJson() {
