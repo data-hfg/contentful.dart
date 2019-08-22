@@ -1,0 +1,119 @@
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "ptvfv26c3ni8"
+      }
+    },
+    "id": "person",
+    "type": "ContentType",
+    "createdAt": "2019-08-19T08:53:12.503Z",
+    "updatedAt": "2019-08-19T08:53:12.503Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "revision": 1
+  },
+  "displayField": "name",
+  "name": "Person",
+  "description": null,
+  "fields": [
+    {
+      "id": "name",
+      "name": "Name",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "company",
+      "name": "Company",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "shortBio",
+      "name": "Short Bio",
+      "type": "Text",
+      "localized": false,
+      "required": true,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "phone",
+      "name": "Phone",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "twitter",
+      "name": "Twitter",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "github",
+      "name": "Github",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "image",
+      "name": "Image",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Asset"
+    }
+  ]
+}
