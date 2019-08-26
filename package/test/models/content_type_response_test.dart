@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import '../utils/load_fixture.dart';
 
 void main() {
-  group('ContentTypeResponse Tests', () {
+  group('ContentTypeResponse Tests:', () {
     test('returns instance of ContentTypeResponse from json', () {
       final contentTypeResponse =
           ContentTypeResponse.fromJson(loadFixture('content_type_response'));

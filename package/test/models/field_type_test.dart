@@ -3,7 +3,7 @@ import 'package:contentful_dart/contentful_dart.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('FieldType Tests', () {
+  group('FieldType Tests:', () {
     test('returns instance of FieldType for field Array', () {
       final fieldTypeArray = FieldType.array;
 

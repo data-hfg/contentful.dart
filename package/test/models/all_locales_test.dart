@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import '../utils/load_fixture.dart';
 
 void main() {
-  group('AllLocales Tests', () {
+  group('AllLocales Tests:', () {
     test('returns instance of AllLocales from json', () {
       final allLocales = AllLocales.fromJson(loadFixture('all_locales'));
 

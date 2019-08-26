@@ -79,6 +79,7 @@ class ContentfulClient {
       path: 'entries/$entryId',
       params: params,
     ));
+
     if (response.statusCode != 200) {
       throw ContentfulError(
         message:

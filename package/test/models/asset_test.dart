@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import '../utils/load_fixture.dart';
 
 void main() {
-  group('Asset Tests', () {
+  group('Asset Tests:', () {
     test('returns instance of Asset from json', () {
       final asset = Asset.fromJson(loadFixture('asset'));
 

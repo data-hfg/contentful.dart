@@ -3,7 +3,7 @@ import 'package:contentful_dart/contentful_dart.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Endpoint Tests', () {
+  group('Endpoint Tests:', () {
     test('returns instance of Endpoint for field spaces', () {
       final endpointSpace = Endpoint.spaces;
 

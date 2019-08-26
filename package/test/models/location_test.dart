@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import '../utils/load_fixture.dart';
 
 void main() {
-  group('Location Tests', () {
+  group('Location Tests:', () {
     test('returns instance of Location from json', () {
       final location = Location.fromJson(loadFixture('location'));
 

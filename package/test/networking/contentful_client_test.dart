@@ -18,7 +18,7 @@ void main() {
   final _spaceid = 'mock_space_id';
   // final _accessToken = 'mock_access_token';
 
-  group('ContentfulClient', () {
+  group('ContentfulClient Tests:', () {
     setUp(() {
       mockClient = MockClient();
       contentfulClient = ContentfulClient(
@@ -104,7 +104,7 @@ void main() {
       when(
         mockClient.get(
           startsWith(
-            'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9',
+            'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=erorr',
           ),
         ),
       ).thenAnswer(
