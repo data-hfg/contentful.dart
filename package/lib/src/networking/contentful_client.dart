@@ -64,8 +64,6 @@ class ContentfulClient {
 
     if (jsonResponse['includes'] != null) {
       final includes = Includes.fromJson(jsonResponse['includes']);
-
-      print(includes);
       jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
     }
 

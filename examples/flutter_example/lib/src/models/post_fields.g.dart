@@ -36,8 +36,7 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
       serializers.serialize(object.slug, specifiedType: const FullType(String)),
       'tags',
       serializers.serialize(object.tags,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(String)])),
+          specifiedType: const FullType(List, const [const FullType(String)])),
       'title',
       serializers.serialize(object.title,
           specifiedType: const FullType(String)),
@@ -82,10 +81,10 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
               specifiedType: const FullType(String)) as String;
           break;
         case 'tags':
-          result.tags.replace(serializers.deserialize(value,
+          result.tags = serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(String)]))
-              as BuiltList<dynamic>);
+                      const FullType(List, const [const FullType(String)]))
+              as List<String>;
           break;
         case 'title':
           result.title = serializers.deserialize(value,
@@ -112,7 +111,7 @@ class _$PostFields extends PostFields {
   @override
   final String slug;
   @override
-  final BuiltList<String> tags;
+  final List<String> tags;
   @override
   final String title;
 
@@ -236,9 +235,9 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
   String get slug => _$this._slug;
   set slug(String slug) => _$this._slug = slug;
 
-  ListBuilder<String> _tags;
-  ListBuilder<String> get tags => _$this._tags ??= new ListBuilder<String>();
-  set tags(ListBuilder<String> tags) => _$this._tags = tags;
+  List<String> _tags;
+  List<String> get tags => _$this._tags;
+  set tags(List<String> tags) => _$this._tags = tags;
 
   String _title;
   String get title => _$this._title;
@@ -254,7 +253,7 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
       _heroImage = _$v.heroImage?.toBuilder();
       _publishDate = _$v.publishDate;
       _slug = _$v.slug;
-      _tags = _$v.tags?.toBuilder();
+      _tags = _$v.tags;
       _title = _$v.title;
       _$v = null;
     }
@@ -286,7 +285,7 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
               heroImage: heroImage.build(),
               publishDate: publishDate,
               slug: slug,
-              tags: tags.build(),
+              tags: tags,
               title: title);
     } catch (_) {
       String _$failedField;
@@ -296,9 +295,6 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
 
         _$failedField = 'heroImage';
         heroImage.build();
-
-        _$failedField = 'tags';
-        tags.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'PostFields', _$failedField, e.toString());

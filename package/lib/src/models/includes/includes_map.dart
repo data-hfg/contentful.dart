@@ -1,5 +1,5 @@
 class IncludesMap {
-  final Map<String, Map<String, Map<String, dynamic>>> _map;
+  final Map<dynamic, dynamic> _map;
 
   IncludesMap(this._map);
 
@@ -8,6 +8,7 @@ class IncludesMap {
 
     json.forEach((type, json) {
       if (map[type] == null) map[type] = {};
+
       final list = json as List<dynamic>;
       for (final json in list) {
         final entry = json as Map<String, dynamic>;

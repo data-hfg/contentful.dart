@@ -27,7 +27,7 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
 
   String get slug;
 
-  BuiltList<String> get tags;
+  List<String> get tags;
 
   String get title;
 

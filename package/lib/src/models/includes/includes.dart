@@ -4,9 +4,9 @@ class Includes {
   final IncludesMap map;
 
   Includes(this.map);
+
   factory Includes.fromJson(Map<String, dynamic> json) {
     final map = IncludesMap.fromJson(json);
-
     return Includes(map);
   }
 
@@ -25,12 +25,14 @@ class Includes {
     } else if (entry['fields'] == null) return entry;
 
     final fields = entry['fields'] as Map<String, dynamic>;
+
     entry['fields'] = fields.map((key, fieldJson) {
       if (fieldJson is List) {
-        return MapEntry<String, dynamic>(
-          key,
-          resolveLinks(fieldJson),
-        );
+        print('fieldJson is List: $fieldJson');
+        // return MapEntry<String, dynamic>(
+        //   key,
+        //   resolveLinks(fieldJson),
+        // );
       } else if (fieldJson is Map && _isLink(fieldJson)) {
         return MapEntry<String, dynamic>(
           key,
