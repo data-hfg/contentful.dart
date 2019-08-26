@@ -51,7 +51,8 @@ class ContentfulClient {
     @required Map<String, dynamic> params,
     @required T Function(String jsonString) fromJson,
   }) async {
-    final response = await client.get(_uri(path: '/entries', params: params));
+    final response = await client.get(_uri(path: 'entries', params: params));
+
     if (response.statusCode != 200) {
       throw ContentfulError(
         message:
@@ -60,8 +61,11 @@ class ContentfulClient {
     }
 
     final jsonResponse = json.decode(utf8.decode(response.bodyBytes));
+
     if (jsonResponse['includes'] != null) {
       final includes = Includes.fromJson(jsonResponse['includes']);
+
+      print(includes);
       jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
     }
 
@@ -115,9 +119,10 @@ class ContentfulClient {
     final url = Uri(
       scheme: 'https',
       host: host,
-      path: '/spaces/$spaceId/$environmentId/$path',
+      path: '/spaces/$spaceId/$path',
       queryParameters: params,
     );
+    print(url);
     return url.toString();
   }
 }

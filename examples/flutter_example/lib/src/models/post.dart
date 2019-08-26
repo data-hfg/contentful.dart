@@ -10,7 +10,7 @@ import 'package:flutter_example/src/models/serializers.dart';
 
 part 'post.g.dart';
 
-abstract class Post implements Built<Post, PostBuilder> {
+abstract class Post with Entry<PostFields> implements Built<Post, PostBuilder> {
   static Serializer<Post> get serializer => _$postSerializer;
   factory Post([updates(PostBuilder b)]) = _$Post;
 

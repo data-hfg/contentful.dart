@@ -1,4 +1,5 @@
 import 'package:contentful_dart/contentful_dart.dart';
+import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/utils/keys.dart';
 
 class ContentfulRepository {
@@ -21,6 +22,24 @@ class ContentfulRepository {
   Future<ContentTypeResponse> getContentTypes() async {
     try {
       return await _contentfulClient.getContentTypes(spaceid: Secrets.spaceId);
+    } on ContentfulError catch (error) {
+      throw ContentfulError(message: error.message);
+    }
+  }
+
+  Future<Post> getPosts() async {
+    try {
+      final entries = await _contentfulClient.getEntries<Post>(
+        params: {
+          'content_type': 'blogPost',
+          'skip': '0',
+          'limit': '100',
+          'order': 'sys.createdAt',
+        },
+        fromJson: Post.fromJson,
+      );
+
+      return entries.items.first;
     } on ContentfulError catch (error) {
       throw ContentfulError(message: error.message);
     }

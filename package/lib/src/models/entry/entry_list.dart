@@ -16,6 +16,7 @@ abstract class EntryList<T extends Entry>
   factory EntryList([updates(EntryListBuilder<T> b)]) = _$EntryList<T>;
 
   EntryList._();
+
   BuiltList<T> get items;
 
   int get limit;

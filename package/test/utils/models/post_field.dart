@@ -5,26 +5,34 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:contentful_dart/src/models/models.dart';
 
 import './serializers.dart';
-import 'post.dart';
 
 part 'post_field.g.dart';
 
 abstract class PostField implements Built<PostField, PostFieldBuilder> {
-  /// Post title
-  String get title;
+  static Serializer<PostField> get serializer => _$postFieldSerializer;
 
-  /// Post slug
-  String get id;
-
-  /// Related posts
-  @nullable
-  BuiltList<Post> get relatedPosts;
+  factory PostField([updates(PostFieldBuilder b)]) = _$PostField;
 
   PostField._();
 
-  factory PostField([updates(PostFieldBuilder b)]) = _$PostField;
+  SystemFields get author;
+
+  String get body;
+
+  String get description;
+
+  SystemFields get heroImage;
+
+  String get publishDate;
+
+  String get slug;
+
+  BuiltList<String> get tags;
+
+  String get title;
 
   String toJson() {
     return json.encode(serializers.serializeWith(PostField.serializer, this));
@@ -34,6 +42,4 @@ abstract class PostField implements Built<PostField, PostFieldBuilder> {
     return serializers.deserializeWith(
         PostField.serializer, json.decode(jsonString));
   }
-
-  static Serializer<PostField> get serializer => _$postFieldSerializer;
 }

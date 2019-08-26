@@ -15,12 +15,14 @@ part 'post.g.dart';
 abstract class Post extends Object
     with Entry<PostField>
     implements Built<Post, PostBuilder> {
-  SystemFields get sys;
-  PostField get fields;
+  static Serializer<Post> get serializer => _$postSerializer;
+  factory Post([updates(PostBuilder b)]) = _$Post;
 
   Post._();
 
-  factory Post([updates(PostBuilder b)]) = _$Post;
+  PostField get fields;
+
+  SystemFields get sys;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Post.serializer, this));
@@ -30,6 +32,4 @@ abstract class Post extends Object
     return serializers.deserializeWith(
         Post.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Post> get serializer => _$postSerializer;
 }
