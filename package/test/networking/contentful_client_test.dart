@@ -77,7 +77,7 @@ void main() {
       when(
         mockClient.get(
           startsWith(
-              'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9'),
+              'https://$_baseUrl/spaces/mock_space_id/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -104,7 +104,7 @@ void main() {
       when(
         mockClient.get(
           startsWith(
-            'https://cdn.contentful.com/spaces/mock_space_id/master/entries/mock_entry_id?contentType=post&fields.id=erorr',
+            'https://$_baseUrl/spaces/mock_space_id/entries/mock_entry_id?contentType=post&fields.id=5ETMRzkl9KM4omyMwKAOki9',
           ),
         ),
       ).thenAnswer(

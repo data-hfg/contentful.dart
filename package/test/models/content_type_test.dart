@@ -19,13 +19,13 @@ void main() {
       expect(contentTypeString, const TypeMatcher<String>());
     });
 
-    test('returns type is  equals  to ContentType', () {
+    test('returns type is equals to ContentType', () {
       final contentType = ContentType.fromJson(loadFixture('content_type'));
 
       expect(contentType.type, equals('ContentType'));
     });
 
-    test('returns type is is  equals  to ContentType', () {
+    test('returns type is equals to ContentType', () {
       final contentType = ContentType.fromJson(loadFixture('content_type'));
 
       expect(contentType.contentId, equals('person'));
