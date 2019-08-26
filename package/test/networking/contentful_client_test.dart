@@ -68,7 +68,7 @@ void main() {
       );
     });
 
-    test('getEntry return Entry model', () async {
+    test('getEntry returns Entry model', () async {
       final params = {
         'contentType': 'post',
         'fields.id': '5ETMRzkl9KM4omyMwKAOki9'
@@ -96,7 +96,7 @@ void main() {
       expect(response, const TypeMatcher<Post>());
     });
 
-    test('getEntry  throw ContentfulError', () async {
+    test('getEntry throws ContentfulError', () async {
       final params = {
         'contentType': 'post',
         'fields.id': '5ETMRzkl9KM4omyMwKAOki9'

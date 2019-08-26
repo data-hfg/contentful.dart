@@ -1,21 +1,55 @@
-{
-  "sys": {
-    "space": {
-      "sys": {
-        "type": "Link",
-        "linkType": "Space",
-        "id": "cfexampleapi"
-      }
+  {
+    "sys": {
+      "space": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Space",
+          "id": "ptvfv26c3ni8"
+        }
+      },
+      "id": "31TNnjHlfaGUoMOwU0M2og",
+      "type": "Entry",
+      "createdAt": "2019-08-19T08:53:14.659Z",
+      "updatedAt": "2019-08-19T08:53:14.659Z",
+      "environment": {
+        "sys": {
+          "id": "master",
+          "type": "Link",
+          "linkType": "Environment"
+        }
+      },
+      "revision": 1,
+      "contentType": {
+        "sys": {
+          "type": "Link",
+          "linkType": "ContentType",
+          "id": "blogPost"
+        }
+      },
+      "locale": "en-US"
     },
-    "id": "ge1xHyH3QOWucKWCCAgIG",
-    "type": "Entry",
-    "createdAt": "2014-02-21T13:43:23.210Z",
-    "updatedAt": "2014-02-21T13:43:23.210Z",
-    "revision": 1,
-    "locale": "en-US"
-  },
-  "fields": {
-    "title": "Summer in Paris 2019",
-    "id": "5ETMRzkl9KM4omyMwKAOki9"
+    "fields": {
+      "title": "Automate with webhooks",
+      "slug": "automate-with-webhooks",
+      "heroImage": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "4shwYI3POEGkw0Eg6kcyaQ"
+        }
+      },
+      "description": "Webhooks notify you, another person or system when resources have changed by calling a given HTTP endpoint.",
+      "body": "## What are webhooks?\n\nThe webhooks are used to notify you when content has been changed. Specify a URL, configure your webhook, and we will send an HTTP POST request whenever something happens to your content.\n\n## How do I configure a webhook?\n\nGo to Settings → Webhooks from the navigation bar at the top. From there, hit Add webhook, and you will be directed to your new webhook. Then choose a name, put in the information of your HTTP endpoint (URL and authentication), specify any custom headers and select the types of events that should trigger the webhook.\n\n## Why do I get an old version in the CDA?\n\nAs the delivery API is powered by a CDN network consisting of hundreds of servers distributed across continents, it takes some time (up to a few minutes) to reflect the changes to the published content. This must be taken into consideration when reacting to webhooks. In normal conditions, there could be a reasonable delay of 2 to 5 minutes.\n\nExtracted from the [Webhooks FAQ](https://www.contentful.com/faq/webhooks/ \"Webhooks FAQ\").",
+      "author": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "15jwOBqpxqSAOy2eOO4S0m"
+        }
+      },
+      "publishDate": "2017-05-12T00:00+02:00",
+      "tags": [
+        "javascript"
+      ]
+    }
   }
-}
