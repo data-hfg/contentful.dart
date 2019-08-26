@@ -39,4 +39,8 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
     return serializers.deserializeWith(
         PostFields.serializer, json.decode(jsonString));
   }
+
+  static PostFields parsePostFields(String responseBody) {
+    return PostFields.fromJson(responseBody);
+  }
 }

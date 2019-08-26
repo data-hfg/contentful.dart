@@ -12,6 +12,10 @@ class Includes {
 
   List<Map<String, dynamic>> resolveLinks(List<dynamic> items) {
     return items.map((item) => _walkMap(item)).toList();
+    // final value = items.map((item) {
+    //   return _walkMap(item);
+    // });
+    // return value.toList();
   }
 
   bool _isLink(Map<String, dynamic> entry) {
@@ -22,13 +26,14 @@ class Includes {
     if (_isLink(entry)) {
       final resolved = map.resolveLink(entry);
       return _isLink(resolved) ? entry : _walkMap(resolved);
-    } else if (entry['fields'] == null) return entry;
+    } else if (entry['fields'] == null) {
+      return entry;
+    }
 
     final fields = entry['fields'] as Map<String, dynamic>;
 
     entry['fields'] = fields.map((key, fieldJson) {
       if (fieldJson is List) {
-        print('fieldJson is List: $fieldJson');
         // return MapEntry<String, dynamic>(
         //   key,
         //   resolveLinks(fieldJson),
@@ -41,6 +46,7 @@ class Includes {
       }
       return MapEntry<String, dynamic>(key, fieldJson);
     });
+
     return entry;
   }
 }

@@ -28,4 +28,8 @@ abstract class Post with Entry<PostFields> implements Built<Post, PostBuilder> {
     return serializers.deserializeWith(
         Post.serializer, json.decode(jsonString));
   }
+
+  static Post parsePost(String responseBody) {
+    return Post.fromJson(responseBody);
+  }
 }

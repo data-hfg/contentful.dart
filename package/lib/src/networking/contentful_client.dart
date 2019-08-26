@@ -67,7 +67,7 @@ class ContentfulClient {
       jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
     }
 
-    return EntryList.fromJson(jsonResponse);
+    return EntryList.fromJson(response.body);
   }
 
   Future<T> getEntry<T extends Entry>({
