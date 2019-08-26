@@ -12,8 +12,20 @@ part 'content_type.g.dart';
 /// A `ContentType` represents your content model
 /// for entries in a Contentful space.
 abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
-  /// System fields.
-  SystemFields get sys;
+  static Serializer<ContentType> get serializer => _$contentTypeSerializer;
+
+  factory ContentType([void Function(ContentTypeBuilder) updates]) =
+      _$ContentType;
+
+  ContentType._();
+
+  /// Resource type ("ContentTypeId").
+  @memoized
+  String get contentId => sys.id;
+
+  /// The description of this content type.
+  @nullable
+  String get description;
 
   /// The fields which are part of this content type.
   BuiltList<Field> get fields;
@@ -21,21 +33,12 @@ abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
   /// The name of this content type.
   String get name;
 
-  /// The description of this content type.
-  @nullable
-  String get description;
+  /// System fields.
+  SystemFields get sys;
 
   /// Resource type ("ContentType").
   @memoized
   String get type => sys.type;
-
-  /// Resource type ("ContentTypeId").
-  @memoized
-  String get contentId => sys.id;
-
-  ContentType._();
-
-  factory ContentType([updates(ContentTypeBuilder b)]) = _$ContentType;
 
   String toJson() {
     return json.encode(
@@ -46,6 +49,4 @@ abstract class ContentType implements Built<ContentType, ContentTypeBuilder> {
     return contentfulSerializers.deserializeWith(
         ContentType.serializer, json.decode(jsonString));
   }
-
-  static Serializer<ContentType> get serializer => _$contentTypeSerializer;
 }

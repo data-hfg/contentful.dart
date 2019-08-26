@@ -10,25 +10,21 @@ part 'field.g.dart';
 
 /// A Field describes a single value inside an Entry.
 abstract class Field implements Built<Field, FieldBuilder> {
-  /// The unique identifier of this Field
-  String get id;
+  static Serializer<Field> get serializer => _$fieldSerializer;
 
-  /// The name of this Field
-  String get name;
+  factory Field([void Function(FieldBuilder) updates]) = _$Field;
+
+  Field._();
 
   /// Whether this field is disabled (invisible by default in the UI)
   bool get disabled;
 
-  /// Whether this field is localized (
-  /// can have different values depending on locale)
-  bool get localized;
+  /// The unique identifier of this Field
+  String get id;
 
   /// Whether this field is required (needs to have a value)
   @BuiltValueField(wireName: 'required')
   bool get isRequired;
-
-  /// The type of this Field
-  FieldType get type;
 
   /// The item type of this Field (a subtype if `type` is `Array` or `Link`)
   /// For `Array`s, itemType is inferred via items.type.
@@ -36,9 +32,15 @@ abstract class Field implements Built<Field, FieldBuilder> {
   @nullable
   FieldType get itemType;
 
-  Field._();
+  /// Whether this field is localized (
+  /// can have different values depending on locale)
+  bool get localized;
 
-  factory Field([updates(FieldBuilder b)]) = _$Field;
+  /// The name of this Field
+  String get name;
+
+  /// The type of this Field
+  FieldType get type;
 
   String toJson() {
     return json
@@ -49,6 +51,4 @@ abstract class Field implements Built<Field, FieldBuilder> {
     return contentfulSerializers.deserializeWith(
         Field.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Field> get serializer => _$fieldSerializer;
 }

@@ -9,12 +9,15 @@ import 'package:contentful_dart/src/models/models.dart';
 part 'asset.g.dart';
 
 abstract class Asset implements Built<Asset, AssetBuilder> {
-  SystemFields get sys;
-  AssetFields get fields;
+  static Serializer<Asset> get serializer => _$assetSerializer;
+
+  factory Asset([void Function(AssetBuilder) updates]) = _$Asset;
 
   Asset._();
 
-  factory Asset([updates(AssetBuilder b)]) = _$Asset;
+  AssetFields get fields;
+
+  SystemFields get sys;
 
   String toJson() {
     return json
@@ -25,6 +28,4 @@ abstract class Asset implements Built<Asset, AssetBuilder> {
     return contentfulSerializers.deserializeWith(
         Asset.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Asset> get serializer => _$assetSerializer;
 }

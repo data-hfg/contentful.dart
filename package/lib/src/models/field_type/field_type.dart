@@ -66,7 +66,7 @@ class FieldType extends EnumClass {
 
   static Serializer<FieldType> get serializer => _$fieldTypeSerializer;
 
-  const FieldType._(String name) : super(name);
   static BuiltSet<FieldType> get values => _$FieldTypeValues;
+  const FieldType._(String name) : super(name);
   static FieldType valueOf(String name) => _$FieldTypeValueOf(name);
 }

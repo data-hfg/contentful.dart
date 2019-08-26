@@ -10,13 +10,18 @@ part 'asset_file_details_image.g.dart';
 
 abstract class AssetFileDetailsImage
     implements Built<AssetFileDetailsImage, AssetFileDetailsImageBuilder> {
-  int get height;
-  int get width;
+  static Serializer<AssetFileDetailsImage> get serializer =>
+      _$assetFileDetailsImageSerializer;
+
+  factory AssetFileDetailsImage(
+          [void Function(AssetFileDetailsImageBuilder) updates]) =
+      _$AssetFileDetailsImage;
 
   AssetFileDetailsImage._();
 
-  factory AssetFileDetailsImage([updates(AssetFileDetailsImageBuilder b)]) =
-      _$AssetFileDetailsImage;
+  int get height;
+
+  int get width;
 
   String toJson() {
     return json.encode(contentfulSerializers.serializeWith(
@@ -27,7 +32,4 @@ abstract class AssetFileDetailsImage
     return contentfulSerializers.deserializeWith(
         AssetFileDetailsImage.serializer, json.decode(jsonString));
   }
-
-  static Serializer<AssetFileDetailsImage> get serializer =>
-      _$assetFileDetailsImageSerializer;
 }

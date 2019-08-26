@@ -20,11 +20,11 @@ class _$AssetFileDetailsSerializer
   Iterable<Object> serialize(Serializers serializers, AssetFileDetails object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'size',
-      serializers.serialize(object.size, specifiedType: const FullType(int)),
       'image',
       serializers.serialize(object.image,
           specifiedType: const FullType(AssetFileDetailsImage)),
+      'size',
+      serializers.serialize(object.size, specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -42,14 +42,14 @@ class _$AssetFileDetailsSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'size':
-          result.size = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
         case 'image':
           result.image.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AssetFileDetailsImage))
               as AssetFileDetailsImage);
+          break;
+        case 'size':
+          result.size = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
           break;
       }
     }
@@ -60,20 +60,20 @@ class _$AssetFileDetailsSerializer
 
 class _$AssetFileDetails extends AssetFileDetails {
   @override
-  final int size;
-  @override
   final AssetFileDetailsImage image;
+  @override
+  final int size;
 
   factory _$AssetFileDetails(
           [void Function(AssetFileDetailsBuilder) updates]) =>
       (new AssetFileDetailsBuilder()..update(updates)).build();
 
-  _$AssetFileDetails._({this.size, this.image}) : super._() {
-    if (size == null) {
-      throw new BuiltValueNullFieldError('AssetFileDetails', 'size');
-    }
+  _$AssetFileDetails._({this.image, this.size}) : super._() {
     if (image == null) {
       throw new BuiltValueNullFieldError('AssetFileDetails', 'image');
+    }
+    if (size == null) {
+      throw new BuiltValueNullFieldError('AssetFileDetails', 'size');
     }
   }
 
@@ -89,20 +89,20 @@ class _$AssetFileDetails extends AssetFileDetails {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AssetFileDetails &&
-        size == other.size &&
-        image == other.image;
+        image == other.image &&
+        size == other.size;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, size.hashCode), image.hashCode));
+    return $jf($jc($jc(0, image.hashCode), size.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AssetFileDetails')
-          ..add('size', size)
-          ..add('image', image))
+          ..add('image', image)
+          ..add('size', size))
         .toString();
   }
 }
@@ -111,21 +111,21 @@ class AssetFileDetailsBuilder
     implements Builder<AssetFileDetails, AssetFileDetailsBuilder> {
   _$AssetFileDetails _$v;
 
-  int _size;
-  int get size => _$this._size;
-  set size(int size) => _$this._size = size;
-
   AssetFileDetailsImageBuilder _image;
   AssetFileDetailsImageBuilder get image =>
       _$this._image ??= new AssetFileDetailsImageBuilder();
   set image(AssetFileDetailsImageBuilder image) => _$this._image = image;
 
+  int _size;
+  int get size => _$this._size;
+  set size(int size) => _$this._size = size;
+
   AssetFileDetailsBuilder();
 
   AssetFileDetailsBuilder get _$this {
     if (_$v != null) {
-      _size = _$v.size;
       _image = _$v.image?.toBuilder();
+      _size = _$v.size;
       _$v = null;
     }
     return this;
@@ -149,7 +149,7 @@ class AssetFileDetailsBuilder
     _$AssetFileDetails _$result;
     try {
       _$result =
-          _$v ?? new _$AssetFileDetails._(size: size, image: image.build());
+          _$v ?? new _$AssetFileDetails._(image: image.build(), size: size);
     } catch (_) {
       String _$failedField;
       try {

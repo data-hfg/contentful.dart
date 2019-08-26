@@ -20,11 +20,11 @@ class _$LocaleSerializer implements StructuredSerializer<Locale> {
     final result = <Object>[
       'code',
       serializers.serialize(object.code, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'default',
       serializers.serialize(object.isDefault,
           specifiedType: const FullType(bool)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
     ];
     if (object.fallbackCode != null) {
       result
@@ -56,16 +56,16 @@ class _$LocaleSerializer implements StructuredSerializer<Locale> {
           result.code = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'name':
-          result.name = serializers.deserialize(value,
+        case 'fallbackCode':
+          result.fallbackCode = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'default':
           result.isDefault = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'fallbackCode':
-          result.fallbackCode = serializers.deserialize(value,
+        case 'name':
+          result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'sys':
@@ -83,11 +83,11 @@ class _$Locale extends Locale {
   @override
   final String code;
   @override
-  final String name;
+  final String fallbackCode;
   @override
   final bool isDefault;
   @override
-  final String fallbackCode;
+  final String name;
   @override
   final SystemFields sys;
 
@@ -95,16 +95,16 @@ class _$Locale extends Locale {
       (new LocaleBuilder()..update(updates)).build();
 
   _$Locale._(
-      {this.code, this.name, this.isDefault, this.fallbackCode, this.sys})
+      {this.code, this.fallbackCode, this.isDefault, this.name, this.sys})
       : super._() {
     if (code == null) {
       throw new BuiltValueNullFieldError('Locale', 'code');
     }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('Locale', 'name');
-    }
     if (isDefault == null) {
       throw new BuiltValueNullFieldError('Locale', 'isDefault');
+    }
+    if (name == null) {
+      throw new BuiltValueNullFieldError('Locale', 'name');
     }
   }
 
@@ -120,17 +120,19 @@ class _$Locale extends Locale {
     if (identical(other, this)) return true;
     return other is Locale &&
         code == other.code &&
-        name == other.name &&
-        isDefault == other.isDefault &&
         fallbackCode == other.fallbackCode &&
+        isDefault == other.isDefault &&
+        name == other.name &&
         sys == other.sys;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, code.hashCode), name.hashCode), isDefault.hashCode),
-            fallbackCode.hashCode),
+        $jc(
+            $jc($jc($jc(0, code.hashCode), fallbackCode.hashCode),
+                isDefault.hashCode),
+            name.hashCode),
         sys.hashCode));
   }
 
@@ -138,9 +140,9 @@ class _$Locale extends Locale {
   String toString() {
     return (newBuiltValueToStringHelper('Locale')
           ..add('code', code)
-          ..add('name', name)
-          ..add('isDefault', isDefault)
           ..add('fallbackCode', fallbackCode)
+          ..add('isDefault', isDefault)
+          ..add('name', name)
           ..add('sys', sys))
         .toString();
   }
@@ -153,17 +155,17 @@ class LocaleBuilder implements Builder<Locale, LocaleBuilder> {
   String get code => _$this._code;
   set code(String code) => _$this._code = code;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String _fallbackCode;
+  String get fallbackCode => _$this._fallbackCode;
+  set fallbackCode(String fallbackCode) => _$this._fallbackCode = fallbackCode;
 
   bool _isDefault;
   bool get isDefault => _$this._isDefault;
   set isDefault(bool isDefault) => _$this._isDefault = isDefault;
 
-  String _fallbackCode;
-  String get fallbackCode => _$this._fallbackCode;
-  set fallbackCode(String fallbackCode) => _$this._fallbackCode = fallbackCode;
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
 
   SystemFieldsBuilder _sys;
   SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
@@ -174,9 +176,9 @@ class LocaleBuilder implements Builder<Locale, LocaleBuilder> {
   LocaleBuilder get _$this {
     if (_$v != null) {
       _code = _$v.code;
-      _name = _$v.name;
-      _isDefault = _$v.isDefault;
       _fallbackCode = _$v.fallbackCode;
+      _isDefault = _$v.isDefault;
+      _name = _$v.name;
       _sys = _$v.sys?.toBuilder();
       _$v = null;
     }
@@ -203,9 +205,9 @@ class LocaleBuilder implements Builder<Locale, LocaleBuilder> {
       _$result = _$v ??
           new _$Locale._(
               code: code,
-              name: name,
-              isDefault: isDefault,
               fallbackCode: fallbackCode,
+              isDefault: isDefault,
+              name: name,
               sys: _sys?.build());
     } catch (_) {
       String _$failedField;

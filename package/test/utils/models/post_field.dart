@@ -14,7 +14,7 @@ part 'post_field.g.dart';
 abstract class PostField implements Built<PostField, PostFieldBuilder> {
   static Serializer<PostField> get serializer => _$postFieldSerializer;
 
-  factory PostField([updates(PostFieldBuilder b)]) = _$PostField;
+  factory PostField([void Function(PostFieldBuilder) updates]) = _$PostField;
 
   PostField._();
 

@@ -18,19 +18,19 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
   Iterable<Object> serialize(Serializers serializers, AllLocales object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
+      'items',
+      serializers.serialize(object.items,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Locale)])),
+      'limit',
+      serializers.serialize(object.limit, specifiedType: const FullType(int)),
+      'skip',
+      serializers.serialize(object.skip, specifiedType: const FullType(int)),
       'sys',
       serializers.serialize(object.sys,
           specifiedType: const FullType(SystemFields)),
       'total',
       serializers.serialize(object.total, specifiedType: const FullType(int)),
-      'skip',
-      serializers.serialize(object.skip, specifiedType: const FullType(int)),
-      'limit',
-      serializers.serialize(object.limit, specifiedType: const FullType(int)),
-      'items',
-      serializers.serialize(object.items,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(Locale)])),
     ];
 
     return result;
@@ -47,6 +47,20 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'items':
+          result.items.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Locale)]))
+              as BuiltList<dynamic>);
+          break;
+        case 'limit':
+          result.limit = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'skip':
+          result.skip = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'sys':
           result.sys.replace(serializers.deserialize(value,
               specifiedType: const FullType(SystemFields)) as SystemFields);
@@ -54,20 +68,6 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
         case 'total':
           result.total = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
-          break;
-        case 'skip':
-          result.skip = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'limit':
-          result.limit = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
-          break;
-        case 'items':
-          result.items.replace(serializers.deserialize(value,
-                  specifiedType:
-                      const FullType(BuiltList, const [const FullType(Locale)]))
-              as BuiltList<dynamic>);
           break;
       }
     }
@@ -78,35 +78,35 @@ class _$AllLocalesSerializer implements StructuredSerializer<AllLocales> {
 
 class _$AllLocales extends AllLocales {
   @override
-  final SystemFields sys;
-  @override
-  final int total;
-  @override
-  final int skip;
+  final BuiltList<Locale> items;
   @override
   final int limit;
   @override
-  final BuiltList<Locale> items;
+  final int skip;
+  @override
+  final SystemFields sys;
+  @override
+  final int total;
 
   factory _$AllLocales([void Function(AllLocalesBuilder) updates]) =>
       (new AllLocalesBuilder()..update(updates)).build();
 
-  _$AllLocales._({this.sys, this.total, this.skip, this.limit, this.items})
+  _$AllLocales._({this.items, this.limit, this.skip, this.sys, this.total})
       : super._() {
+    if (items == null) {
+      throw new BuiltValueNullFieldError('AllLocales', 'items');
+    }
+    if (limit == null) {
+      throw new BuiltValueNullFieldError('AllLocales', 'limit');
+    }
+    if (skip == null) {
+      throw new BuiltValueNullFieldError('AllLocales', 'skip');
+    }
     if (sys == null) {
       throw new BuiltValueNullFieldError('AllLocales', 'sys');
     }
     if (total == null) {
       throw new BuiltValueNullFieldError('AllLocales', 'total');
-    }
-    if (skip == null) {
-      throw new BuiltValueNullFieldError('AllLocales', 'skip');
-    }
-    if (limit == null) {
-      throw new BuiltValueNullFieldError('AllLocales', 'limit');
-    }
-    if (items == null) {
-      throw new BuiltValueNullFieldError('AllLocales', 'items');
     }
   }
 
@@ -121,35 +121,47 @@ class _$AllLocales extends AllLocales {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AllLocales &&
-        sys == other.sys &&
-        total == other.total &&
-        skip == other.skip &&
+        items == other.items &&
         limit == other.limit &&
-        items == other.items;
+        skip == other.skip &&
+        sys == other.sys &&
+        total == other.total;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, sys.hashCode), total.hashCode), skip.hashCode),
-            limit.hashCode),
-        items.hashCode));
+        $jc($jc($jc($jc(0, items.hashCode), limit.hashCode), skip.hashCode),
+            sys.hashCode),
+        total.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AllLocales')
-          ..add('sys', sys)
-          ..add('total', total)
-          ..add('skip', skip)
+          ..add('items', items)
           ..add('limit', limit)
-          ..add('items', items))
+          ..add('skip', skip)
+          ..add('sys', sys)
+          ..add('total', total))
         .toString();
   }
 }
 
 class AllLocalesBuilder implements Builder<AllLocales, AllLocalesBuilder> {
   _$AllLocales _$v;
+
+  ListBuilder<Locale> _items;
+  ListBuilder<Locale> get items => _$this._items ??= new ListBuilder<Locale>();
+  set items(ListBuilder<Locale> items) => _$this._items = items;
+
+  int _limit;
+  int get limit => _$this._limit;
+  set limit(int limit) => _$this._limit = limit;
+
+  int _skip;
+  int get skip => _$this._skip;
+  set skip(int skip) => _$this._skip = skip;
 
   SystemFieldsBuilder _sys;
   SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
@@ -159,27 +171,15 @@ class AllLocalesBuilder implements Builder<AllLocales, AllLocalesBuilder> {
   int get total => _$this._total;
   set total(int total) => _$this._total = total;
 
-  int _skip;
-  int get skip => _$this._skip;
-  set skip(int skip) => _$this._skip = skip;
-
-  int _limit;
-  int get limit => _$this._limit;
-  set limit(int limit) => _$this._limit = limit;
-
-  ListBuilder<Locale> _items;
-  ListBuilder<Locale> get items => _$this._items ??= new ListBuilder<Locale>();
-  set items(ListBuilder<Locale> items) => _$this._items = items;
-
   AllLocalesBuilder();
 
   AllLocalesBuilder get _$this {
     if (_$v != null) {
+      _items = _$v.items?.toBuilder();
+      _limit = _$v.limit;
+      _skip = _$v.skip;
       _sys = _$v.sys?.toBuilder();
       _total = _$v.total;
-      _skip = _$v.skip;
-      _limit = _$v.limit;
-      _items = _$v.items?.toBuilder();
       _$v = null;
     }
     return this;
@@ -204,19 +204,19 @@ class AllLocalesBuilder implements Builder<AllLocales, AllLocalesBuilder> {
     try {
       _$result = _$v ??
           new _$AllLocales._(
-              sys: sys.build(),
-              total: total,
-              skip: skip,
+              items: items.build(),
               limit: limit,
-              items: items.build());
+              skip: skip,
+              sys: sys.build(),
+              total: total);
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'sys';
-        sys.build();
-
         _$failedField = 'items';
         items.build();
+
+        _$failedField = 'sys';
+        sys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AllLocales', _$failedField, e.toString());

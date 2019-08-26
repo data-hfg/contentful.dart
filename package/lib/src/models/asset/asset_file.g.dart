@@ -18,17 +18,17 @@ class _$AssetFileSerializer implements StructuredSerializer<AssetFile> {
   Iterable<Object> serialize(Serializers serializers, AssetFile object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'fileName',
-      serializers.serialize(object.fileName,
-          specifiedType: const FullType(String)),
       'contentType',
       serializers.serialize(object.contentType,
           specifiedType: const FullType(String)),
-      'url',
-      serializers.serialize(object.url, specifiedType: const FullType(String)),
       'details',
       serializers.serialize(object.details,
           specifiedType: const FullType(AssetFileDetails)),
+      'fileName',
+      serializers.serialize(object.fileName,
+          specifiedType: const FullType(String)),
+      'url',
+      serializers.serialize(object.url, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -45,22 +45,22 @@ class _$AssetFileSerializer implements StructuredSerializer<AssetFile> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'fileName':
-          result.fileName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'contentType':
           result.contentType = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'url':
-          result.url = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'details':
           result.details.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AssetFileDetails))
               as AssetFileDetails);
+          break;
+        case 'fileName':
+          result.fileName = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'url':
+          result.url = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -71,30 +71,30 @@ class _$AssetFileSerializer implements StructuredSerializer<AssetFile> {
 
 class _$AssetFile extends AssetFile {
   @override
-  final String fileName;
-  @override
   final String contentType;
   @override
-  final String url;
-  @override
   final AssetFileDetails details;
+  @override
+  final String fileName;
+  @override
+  final String url;
 
   factory _$AssetFile([void Function(AssetFileBuilder) updates]) =>
       (new AssetFileBuilder()..update(updates)).build();
 
-  _$AssetFile._({this.fileName, this.contentType, this.url, this.details})
+  _$AssetFile._({this.contentType, this.details, this.fileName, this.url})
       : super._() {
-    if (fileName == null) {
-      throw new BuiltValueNullFieldError('AssetFile', 'fileName');
-    }
     if (contentType == null) {
       throw new BuiltValueNullFieldError('AssetFile', 'contentType');
     }
-    if (url == null) {
-      throw new BuiltValueNullFieldError('AssetFile', 'url');
-    }
     if (details == null) {
       throw new BuiltValueNullFieldError('AssetFile', 'details');
+    }
+    if (fileName == null) {
+      throw new BuiltValueNullFieldError('AssetFile', 'fileName');
+    }
+    if (url == null) {
+      throw new BuiltValueNullFieldError('AssetFile', 'url');
     }
   }
 
@@ -109,26 +109,27 @@ class _$AssetFile extends AssetFile {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is AssetFile &&
-        fileName == other.fileName &&
         contentType == other.contentType &&
-        url == other.url &&
-        details == other.details;
+        details == other.details &&
+        fileName == other.fileName &&
+        url == other.url;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, fileName.hashCode), contentType.hashCode), url.hashCode),
-        details.hashCode));
+        $jc($jc($jc(0, contentType.hashCode), details.hashCode),
+            fileName.hashCode),
+        url.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AssetFile')
-          ..add('fileName', fileName)
           ..add('contentType', contentType)
-          ..add('url', url)
-          ..add('details', details))
+          ..add('details', details)
+          ..add('fileName', fileName)
+          ..add('url', url))
         .toString();
   }
 }
@@ -136,31 +137,31 @@ class _$AssetFile extends AssetFile {
 class AssetFileBuilder implements Builder<AssetFile, AssetFileBuilder> {
   _$AssetFile _$v;
 
-  String _fileName;
-  String get fileName => _$this._fileName;
-  set fileName(String fileName) => _$this._fileName = fileName;
-
   String _contentType;
   String get contentType => _$this._contentType;
   set contentType(String contentType) => _$this._contentType = contentType;
-
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
 
   AssetFileDetailsBuilder _details;
   AssetFileDetailsBuilder get details =>
       _$this._details ??= new AssetFileDetailsBuilder();
   set details(AssetFileDetailsBuilder details) => _$this._details = details;
 
+  String _fileName;
+  String get fileName => _$this._fileName;
+  set fileName(String fileName) => _$this._fileName = fileName;
+
+  String _url;
+  String get url => _$this._url;
+  set url(String url) => _$this._url = url;
+
   AssetFileBuilder();
 
   AssetFileBuilder get _$this {
     if (_$v != null) {
-      _fileName = _$v.fileName;
       _contentType = _$v.contentType;
-      _url = _$v.url;
       _details = _$v.details?.toBuilder();
+      _fileName = _$v.fileName;
+      _url = _$v.url;
       _$v = null;
     }
     return this;
@@ -185,10 +186,10 @@ class AssetFileBuilder implements Builder<AssetFile, AssetFileBuilder> {
     try {
       _$result = _$v ??
           new _$AssetFile._(
-              fileName: fileName,
               contentType: contentType,
-              url: url,
-              details: details.build());
+              details: details.build(),
+              fileName: fileName,
+              url: url);
     } catch (_) {
       String _$failedField;
       try {

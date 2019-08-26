@@ -10,19 +10,21 @@ import 'package:contentful_dart/src/models/models.dart';
 part 'all_locales.g.dart';
 
 abstract class AllLocales implements Built<AllLocales, AllLocalesBuilder> {
-  SystemFields get sys;
+  static Serializer<AllLocales> get serializer => _$allLocalesSerializer;
 
-  int get total;
-
-  int get skip;
-
-  int get limit;
-
-  BuiltList<Locale> get items;
+  factory AllLocales([void Function(AllLocalesBuilder) updates]) = _$AllLocales;
 
   AllLocales._();
 
-  factory AllLocales([updates(AllLocalesBuilder b)]) = _$AllLocales;
+  BuiltList<Locale> get items;
+
+  int get limit;
+
+  int get skip;
+
+  SystemFields get sys;
+
+  int get total;
 
   String toJson() {
     return json.encode(
@@ -33,6 +35,4 @@ abstract class AllLocales implements Built<AllLocales, AllLocalesBuilder> {
     return contentfulSerializers.deserializeWith(
         AllLocales.serializer, json.decode(jsonString));
   }
-
-  static Serializer<AllLocales> get serializer => _$allLocalesSerializer;
 }

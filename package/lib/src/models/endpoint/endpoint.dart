@@ -29,7 +29,7 @@ class Endpoint extends EnumClass {
 
   static Serializer<Endpoint> get serializer => _$endpointSerializer;
 
-  const Endpoint._(String name) : super(name);
   static BuiltSet<Endpoint> get values => _$EndpointValues;
+  const Endpoint._(String name) : super(name);
   static Endpoint valueOf(String name) => _$EndpointValueOf(name);
 }

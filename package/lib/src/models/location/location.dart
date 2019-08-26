@@ -10,6 +10,12 @@ part 'location.g.dart';
 
 /// Class to store location coordinates.
 abstract class Location implements Built<Location, LocationBuilder> {
+  static Serializer<Location> get serializer => _$locationSerializer;
+
+  factory Location([void Function(LocationBuilder) updates]) = _$Location;
+
+  Location._();
+
   /// The latitude of this location coordinate.
   @BuiltValueField(wireName: 'lat')
   double get latitude;
@@ -17,10 +23,6 @@ abstract class Location implements Built<Location, LocationBuilder> {
   /// The longitude of this location coordinate.
   @BuiltValueField(wireName: 'lon')
   double get longitude;
-
-  Location._();
-
-  factory Location([updates(LocationBuilder b)]) = _$Location;
 
   String toJson() {
     return json
@@ -31,6 +33,4 @@ abstract class Location implements Built<Location, LocationBuilder> {
     return contentfulSerializers.deserializeWith(
         Location.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Location> get serializer => _$locationSerializer;
 }

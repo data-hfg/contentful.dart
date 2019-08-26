@@ -18,19 +18,19 @@ class _$FieldSerializer implements StructuredSerializer<Field> {
   Iterable<Object> serialize(Serializers serializers, Field object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'name',
-      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'disabled',
       serializers.serialize(object.disabled,
+          specifiedType: const FullType(bool)),
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'required',
+      serializers.serialize(object.isRequired,
           specifiedType: const FullType(bool)),
       'localized',
       serializers.serialize(object.localized,
           specifiedType: const FullType(bool)),
-      'required',
-      serializers.serialize(object.isRequired,
-          specifiedType: const FullType(bool)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
       'type',
       serializers.serialize(object.type,
           specifiedType: const FullType(FieldType)),
@@ -55,32 +55,32 @@ class _$FieldSerializer implements StructuredSerializer<Field> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'disabled':
           result.disabled = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'localized':
-          result.localized = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'required':
           result.isRequired = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
-        case 'type':
-          result.type = serializers.deserialize(value,
-              specifiedType: const FullType(FieldType)) as FieldType;
-          break;
         case 'itemType':
           result.itemType = serializers.deserialize(value,
+              specifiedType: const FullType(FieldType)) as FieldType;
+          break;
+        case 'localized':
+          result.localized = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'type':
+          result.type = serializers.deserialize(value,
               specifiedType: const FullType(FieldType)) as FieldType;
           break;
       }
@@ -92,46 +92,46 @@ class _$FieldSerializer implements StructuredSerializer<Field> {
 
 class _$Field extends Field {
   @override
-  final String id;
-  @override
-  final String name;
-  @override
   final bool disabled;
   @override
-  final bool localized;
+  final String id;
   @override
   final bool isRequired;
   @override
-  final FieldType type;
-  @override
   final FieldType itemType;
+  @override
+  final bool localized;
+  @override
+  final String name;
+  @override
+  final FieldType type;
 
   factory _$Field([void Function(FieldBuilder) updates]) =>
       (new FieldBuilder()..update(updates)).build();
 
   _$Field._(
-      {this.id,
-      this.name,
-      this.disabled,
-      this.localized,
+      {this.disabled,
+      this.id,
       this.isRequired,
-      this.type,
-      this.itemType})
+      this.itemType,
+      this.localized,
+      this.name,
+      this.type})
       : super._() {
+    if (disabled == null) {
+      throw new BuiltValueNullFieldError('Field', 'disabled');
+    }
     if (id == null) {
       throw new BuiltValueNullFieldError('Field', 'id');
     }
-    if (name == null) {
-      throw new BuiltValueNullFieldError('Field', 'name');
-    }
-    if (disabled == null) {
-      throw new BuiltValueNullFieldError('Field', 'disabled');
+    if (isRequired == null) {
+      throw new BuiltValueNullFieldError('Field', 'isRequired');
     }
     if (localized == null) {
       throw new BuiltValueNullFieldError('Field', 'localized');
     }
-    if (isRequired == null) {
-      throw new BuiltValueNullFieldError('Field', 'isRequired');
+    if (name == null) {
+      throw new BuiltValueNullFieldError('Field', 'name');
     }
     if (type == null) {
       throw new BuiltValueNullFieldError('Field', 'type');
@@ -149,13 +149,13 @@ class _$Field extends Field {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Field &&
-        id == other.id &&
-        name == other.name &&
         disabled == other.disabled &&
-        localized == other.localized &&
+        id == other.id &&
         isRequired == other.isRequired &&
-        type == other.type &&
-        itemType == other.itemType;
+        itemType == other.itemType &&
+        localized == other.localized &&
+        name == other.name &&
+        type == other.type;
   }
 
   @override
@@ -164,24 +164,24 @@ class _$Field extends Field {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, id.hashCode), name.hashCode),
-                        disabled.hashCode),
-                    localized.hashCode),
-                isRequired.hashCode),
-            type.hashCode),
-        itemType.hashCode));
+                    $jc($jc($jc(0, disabled.hashCode), id.hashCode),
+                        isRequired.hashCode),
+                    itemType.hashCode),
+                localized.hashCode),
+            name.hashCode),
+        type.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Field')
-          ..add('id', id)
-          ..add('name', name)
           ..add('disabled', disabled)
-          ..add('localized', localized)
+          ..add('id', id)
           ..add('isRequired', isRequired)
-          ..add('type', type)
-          ..add('itemType', itemType))
+          ..add('itemType', itemType)
+          ..add('localized', localized)
+          ..add('name', name)
+          ..add('type', type))
         .toString();
   }
 }
@@ -189,45 +189,45 @@ class _$Field extends Field {
 class FieldBuilder implements Builder<Field, FieldBuilder> {
   _$Field _$v;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
-
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
-
   bool _disabled;
   bool get disabled => _$this._disabled;
   set disabled(bool disabled) => _$this._disabled = disabled;
 
-  bool _localized;
-  bool get localized => _$this._localized;
-  set localized(bool localized) => _$this._localized = localized;
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
 
   bool _isRequired;
   bool get isRequired => _$this._isRequired;
   set isRequired(bool isRequired) => _$this._isRequired = isRequired;
 
-  FieldType _type;
-  FieldType get type => _$this._type;
-  set type(FieldType type) => _$this._type = type;
-
   FieldType _itemType;
   FieldType get itemType => _$this._itemType;
   set itemType(FieldType itemType) => _$this._itemType = itemType;
+
+  bool _localized;
+  bool get localized => _$this._localized;
+  set localized(bool localized) => _$this._localized = localized;
+
+  String _name;
+  String get name => _$this._name;
+  set name(String name) => _$this._name = name;
+
+  FieldType _type;
+  FieldType get type => _$this._type;
+  set type(FieldType type) => _$this._type = type;
 
   FieldBuilder();
 
   FieldBuilder get _$this {
     if (_$v != null) {
-      _id = _$v.id;
-      _name = _$v.name;
       _disabled = _$v.disabled;
-      _localized = _$v.localized;
+      _id = _$v.id;
       _isRequired = _$v.isRequired;
-      _type = _$v.type;
       _itemType = _$v.itemType;
+      _localized = _$v.localized;
+      _name = _$v.name;
+      _type = _$v.type;
       _$v = null;
     }
     return this;
@@ -250,13 +250,13 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
   _$Field build() {
     final _$result = _$v ??
         new _$Field._(
-            id: id,
-            name: name,
             disabled: disabled,
-            localized: localized,
+            id: id,
             isRequired: isRequired,
-            type: type,
-            itemType: itemType);
+            itemType: itemType,
+            localized: localized,
+            name: name,
+            type: type);
     replace(_$result);
     return _$result;
   }

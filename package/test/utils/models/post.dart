@@ -16,7 +16,8 @@ abstract class Post extends Object
     with Entry<PostField>
     implements Built<Post, PostBuilder> {
   static Serializer<Post> get serializer => _$postSerializer;
-  factory Post([updates(PostBuilder b)]) = _$Post;
+
+  factory Post([void Function(PostBuilder) updates]) = _$Post;
 
   Post._();
 

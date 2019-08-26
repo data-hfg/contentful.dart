@@ -14,7 +14,8 @@ abstract class ContentTypeResponse
   static Serializer<ContentTypeResponse> get serializer =>
       _$contentTypeResponseSerializer;
 
-  factory ContentTypeResponse([updates(ContentTypeResponseBuilder b)]) =
+  factory ContentTypeResponse(
+          [void Function(ContentTypeResponseBuilder) updates]) =
       _$ContentTypeResponse;
 
   ContentTypeResponse._();

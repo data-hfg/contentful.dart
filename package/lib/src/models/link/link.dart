@@ -13,8 +13,11 @@ part 'link.g.dart';
 /// This stateful type safely highlights links that have been resolved
 /// to entries, resolved to assets, or remain unresolved.
 abstract class Link implements Built<Link, LinkBuilder> {
-  /// The system properties which describe the link.
-  SystemFields get sys;
+  static Serializer<Link> get serializer => _$linkSerializer;
+
+  factory Link([void Function(LinkBuilder) updates]) = _$Link;
+
+  Link._();
 
   /// The Link points to an `Asset`.
   @nullable
@@ -24,9 +27,8 @@ abstract class Link implements Built<Link, LinkBuilder> {
   @nullable
   Entry get entry;
 
-  Link._();
-
-  factory Link([updates(LinkBuilder b)]) = _$Link;
+  /// The system properties which describe the link.
+  SystemFields get sys;
 
   String toJson() {
     return json
@@ -37,6 +39,4 @@ abstract class Link implements Built<Link, LinkBuilder> {
     return contentfulSerializers.deserializeWith(
         Link.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Link> get serializer => _$linkSerializer;
 }

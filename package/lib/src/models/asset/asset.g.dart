@@ -18,12 +18,12 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
   Iterable<Object> serialize(Serializers serializers, Asset object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'sys',
-      serializers.serialize(object.sys,
-          specifiedType: const FullType(SystemFields)),
       'fields',
       serializers.serialize(object.fields,
           specifiedType: const FullType(AssetFields)),
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
     ];
 
     return result;
@@ -40,13 +40,13 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'sys':
-          result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SystemFields)) as SystemFields);
-          break;
         case 'fields':
           result.fields.replace(serializers.deserialize(value,
               specifiedType: const FullType(AssetFields)) as AssetFields);
+          break;
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
       }
     }
@@ -57,19 +57,19 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
 
 class _$Asset extends Asset {
   @override
-  final SystemFields sys;
-  @override
   final AssetFields fields;
+  @override
+  final SystemFields sys;
 
   factory _$Asset([void Function(AssetBuilder) updates]) =>
       (new AssetBuilder()..update(updates)).build();
 
-  _$Asset._({this.sys, this.fields}) : super._() {
-    if (sys == null) {
-      throw new BuiltValueNullFieldError('Asset', 'sys');
-    }
+  _$Asset._({this.fields, this.sys}) : super._() {
     if (fields == null) {
       throw new BuiltValueNullFieldError('Asset', 'fields');
+    }
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('Asset', 'sys');
     }
   }
 
@@ -83,19 +83,19 @@ class _$Asset extends Asset {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Asset && sys == other.sys && fields == other.fields;
+    return other is Asset && fields == other.fields && sys == other.sys;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, sys.hashCode), fields.hashCode));
+    return $jf($jc($jc(0, fields.hashCode), sys.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Asset')
-          ..add('sys', sys)
-          ..add('fields', fields))
+          ..add('fields', fields)
+          ..add('sys', sys))
         .toString();
   }
 }
@@ -103,20 +103,20 @@ class _$Asset extends Asset {
 class AssetBuilder implements Builder<Asset, AssetBuilder> {
   _$Asset _$v;
 
-  SystemFieldsBuilder _sys;
-  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
-  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
-
   AssetFieldsBuilder _fields;
   AssetFieldsBuilder get fields => _$this._fields ??= new AssetFieldsBuilder();
   set fields(AssetFieldsBuilder fields) => _$this._fields = fields;
+
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   AssetBuilder();
 
   AssetBuilder get _$this {
     if (_$v != null) {
-      _sys = _$v.sys?.toBuilder();
       _fields = _$v.fields?.toBuilder();
+      _sys = _$v.sys?.toBuilder();
       _$v = null;
     }
     return this;
@@ -139,14 +139,14 @@ class AssetBuilder implements Builder<Asset, AssetBuilder> {
   _$Asset build() {
     _$Asset _$result;
     try {
-      _$result = _$v ?? new _$Asset._(sys: sys.build(), fields: fields.build());
+      _$result = _$v ?? new _$Asset._(fields: fields.build(), sys: sys.build());
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'sys';
-        sys.build();
         _$failedField = 'fields';
         fields.build();
+        _$failedField = 'sys';
+        sys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Asset', _$failedField, e.toString());

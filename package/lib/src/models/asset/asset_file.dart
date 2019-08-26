@@ -9,14 +9,19 @@ import 'package:contentful_dart/src/models/models.dart';
 part 'asset_file.g.dart';
 
 abstract class AssetFile implements Built<AssetFile, AssetFileBuilder> {
-  String get fileName;
-  String get contentType;
-  String get url;
-  AssetFileDetails get details;
+  static Serializer<AssetFile> get serializer => _$assetFileSerializer;
+
+  factory AssetFile([void Function(AssetFileBuilder) updates]) = _$AssetFile;
 
   AssetFile._();
 
-  factory AssetFile([updates(AssetFileBuilder b)]) = _$AssetFile;
+  String get contentType;
+
+  AssetFileDetails get details;
+
+  String get fileName;
+
+  String get url;
 
   String toJson() {
     return json.encode(
@@ -27,6 +32,4 @@ abstract class AssetFile implements Built<AssetFile, AssetFileBuilder> {
     return contentfulSerializers.deserializeWith(
         AssetFile.serializer, json.decode(jsonString));
   }
-
-  static Serializer<AssetFile> get serializer => _$assetFileSerializer;
 }

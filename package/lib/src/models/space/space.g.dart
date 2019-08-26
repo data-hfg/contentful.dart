@@ -18,13 +18,13 @@ class _$SpaceSerializer implements StructuredSerializer<Space> {
   Iterable<Object> serialize(Serializers serializers, Space object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'sys',
-      serializers.serialize(object.sys,
-          specifiedType: const FullType(SystemFields)),
       'locales',
       serializers.serialize(object.locales,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Locale)])),
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
     ];
     if (object.name != null) {
       result
@@ -46,10 +46,6 @@ class _$SpaceSerializer implements StructuredSerializer<Space> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'sys':
-          result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SystemFields)) as SystemFields);
-          break;
         case 'locales':
           result.locales.replace(serializers.deserialize(value,
                   specifiedType:
@@ -60,6 +56,10 @@ class _$SpaceSerializer implements StructuredSerializer<Space> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
+          break;
       }
     }
 
@@ -69,21 +69,21 @@ class _$SpaceSerializer implements StructuredSerializer<Space> {
 
 class _$Space extends Space {
   @override
-  final SystemFields sys;
-  @override
   final BuiltList<Locale> locales;
   @override
   final String name;
+  @override
+  final SystemFields sys;
 
   factory _$Space([void Function(SpaceBuilder) updates]) =>
       (new SpaceBuilder()..update(updates)).build();
 
-  _$Space._({this.sys, this.locales, this.name}) : super._() {
-    if (sys == null) {
-      throw new BuiltValueNullFieldError('Space', 'sys');
-    }
+  _$Space._({this.locales, this.name, this.sys}) : super._() {
     if (locales == null) {
       throw new BuiltValueNullFieldError('Space', 'locales');
+    }
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('Space', 'sys');
     }
   }
 
@@ -98,32 +98,28 @@ class _$Space extends Space {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Space &&
-        sys == other.sys &&
         locales == other.locales &&
-        name == other.name;
+        name == other.name &&
+        sys == other.sys;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, sys.hashCode), locales.hashCode), name.hashCode));
+    return $jf($jc($jc($jc(0, locales.hashCode), name.hashCode), sys.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('Space')
-          ..add('sys', sys)
           ..add('locales', locales)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('sys', sys))
         .toString();
   }
 }
 
 class SpaceBuilder implements Builder<Space, SpaceBuilder> {
   _$Space _$v;
-
-  SystemFieldsBuilder _sys;
-  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
-  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   ListBuilder<Locale> _locales;
   ListBuilder<Locale> get locales =>
@@ -134,13 +130,17 @@ class SpaceBuilder implements Builder<Space, SpaceBuilder> {
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
+
   SpaceBuilder();
 
   SpaceBuilder get _$this {
     if (_$v != null) {
-      _sys = _$v.sys?.toBuilder();
       _locales = _$v.locales?.toBuilder();
       _name = _$v.name;
+      _sys = _$v.sys?.toBuilder();
       _$v = null;
     }
     return this;
@@ -164,14 +164,15 @@ class SpaceBuilder implements Builder<Space, SpaceBuilder> {
     _$Space _$result;
     try {
       _$result = _$v ??
-          new _$Space._(sys: sys.build(), locales: locales.build(), name: name);
+          new _$Space._(locales: locales.build(), name: name, sys: sys.build());
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'sys';
-        sys.build();
         _$failedField = 'locales';
         locales.build();
+
+        _$failedField = 'sys';
+        sys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'Space', _$failedField, e.toString());

@@ -14,7 +14,8 @@ abstract class SystemFields
     implements Built<SystemFields, SystemFieldsBuilder> {
   static Serializer<SystemFields> get serializer => _$systemFieldsSerializer;
 
-  factory SystemFields([updates(SystemFieldsBuilder b)]) = _$SystemFields;
+  factory SystemFields([void Function(SystemFieldsBuilder) updates]) =
+      _$SystemFields;
 
   SystemFields._();
 

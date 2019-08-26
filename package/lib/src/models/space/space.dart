@@ -12,8 +12,11 @@ part 'space.g.dart';
 /// A Space represents a collection of content types,
 /// locales, assets, and entries in Contentful.
 abstract class Space implements Built<Space, SpaceBuilder> {
-  /// System fields.
-  SystemFields get sys;
+  static Serializer<Space> get serializer => _$spaceSerializer;
+
+  factory Space([void Function(SpaceBuilder) updates]) = _$Space;
+
+  Space._();
 
   /// Available locales for this Space
   BuiltList<Locale> get locales;
@@ -22,9 +25,8 @@ abstract class Space implements Built<Space, SpaceBuilder> {
   @nullable
   String get name;
 
-  Space._();
-
-  factory Space([updates(SpaceBuilder b)]) = _$Space;
+  /// System fields.
+  SystemFields get sys;
 
   String toJson() {
     return json
@@ -35,6 +37,4 @@ abstract class Space implements Built<Space, SpaceBuilder> {
     return contentfulSerializers.deserializeWith(
         Space.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Space> get serializer => _$spaceSerializer;
 }

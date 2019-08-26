@@ -14,7 +14,8 @@ abstract class AssetFields implements Built<AssetFields, AssetFieldsBuilder> {
 
   AssetFields._();
 
-  factory AssetFields([updates(AssetFieldsBuilder b)]) = _$AssetFields;
+  factory AssetFields([void Function(AssetFieldsBuilder) updates]) =
+      _$AssetFields;
 
   String toJson() {
     return json.encode(

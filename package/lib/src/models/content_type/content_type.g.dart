@@ -18,15 +18,15 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
   Iterable<Object> serialize(Serializers serializers, ContentType object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'sys',
-      serializers.serialize(object.sys,
-          specifiedType: const FullType(SystemFields)),
       'fields',
       serializers.serialize(object.fields,
           specifiedType:
               const FullType(BuiltList, const [const FullType(Field)])),
       'name',
       serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'sys',
+      serializers.serialize(object.sys,
+          specifiedType: const FullType(SystemFields)),
     ];
     if (object.description != null) {
       result
@@ -48,9 +48,9 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'sys':
-          result.sys.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SystemFields)) as SystemFields);
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'fields':
           result.fields.replace(serializers.deserialize(value,
@@ -62,9 +62,9 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'description':
-          result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+        case 'sys':
+          result.sys.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemFields)) as SystemFields);
           break;
       }
     }
@@ -75,37 +75,37 @@ class _$ContentTypeSerializer implements StructuredSerializer<ContentType> {
 
 class _$ContentType extends ContentType {
   @override
-  final SystemFields sys;
+  final String description;
   @override
   final BuiltList<Field> fields;
   @override
   final String name;
   @override
-  final String description;
-  String __type;
+  final SystemFields sys;
   String __contentId;
+  String __type;
 
   factory _$ContentType([void Function(ContentTypeBuilder) updates]) =>
       (new ContentTypeBuilder()..update(updates)).build();
 
-  _$ContentType._({this.sys, this.fields, this.name, this.description})
+  _$ContentType._({this.description, this.fields, this.name, this.sys})
       : super._() {
-    if (sys == null) {
-      throw new BuiltValueNullFieldError('ContentType', 'sys');
-    }
     if (fields == null) {
       throw new BuiltValueNullFieldError('ContentType', 'fields');
     }
     if (name == null) {
       throw new BuiltValueNullFieldError('ContentType', 'name');
     }
+    if (sys == null) {
+      throw new BuiltValueNullFieldError('ContentType', 'sys');
+    }
   }
 
   @override
-  String get type => __type ??= super.type;
+  String get contentId => __contentId ??= super.contentId;
 
   @override
-  String get contentId => __contentId ??= super.contentId;
+  String get type => __type ??= super.type;
 
   @override
   ContentType rebuild(void Function(ContentTypeBuilder) updates) =>
@@ -118,26 +118,26 @@ class _$ContentType extends ContentType {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ContentType &&
-        sys == other.sys &&
+        description == other.description &&
         fields == other.fields &&
         name == other.name &&
-        description == other.description;
+        sys == other.sys;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, sys.hashCode), fields.hashCode), name.hashCode),
-        description.hashCode));
+        $jc($jc($jc(0, description.hashCode), fields.hashCode), name.hashCode),
+        sys.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('ContentType')
-          ..add('sys', sys)
+          ..add('description', description)
           ..add('fields', fields)
           ..add('name', name)
-          ..add('description', description))
+          ..add('sys', sys))
         .toString();
   }
 }
@@ -145,9 +145,9 @@ class _$ContentType extends ContentType {
 class ContentTypeBuilder implements Builder<ContentType, ContentTypeBuilder> {
   _$ContentType _$v;
 
-  SystemFieldsBuilder _sys;
-  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
-  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
+  String _description;
+  String get description => _$this._description;
+  set description(String description) => _$this._description = description;
 
   ListBuilder<Field> _fields;
   ListBuilder<Field> get fields => _$this._fields ??= new ListBuilder<Field>();
@@ -157,18 +157,18 @@ class ContentTypeBuilder implements Builder<ContentType, ContentTypeBuilder> {
   String get name => _$this._name;
   set name(String name) => _$this._name = name;
 
-  String _description;
-  String get description => _$this._description;
-  set description(String description) => _$this._description = description;
+  SystemFieldsBuilder _sys;
+  SystemFieldsBuilder get sys => _$this._sys ??= new SystemFieldsBuilder();
+  set sys(SystemFieldsBuilder sys) => _$this._sys = sys;
 
   ContentTypeBuilder();
 
   ContentTypeBuilder get _$this {
     if (_$v != null) {
-      _sys = _$v.sys?.toBuilder();
+      _description = _$v.description;
       _fields = _$v.fields?.toBuilder();
       _name = _$v.name;
-      _description = _$v.description;
+      _sys = _$v.sys?.toBuilder();
       _$v = null;
     }
     return this;
@@ -193,17 +193,18 @@ class ContentTypeBuilder implements Builder<ContentType, ContentTypeBuilder> {
     try {
       _$result = _$v ??
           new _$ContentType._(
-              sys: sys.build(),
+              description: description,
               fields: fields.build(),
               name: name,
-              description: description);
+              sys: sys.build());
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'sys';
-        sys.build();
         _$failedField = 'fields';
         fields.build();
+
+        _$failedField = 'sys';
+        sys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'ContentType', _$failedField, e.toString());

@@ -9,21 +9,24 @@ import 'package:contentful_dart/src/models/models.dart';
 part 'locale.g.dart';
 
 abstract class Locale implements Built<Locale, LocaleBuilder> {
-  String get code;
-  String get name;
+  static Serializer<Locale> get serializer => _$localeSerializer;
 
-  @BuiltValueField(wireName: 'default')
-  bool get isDefault;
+  factory Locale([void Function(LocaleBuilder) updates]) = _$Locale;
+
+  Locale._();
+
+  String get code;
 
   @nullable
   String get fallbackCode;
 
+  @BuiltValueField(wireName: 'default')
+  bool get isDefault;
+
+  String get name;
+
   @nullable
   SystemFields get sys;
-
-  Locale._();
-
-  factory Locale([updates(LocaleBuilder b)]) = _$Locale;
 
   String toJson() {
     return json
@@ -34,6 +37,4 @@ abstract class Locale implements Built<Locale, LocaleBuilder> {
     return contentfulSerializers.deserializeWith(
         Locale.serializer, json.decode(jsonString));
   }
-
-  static Serializer<Locale> get serializer => _$localeSerializer;
 }
