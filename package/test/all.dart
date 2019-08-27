@@ -1,4 +1,5 @@
 import './models/all_locales_test.dart' as all_locales;
+import './models/asset_fields_test.dart' as asset_fields;
 import './models/asset_file_details_image_test.dart'
     as asset_file_details_image;
 import './models/asset_file_details_test.dart' as asset_file_details;
@@ -17,6 +18,7 @@ import './networking/contentful_client_test.dart' as client;
 
 void main() {
   all_locales.main();
+  asset_fields.main();
   asset_file_details_image.main();
   asset_file_details.main();
   asset_file.main();
