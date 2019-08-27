@@ -1,5 +1,6 @@
 import 'package:contentful_dart/contentful_dart.dart';
 import 'package:test/test.dart';
+import 'package:built_value_test/matcher.dart';
 
 import '../utils/load_fixture.dart';
 
@@ -17,6 +18,31 @@ void main() {
       final locationString = location.toJson();
 
       expect(locationString, const TypeMatcher<String>());
+    });
+
+    test('built_value matcher', () {
+      final value = Location(
+        (b) => b
+          ..latitude = 12.01
+          ..longitude = 22.34,
+      );
+      expect(value, equalsBuilt(value));
+    });
+
+    test('compared value matcher', () {
+      final value = Location(
+        (b) => b
+          ..latitude = 12.01
+          ..longitude = 22.34,
+      );
+
+      final otherValue = Location(
+        (b) => b
+          ..latitude = 12.01
+          ..longitude = 22.34,
+      );
+
+      expect(value, otherValue);
     });
   });
 }
