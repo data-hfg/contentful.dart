@@ -1,0 +1,12 @@
+{
+  "contentType": "contentType",
+  "fileName": "fileName",
+  "url": "https://github.com",
+  "details": {
+    "size": 100,
+    "image": {
+      "height": 2000,
+      "width": 1000
+    }
+  }
+}

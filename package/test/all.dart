@@ -1,4 +1,8 @@
 import './models/all_locales_test.dart' as all_locales;
+import './models/asset_file_details_image_test.dart'
+    as asset_file_details_image;
+import './models/asset_file_details_test.dart' as asset_file_details;
+import './models/asset_file_test.dart' as asset_file;
 import './models/asset_test.dart' as asset;
 import './models/content_type_response_test.dart' as content_type_response;
 import './models/content_type_test.dart' as content_type;
@@ -13,6 +17,9 @@ import './networking/contentful_client_test.dart' as client;
 
 void main() {
   all_locales.main();
+  asset_file_details_image.main();
+  asset_file_details.main();
+  asset_file.main();
   asset.main();
   client.main();
   content_type_response.main();
