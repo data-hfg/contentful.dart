@@ -44,5 +44,17 @@ void main() {
 
       expect(value, otherValue);
     });
+
+    test('reports if not same', () {
+      final value = Location(
+        (b) => b
+          ..latitude = 12.01
+          ..longitude = 22.34,
+      );
+
+      final otherValue = value.rebuild((b) => b..latitude = 5);
+
+      expectMismatch(value, otherValue, '');
+    });
   });
 }

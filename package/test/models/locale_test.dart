@@ -43,5 +43,19 @@ void main() {
 
       expect(value, otherValue);
     });
+
+    test('reports if not same', () {
+      final value = Locale(
+        (b) => b
+          ..code = 'code'
+          ..fallbackCode = 'fallbackCode'
+          ..isDefault = true
+          ..name = 'name',
+      );
+
+      final otherValue = value.rebuild((b) => b..name = 'not the name');
+
+      expectMismatch(value, otherValue, '');
+    });
   });
 }

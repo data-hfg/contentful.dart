@@ -21,34 +21,95 @@ void main() {
     });
 
     test('built_value matcher', () {
-      final value = Locale(
+      final value = SystemFields(
         (b) => b
-          ..code = 'code'
-          ..fallbackCode = 'fallbackCode'
-          ..isDefault = true
-          ..name = 'name',
+          ..contentType = 'contentType'
+          ..contentTypeId = 'contentTypeId'
+          ..createdAt = 'createdAt'
+          ..createdBy = 'createdBy'
+          ..firstPublishedAt = 'firstPublishedAt'
+          ..id = 'id'
+          ..locale = 'locale'
+          ..publishedAt = 'publishedAt'
+          ..publishedBy = 'publishedBy'
+          ..publishedCounter = 1
+          ..publishedVersion = 2
+          ..revision = 3
+          ..type = 'type'
+          ..updatedAt = 'updatedAt'
+          ..updatedBy = 'updatedBy'
+          ..version = 1,
       );
       expect(value, equalsBuilt(value));
     });
 
     test('compared value matcher', () {
-      final value = Locale(
+      final value = SystemFields(
         (b) => b
-          ..code = 'code'
-          ..fallbackCode = 'fallbackCode'
-          ..isDefault = true
-          ..name = 'name',
+          ..contentType = 'contentType'
+          ..contentTypeId = 'contentTypeId'
+          ..createdAt = 'createdAt'
+          ..createdBy = 'createdBy'
+          ..firstPublishedAt = 'firstPublishedAt'
+          ..id = 'id'
+          ..locale = 'locale'
+          ..publishedAt = 'publishedAt'
+          ..publishedBy = 'publishedBy'
+          ..publishedCounter = 1
+          ..publishedVersion = 2
+          ..revision = 3
+          ..type = 'type'
+          ..updatedAt = 'updatedAt'
+          ..updatedBy = 'updatedBy'
+          ..version = 1,
       );
 
-      final otherValue = Locale(
+      final otherValue = SystemFields(
         (b) => b
-          ..code = 'code'
-          ..fallbackCode = 'fallbackCode'
-          ..isDefault = true
-          ..name = 'name',
+          ..contentType = 'contentType'
+          ..contentTypeId = 'contentTypeId'
+          ..createdAt = 'createdAt'
+          ..createdBy = 'createdBy'
+          ..firstPublishedAt = 'firstPublishedAt'
+          ..id = 'id'
+          ..locale = 'locale'
+          ..publishedAt = 'publishedAt'
+          ..publishedBy = 'publishedBy'
+          ..publishedCounter = 1
+          ..publishedVersion = 2
+          ..revision = 3
+          ..type = 'type'
+          ..updatedAt = 'updatedAt'
+          ..updatedBy = 'updatedBy'
+          ..version = 1,
       );
-
       expect(value, otherValue);
+    });
+
+    test('reports if not same', () {
+      final value = SystemFields(
+        (b) => b
+          ..contentType = 'contentType'
+          ..contentTypeId = 'contentTypeId'
+          ..createdAt = 'createdAt'
+          ..createdBy = 'createdBy'
+          ..firstPublishedAt = 'firstPublishedAt'
+          ..id = 'id'
+          ..locale = 'locale'
+          ..publishedAt = 'publishedAt'
+          ..publishedBy = 'publishedBy'
+          ..publishedCounter = 1
+          ..publishedVersion = 2
+          ..revision = 3
+          ..type = 'type'
+          ..updatedAt = 'updatedAt'
+          ..updatedBy = 'updatedBy'
+          ..version = 1,
+      );
+
+      final otherValue = value.rebuild((b) => b..locale = 'not the locale');
+
+      expectMismatch(value, otherValue, '');
     });
   });
 }
