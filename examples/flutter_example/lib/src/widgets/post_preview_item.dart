@@ -19,9 +19,12 @@ class PostPreviewItem extends StatelessWidget {
       onTap: () => postItemDidTapped(photo),
       child: Container(
         margin: const EdgeInsets.all(4),
-        child: Image.network(
-          photo.computedImageUrl(),
-          fit: BoxFit.cover,
+        child: Container(
+          height: 200,
+          child: Image.network(
+            photo.computedImageUrl(),
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
