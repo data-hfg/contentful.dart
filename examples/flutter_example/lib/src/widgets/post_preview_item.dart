@@ -21,7 +21,7 @@ class PostPreviewItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(4),
         child: Image.network(
-          'jdhd',
+          'https://picsum.photos/id/100/400/400',
           fit: BoxFit.cover,
         ),
       ),
