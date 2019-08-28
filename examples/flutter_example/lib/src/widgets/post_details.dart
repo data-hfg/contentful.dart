@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example/src/prototyping_ui/photo.dart';
 
 class PostDetails extends StatelessWidget {
-  const PostDetails({Key key}) : super(key: key);
+  final Photo photo;
+
+  const PostDetails({
+    @required this.photo,
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class PostDetails extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            'Post bt Author',
+            'Phost by ${photo.author}',
             style: TextStyle(
               color: Colors.black,
             ),
@@ -34,7 +40,7 @@ class PostDetails extends StatelessWidget {
       body: Center(
         child: Container(
           child: Image.network(
-            'https://picsum.photos/id/100/800/800',
+            photo.imageUrl,
             fit: BoxFit.cover,
           ),
         ),
