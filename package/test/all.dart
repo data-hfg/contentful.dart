@@ -10,6 +10,7 @@ import './models/content_type_test.dart' as content_type;
 import './models/endpoint_test.dart' as endpoint_test;
 import './models/field_test.dart' as field;
 import './models/field_type_test.dart' as field_type;
+import './models/link_test.dart' as link;
 import './models/locale_test.dart' as locale;
 import './models/location_test.dart' as location;
 import './models/space_test.dart' as space;
@@ -29,6 +30,7 @@ void main() {
   endpoint_test.main();
   field_type.main();
   field.main();
+  link.main();
   locale.main();
   location.main();
   space.main();
