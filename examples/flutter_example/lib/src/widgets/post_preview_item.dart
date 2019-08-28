@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/src/models/post.dart';
 
 class PostPreviewItem extends StatelessWidget {
-  final Post post;
-
-  final ValueChanged<Post> postItemDidTapped;
+  final ValueChanged<String> postItemDidTapped;
 
   const PostPreviewItem({
-    @required this.post,
     @required this.postItemDidTapped,
     Key key,
   }) : super(key: key);
@@ -17,7 +13,7 @@ class PostPreviewItem extends StatelessWidget {
     return GestureDetector(
       key: UniqueKey(),
       behavior: HitTestBehavior.opaque,
-      onTap: () => postItemDidTapped(post),
+      onTap: () => postItemDidTapped('121212'),
       child: Container(
         margin: const EdgeInsets.all(4),
         child: Image.network(
