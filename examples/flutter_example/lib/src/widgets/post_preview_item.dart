@@ -19,12 +19,46 @@ class PostPreviewItem extends StatelessWidget {
       onTap: () => postItemDidTapped(photo),
       child: Container(
         margin: const EdgeInsets.all(4),
-        child: Container(
-          height: 200,
-          child: Image.network(
-            photo.computedImageUrl(),
-            fit: BoxFit.cover,
-          ),
+        child: Stack(
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              child: Image.network(
+                photo.computedImageUrl(),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                gradient: LinearGradient(
+                  begin: FractionalOffset.topCenter,
+                  end: FractionalOffset.bottomCenter,
+                  colors: [
+                    Colors.white.withOpacity(0.1),
+                    Colors.black54.withOpacity(0.4),
+                  ],
+                  stops: [
+                    0.6,
+                    0.9,
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 8,
+              left: 8,
+              child: Text(
+                'POST TITLE',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

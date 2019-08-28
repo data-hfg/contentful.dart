@@ -21,6 +21,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'Contentful Flutter Demo',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+        brightness: Brightness.light,
+        elevation: 1,
+        bottomOpacity: 0,
+      ),
       body: Center(
           child: PostPreviewList(
         photoList: photoList,
@@ -35,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _getPhotos() async {
-    final items = await _photoRepository.fetchPhotos(page: 1);
+    final items = await _photoRepository.fetchPhotos(page: 3);
     setState(() => photoList = items.toList());
   }
   // Future<void> _getSpace() async {
