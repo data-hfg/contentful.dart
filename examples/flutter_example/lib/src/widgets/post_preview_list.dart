@@ -14,8 +14,9 @@ class PostPreviewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.blue[50],
       child: ListView.builder(
-        itemCount: 100,
+        itemCount: photoList.length,
         itemBuilder: (_, index) {
           return PostPreviewItem(
             photo: photoList[index],

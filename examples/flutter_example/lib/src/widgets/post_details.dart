@@ -14,12 +14,7 @@ class PostDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: FlatButton(
-          child: Text(
-            'Back',
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
+          child: Text('<'),
           onPressed: () {
             Navigator.pop(context);
           },
