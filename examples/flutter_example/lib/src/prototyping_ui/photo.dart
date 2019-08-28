@@ -54,4 +54,8 @@ abstract class Photo implements Built<Photo, PhotoBuilder> {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return deserializeListOf<Photo>(parsed);
   }
+
+  static Photo parsePhoto(String responseBody) {
+    return Photo.fromJson(responseBody);
+  }
 }

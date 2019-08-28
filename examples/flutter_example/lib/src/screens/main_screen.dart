@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/repository/contentful_repository.dart';
+import 'package:flutter_example/src/widgets/post_preview_list.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -9,24 +10,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _repo = ContentfulRepository();
+  final _contentfulRepository = ContentfulRepository();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('data'),
-      ),
+          child: PostPreviewList(
+        photoList: [],
+      )),
     );
   }
 
   @override
   void initState() {
-    //_getSpace();
     super.initState();
   }
 
   Future<void> _getSpace() async {
-    final _ = await _repo.getPosts();
+    final _ = await _contentfulRepository.getPosts();
   }
 }

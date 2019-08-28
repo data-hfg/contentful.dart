@@ -18,16 +18,17 @@ class PostPreviewList extends StatelessWidget {
         itemCount: 100,
         itemBuilder: (_, index) {
           return PostPreviewItem(
-              photo: photoList[index],
-              postItemDidTapped: (photo) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    settings: RouteSettings(name: '/photo-${photo.id}'),
-                    builder: (context) => PostDetails(photo: photo),
-                  ),
-                );
-              });
+            photo: photoList[index],
+            postItemDidTapped: (photo) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  settings: RouteSettings(name: '/photo-${photo.id}'),
+                  builder: (context) => PostDetails(photo: photo),
+                ),
+              );
+            },
+          );
         },
       ),
     );
