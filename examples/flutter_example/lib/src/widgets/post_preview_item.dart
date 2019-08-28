@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/models/post.dart';
 
-class PostItems extends StatelessWidget {
+class PostPreviewItem extends StatelessWidget {
   final Post post;
+
   final ValueChanged<Post> postItemDidTapped;
 
-  const PostItems({
-    Key key,
+  const PostPreviewItem({
     @required this.post,
     @required this.postItemDidTapped,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -18,8 +19,10 @@ class PostItems extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () => postItemDidTapped(post),
       child: Container(
-        child: Text(
-          post.fields.description,
+        margin: const EdgeInsets.all(4),
+        child: Image.network(
+          'jdhd',
+          fit: BoxFit.cover,
         ),
       ),
     );

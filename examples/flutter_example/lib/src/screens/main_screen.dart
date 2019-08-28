@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _getSpace();
+    //_getSpace();
     super.initState();
   }
 
