@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/prototyping_ui/photo.dart';
 import 'package:flutter_example/src/prototyping_ui/photos_repository.dart';
-import 'package:flutter_example/src/repository/contentful_repository.dart';
 import 'package:flutter_example/src/widgets/post_preview_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _getPhotos() async {
     final items = await _photoRepository.fetchPhotos(page: 3);
-    print(items.first.publishedAt);
+    print(items);
     setState(() => photoList = items.toList());
   }
   // Future<void> _getSpace() async {

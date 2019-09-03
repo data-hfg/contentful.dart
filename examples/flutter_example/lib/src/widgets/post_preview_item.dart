@@ -54,7 +54,8 @@ class PostPreviewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'POST TITLE',
+                    photo.postTitle.toUpperCase(),
+                    // 'POST',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
