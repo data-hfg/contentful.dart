@@ -14,27 +14,25 @@ class PostDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        brightness: Brightness.light,
+        elevation: 1,
+        bottomOpacity: 0,
         leading: FlatButton(
           child: Text('<'),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Center(
-          child: Text(
-            photo.postTitle,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
+        title: Text(
+          photo.postTitle,
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
           ),
         ),
-        backgroundColor: Colors.white,
-        brightness: Brightness.light,
-        elevation: 1,
-        bottomOpacity: 0,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
