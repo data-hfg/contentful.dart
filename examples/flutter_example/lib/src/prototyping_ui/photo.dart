@@ -46,6 +46,10 @@ abstract class Photo implements Built<Photo, PhotoBuilder> {
 
   String get postTitle => randomPostTitle();
 
+  String get postBody => randomPostBody();
+
+  BuiltList<String> get tags => BuiltList.from(randomTags());
+
   String toJson() {
     return json.encode(serializers.serializeWith(Photo.serializer, this));
   }
