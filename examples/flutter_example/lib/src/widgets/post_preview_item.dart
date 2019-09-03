@@ -41,7 +41,7 @@ class PostPreviewItem extends StatelessWidget {
                     Colors.black54.withOpacity(0.4),
                   ],
                   stops: [
-                    0.6,
+                    0.5,
                     0.9,
                   ],
                 ),
@@ -50,12 +50,25 @@ class PostPreviewItem extends StatelessWidget {
             Positioned(
               bottom: 8,
               left: 8,
-              child: Text(
-                'POST TITLE',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'POST TITLE',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    photo.publishedAt,
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

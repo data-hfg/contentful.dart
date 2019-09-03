@@ -6,6 +6,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_example/src/models/serializers.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter_example/src/utils/free_functions.dart';
 
 part 'photo.g.dart';
 
@@ -40,6 +42,9 @@ abstract class Photo implements Built<Photo, PhotoBuilder> {
   }) {
     return 'https://picsum.photos/id/${this.id}/${width}/${height}';
   }
+
+  @memoized
+  String get publishedAt => randomDateInThePast();
 
   String toJson() {
     return json.encode(serializers.serializeWith(Photo.serializer, this));
