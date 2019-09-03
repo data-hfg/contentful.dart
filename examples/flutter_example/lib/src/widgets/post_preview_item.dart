@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/prototyping_ui/photo.dart';
+import 'package:flutter_example/src/utils/free_functions.dart';
 
 class PostPreviewItem extends StatelessWidget {
   final Photo photo;
@@ -13,7 +14,6 @@ class PostPreviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context);
     return GestureDetector(
       key: UniqueKey(),
       behavior: HitTestBehavior.opaque,
@@ -55,7 +55,7 @@ class PostPreviewItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: screenSize.size.width - 16,
+                    width: screenSize(context: context).width - 16,
                     child: Text(
                       photo.postTitle,
                       maxLines: 2,

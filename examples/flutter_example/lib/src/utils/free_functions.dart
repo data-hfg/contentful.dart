@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:intl/intl.dart';
 
@@ -28,4 +29,8 @@ List<String> randomTags() {
 
 String randomPostBody() {
   return lorem(paragraphs: _randomInt(1, 10), words: _randomInt(100, 300));
+}
+
+Size screenSize({@required BuildContext context}) {
+  return MediaQuery.of(context).size;
 }
