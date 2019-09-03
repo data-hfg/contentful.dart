@@ -23,8 +23,9 @@ String randomPostTitle() {
 }
 
 List<String> randomTags() {
-  final text = lorem(paragraphs: 1, words: _randomInt(2, 6));
-  return text.split(' ');
+  final text = lorem(paragraphs: 1, words: _randomInt(1, 8));
+  final cleanText = text.replaceAll(RegExp(r'[^\w\s]+'), '');
+  return cleanText.split(' ');
 }
 
 String randomPostBody() {
