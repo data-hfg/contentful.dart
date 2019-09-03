@@ -73,9 +73,9 @@ class PostDetails extends StatelessWidget {
                 ),
                 Divider(color: Colors.grey[350], height: 2),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
                   child: Align(
-                    alignment: Alignment.topLeft,
+                    alignment: Alignment.topCenter,
                     child: Wrap(
                       alignment: WrapAlignment.center,
                       spacing: 8,

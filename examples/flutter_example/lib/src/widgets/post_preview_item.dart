@@ -66,11 +66,15 @@ class PostPreviewItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    photo.publishedAt,
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
+                  Opacity(
+                    opacity: 0.7,
+                    child: Text(
+                      'Published at: ${photo.publishedAt}',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
                     ),
                   ),
                 ],
