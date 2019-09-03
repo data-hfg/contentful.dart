@@ -13,6 +13,7 @@ class PostPreviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context);
     return GestureDetector(
       key: UniqueKey(),
       behavior: HitTestBehavior.opaque,
@@ -41,8 +42,8 @@ class PostPreviewItem extends StatelessWidget {
                     Colors.black54.withOpacity(0.4),
                   ],
                   stops: [
-                    0.5,
-                    0.9,
+                    0.2,
+                    0.6,
                   ],
                 ),
               ),
@@ -53,12 +54,15 @@ class PostPreviewItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    photo.postTitle.toUpperCase(),
-                    // 'POST',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
+                  SizedBox(
+                    width: screenSize.size.width - 16,
+                    child: Text(
+                      photo.postTitle,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 4),

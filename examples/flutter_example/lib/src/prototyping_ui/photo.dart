@@ -42,10 +42,8 @@ abstract class Photo implements Built<Photo, PhotoBuilder> {
     return 'https://picsum.photos/id/${this.id}/${width}/${height}';
   }
 
-  @memoized
   String get publishedAt => randomDateInThePast();
 
-  @memoized
   String get postTitle => randomPostTitle();
 
   String toJson() {

@@ -21,6 +21,5 @@ String randomDateInThePast() {
 }
 
 String randomPostTitle() {
-  final rand = _randomInt() * _dayInMilliseconds;
-  return lorem(paragraphs: 1, words: rand);
+  return lorem(paragraphs: 1, words: 8);
 }

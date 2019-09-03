@@ -92,8 +92,6 @@ class _$Photo extends Photo {
   final String url;
   @override
   final int width;
-  String __publishedAt;
-  String __postTitle;
 
   factory _$Photo([void Function(PhotoBuilder) updates]) =>
       (new PhotoBuilder()..update(updates)).build();
@@ -120,12 +118,6 @@ class _$Photo extends Photo {
       throw new BuiltValueNullFieldError('Photo', 'width');
     }
   }
-
-  @override
-  String get publishedAt => __publishedAt ??= super.publishedAt;
-
-  @override
-  String get postTitle => __postTitle ??= super.postTitle;
 
   @override
   Photo rebuild(void Function(PhotoBuilder) updates) =>
