@@ -6,12 +6,14 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/models/post_fields.dart';
 import 'package:contentful_dart/contentful_dart.dart';
+import 'package:flutter_example/src/prototyping_ui/photo.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
   Post,
   PostFields,
+  Photo,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
