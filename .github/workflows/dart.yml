@@ -23,4 +23,6 @@ jobs:
         cd package
         pub get
     - name: Run tests
-      run: pub run test
+      run: |
+        cd package
+        pub run test
