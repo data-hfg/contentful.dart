@@ -8,6 +8,7 @@ import './models/asset_test.dart' as asset;
 import './models/content_type_response_test.dart' as content_type_response;
 import './models/content_type_test.dart' as content_type;
 import './models/endpoint_test.dart' as endpoint_test;
+import './models/entry_list_test.dart' as entry_list;
 import './models/field_test.dart' as field;
 import './models/field_type_test.dart' as field_type;
 import './models/link_test.dart' as link;
@@ -35,4 +36,5 @@ void main() {
   location.main();
   space.main();
   sys.main();
+  entry_list.main();
 }
