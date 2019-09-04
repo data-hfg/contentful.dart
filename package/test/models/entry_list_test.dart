@@ -11,12 +11,12 @@ void main() {
       expect(entryList, const TypeMatcher<EntryList>());
     });
 
-    test('returns json string from EntryList', () {
-      final entryList = EntryList.fromJson(loadFixture('entries'));
+    // test('returns json string from EntryList', () {
+    //   final entryList = EntryList.fromJson(loadFixture('entries'));
 
-      final entryListString = entryList.toJson();
+    //   final entryListString = entryList.toJson();
 
-      expect(entryListString, const TypeMatcher<String>());
-    });
+    //   expect(entryListString, const TypeMatcher<String>());
+    // });
   });
 }
