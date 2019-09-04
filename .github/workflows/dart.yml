@@ -19,7 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
-      run: cd package
-      run: pub get
+      run: |
+        cd package
+        pub get
     - name: Run tests
       run: pub run test
