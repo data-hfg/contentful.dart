@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _getPhotos() async {
     final items = await _photoRepository.fetchPhotos(page: 3);
-    print(items.first.postBody);
     setState(() => photoList = items.toList());
   }
   // Future<void> _getSpace() async {
