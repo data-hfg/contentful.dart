@@ -14,7 +14,7 @@ class ContentfulDiscriminatorPlugin extends SerializerPlugin {
 
   @override
   Object beforeDeserialize(Object object, FullType specifiedType) {
-    if (specifiedType.root == Entry) {
+    if (specifiedType.root == EntryList) {
       print('====ContentfulJsonPlugin====: ${specifiedType.root} $object');
     }
     return object;
