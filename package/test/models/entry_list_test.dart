@@ -6,9 +6,9 @@ import '../utils/load_fixture.dart';
 void main() {
   group('EntryList Tests', () {
     test('returns instance of EntryList from json', () {
-      // final entryList = EntryList.fromJson(loadFixture('entries'));
+      final entryList = EntryList.fromJson(loadFixture('entries'));
 
-      // expect(entryList, const TypeMatcher<EntryList>());
+      expect(entryList, const TypeMatcher<EntryList>());
     });
 
     // test('returns json string from EntryList', () {
