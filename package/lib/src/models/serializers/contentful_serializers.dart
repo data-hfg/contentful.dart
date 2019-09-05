@@ -28,8 +28,7 @@ part 'contentful_serializers.g.dart';
   SystemFields,
 ])
 final Serializers contentfulSerializers = (_$contentfulSerializers.toBuilder()
-      ..addPlugin(StandardJsonPlugin())
-      ..addPlugin(DiscriminatorPlugin()))
+      ..addPlugin(StandardJsonPlugin()))
     .build();
 
 T deserialize<T>(dynamic value) => contentfulSerializers.deserializeWith<T>(

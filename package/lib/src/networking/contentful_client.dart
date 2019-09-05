@@ -62,10 +62,10 @@ class ContentfulClient {
 
     final jsonResponse = json.decode(utf8.decode(response.bodyBytes));
 
-    if (jsonResponse['includes'] != null) {
-      final includes = Includes.fromJson(jsonResponse['includes']);
-      jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
-    }
+    // if (jsonResponse['includes'] != null) {
+    //   final includes = Includes.fromJson(jsonResponse['includes']);
+    //   jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
+    // }
 
     return EntryList.fromJson(response.body);
   }
