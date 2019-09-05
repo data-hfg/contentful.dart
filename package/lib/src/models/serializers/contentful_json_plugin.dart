@@ -1,6 +1,7 @@
 import 'package:built_value/serializer.dart';
+import 'package:contentful_dart/src/models/models.dart';
 
-class DiscriminatorPlugin extends SerializerPlugin {
+class ContentfulJsonPlugin extends SerializerPlugin {
   @override
   Object afterDeserialize(Object object, FullType specifiedType) {
     return object;
@@ -13,8 +14,12 @@ class DiscriminatorPlugin extends SerializerPlugin {
 
   @override
   Object beforeDeserialize(Object object, FullType specifiedType) {
-    // TODO: implement beforeDeserialize
-    return null;
+    if (specifiedType.root == Entry) {
+      print('Entry: ${specifiedType.root} $object');
+    } else {
+      print('ContentfulJsonPlugin: ${specifiedType.root} $object');
+    }
+    return object;
   }
 
   @override
