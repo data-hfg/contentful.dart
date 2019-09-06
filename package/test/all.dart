@@ -14,6 +14,7 @@ import './models/field_type_test.dart' as field_type;
 import './models/link_test.dart' as link;
 import './models/locale_test.dart' as locale;
 import './models/location_test.dart' as location;
+import './models/post_list_test.dart' as post_list;
 import './models/post_test.dart' as post_test;
 import './models/space_test.dart' as space;
 import './models/system_fields_test.dart' as sys;
@@ -36,6 +37,7 @@ void main() {
   link.main();
   locale.main();
   location.main();
+  post_list.main();
   post_test.main();
   space.main();
   sys.main();
