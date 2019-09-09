@@ -64,7 +64,7 @@ See the [Flutter app on Github](https://github.com/data-hfg/contentful.dart/tree
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?maxAge=31557600)](http://makeapullrequest.com)
 
-We appreciate any help on our repositories. For more details about how to contribute see our [Contributing.md](Contributing.md) document.
+We appreciate any help on our repositories. For more details about how to contribute see our [Contributing.md](CONTRIBUTING.md) document.
 
 ## License
 
