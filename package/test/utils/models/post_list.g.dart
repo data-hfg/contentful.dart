@@ -1,32 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of entry_list;
+part of post_list;
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<EntryList> _$entryListSerializer = new _$EntryListSerializer();
+Serializer<PostList> _$postListSerializer = new _$PostListSerializer();
 
-class _$EntryListSerializer implements StructuredSerializer<EntryList> {
+class _$PostListSerializer implements StructuredSerializer<PostList> {
   @override
-  final Iterable<Type> types = const [EntryList, _$EntryList];
+  final Iterable<Type> types = const [PostList, _$PostList];
   @override
-  final String wireName = 'EntryList';
+  final String wireName = 'PostList';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, EntryList object,
+  Iterable<Object> serialize(Serializers serializers, PostList object,
       {FullType specifiedType = FullType.unspecified}) {
-    final isUnderspecified =
-        specifiedType.isUnspecified || specifiedType.parameters.isEmpty;
-    if (!isUnderspecified) serializers.expectBuilder(specifiedType);
-    final parameterT =
-        isUnderspecified ? FullType.object : specifiedType.parameters[0];
-
     final result = <Object>[
+      'includes',
+      serializers.serialize(object.includes,
+          specifiedType: const FullType(BuiltListMultimap)),
       'items',
       serializers.serialize(object.items,
-          specifiedType: new FullType(BuiltList, [parameterT])),
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Post)])),
       'limit',
       serializers.serialize(object.limit, specifiedType: const FullType(int)),
       'skip',
@@ -42,17 +40,9 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
   }
 
   @override
-  EntryList deserialize(Serializers serializers, Iterable<Object> serialized,
+  PostList deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final isUnderspecified =
-        specifiedType.isUnspecified || specifiedType.parameters.isEmpty;
-    if (!isUnderspecified) serializers.expectBuilder(specifiedType);
-    final parameterT =
-        isUnderspecified ? FullType.object : specifiedType.parameters[0];
-
-    final result = isUnderspecified
-        ? new EntryListBuilder<Entry<dynamic>>()
-        : serializers.newBuilder(specifiedType) as EntryListBuilder;
+    final result = new PostListBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -60,9 +50,15 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'includes':
+          result.includes = serializers.deserialize(value,
+                  specifiedType: const FullType(BuiltListMultimap))
+              as BuiltListMultimap<dynamic, dynamic>;
+          break;
         case 'items':
           result.items.replace(serializers.deserialize(value,
-                  specifiedType: new FullType(BuiltList, [parameterT]))
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Post)]))
               as BuiltList<dynamic>);
           break;
         case 'limit':
@@ -88,9 +84,11 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
   }
 }
 
-class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
+class _$PostList extends PostList {
   @override
-  final BuiltList<T> items;
+  final BuiltListMultimap includes;
+  @override
+  final BuiltList<Post> items;
   @override
   final int limit;
   @override
@@ -100,42 +98,44 @@ class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   @override
   final int total;
 
-  factory _$EntryList([void Function(EntryListBuilder<T>) updates]) =>
-      (new EntryListBuilder<T>()..update(updates)).build();
+  factory _$PostList([void Function(PostListBuilder) updates]) =>
+      (new PostListBuilder()..update(updates)).build();
 
-  _$EntryList._({this.items, this.limit, this.skip, this.sys, this.total})
+  _$PostList._(
+      {this.includes, this.items, this.limit, this.skip, this.sys, this.total})
       : super._() {
+    if (includes == null) {
+      throw new BuiltValueNullFieldError('PostList', 'includes');
+    }
     if (items == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'items');
+      throw new BuiltValueNullFieldError('PostList', 'items');
     }
     if (limit == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'limit');
+      throw new BuiltValueNullFieldError('PostList', 'limit');
     }
     if (skip == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'skip');
+      throw new BuiltValueNullFieldError('PostList', 'skip');
     }
     if (sys == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'sys');
+      throw new BuiltValueNullFieldError('PostList', 'sys');
     }
     if (total == null) {
-      throw new BuiltValueNullFieldError('EntryList', 'total');
-    }
-    if (T == dynamic) {
-      throw new BuiltValueMissingGenericsError('EntryList', 'T');
+      throw new BuiltValueNullFieldError('PostList', 'total');
     }
   }
 
   @override
-  EntryList<T> rebuild(void Function(EntryListBuilder<T>) updates) =>
+  PostList rebuild(void Function(PostListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EntryListBuilder<T> toBuilder() => new EntryListBuilder<T>()..replace(this);
+  PostListBuilder toBuilder() => new PostListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is EntryList &&
+    return other is PostList &&
+        includes == other.includes &&
         items == other.items &&
         limit == other.limit &&
         skip == other.skip &&
@@ -146,14 +146,19 @@ class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, items.hashCode), limit.hashCode), skip.hashCode),
+        $jc(
+            $jc(
+                $jc($jc($jc(0, includes.hashCode), items.hashCode),
+                    limit.hashCode),
+                skip.hashCode),
             sys.hashCode),
         total.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('EntryList')
+    return (newBuiltValueToStringHelper('PostList')
+          ..add('includes', includes)
           ..add('items', items)
           ..add('limit', limit)
           ..add('skip', skip)
@@ -163,13 +168,16 @@ class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   }
 }
 
-class EntryListBuilder<T extends Entry<dynamic>>
-    implements Builder<EntryList<T>, EntryListBuilder<T>> {
-  _$EntryList<T> _$v;
+class PostListBuilder implements Builder<PostList, PostListBuilder> {
+  _$PostList _$v;
 
-  ListBuilder<T> _items;
-  ListBuilder<T> get items => _$this._items ??= new ListBuilder<T>();
-  set items(ListBuilder<T> items) => _$this._items = items;
+  BuiltListMultimap _includes;
+  BuiltListMultimap get includes => _$this._includes;
+  set includes(BuiltListMultimap includes) => _$this._includes = includes;
+
+  ListBuilder<Post> _items;
+  ListBuilder<Post> get items => _$this._items ??= new ListBuilder<Post>();
+  set items(ListBuilder<Post> items) => _$this._items = items;
 
   int _limit;
   int get limit => _$this._limit;
@@ -187,10 +195,11 @@ class EntryListBuilder<T extends Entry<dynamic>>
   int get total => _$this._total;
   set total(int total) => _$this._total = total;
 
-  EntryListBuilder();
+  PostListBuilder();
 
-  EntryListBuilder<T> get _$this {
+  PostListBuilder get _$this {
     if (_$v != null) {
+      _includes = _$v.includes;
       _items = _$v.items?.toBuilder();
       _limit = _$v.limit;
       _skip = _$v.skip;
@@ -202,24 +211,25 @@ class EntryListBuilder<T extends Entry<dynamic>>
   }
 
   @override
-  void replace(EntryList<T> other) {
+  void replace(PostList other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$EntryList<T>;
+    _$v = other as _$PostList;
   }
 
   @override
-  void update(void Function(EntryListBuilder<T>) updates) {
+  void update(void Function(PostListBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$EntryList<T> build() {
-    _$EntryList<T> _$result;
+  _$PostList build() {
+    _$PostList _$result;
     try {
       _$result = _$v ??
-          new _$EntryList<T>._(
+          new _$PostList._(
+              includes: includes,
               items: items.build(),
               limit: limit,
               skip: skip,
@@ -235,7 +245,7 @@ class EntryListBuilder<T extends Entry<dynamic>>
         sys.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'EntryList', _$failedField, e.toString());
+            'PostList', _$failedField, e.toString());
       }
       rethrow;
     }

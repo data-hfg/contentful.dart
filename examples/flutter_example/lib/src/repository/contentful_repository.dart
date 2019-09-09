@@ -27,6 +27,23 @@ class ContentfulRepository {
     }
   }
 
+  Future<Post> getPost() async {
+    try {
+      final item = await _contentfulClient.getEntry<Post>(
+        entryId: 'id',
+        params: {
+          'content_type': 'blogPost',
+          'order': 'sys.createdAt',
+        },
+        fromJson: Post.fromJson,
+      );
+
+      return item;
+    } on ContentfulError catch (error) {
+      throw ContentfulError(message: error.message);
+    }
+  }
+
   Future<Post> getPosts() async {
     try {
       final entries = await _contentfulClient.getEntries<Post>(

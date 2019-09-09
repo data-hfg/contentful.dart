@@ -1,0 +1,699 @@
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 7,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "59mbJSqBh8LGh2kAGXbAXT",
+        "type": "Entry",
+        "createdAt": "2019-09-05T09:58:48.321Z",
+        "updatedAt": "2019-09-05T09:58:48.321Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Now You Can Have Your FOOD Done Safely",
+        "slug": "automate-with-webhooks",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "4shwYI3POEGkw0Eg6kcyaQ"
+          }
+        },
+        "description": "Webhooks notify you, another person or system when resources have changed by calling a given HTTP endpoint.",
+        "body": "## What are webhooks?\n\nThe webhooks are used to notify you when content has been changed. Specify a URL, configure your webhook, and we will send an HTTP POST request whenever something happens to your content.\n\n## How do I configure a webhook?\n\nGo to Settings → Webhooks from the navigation bar at the top. From there, hit Add webhook, and you will be directed to your new webhook. Then choose a name, put in the information of your HTTP endpoint (URL and authentication), specify any custom headers and select the types of events that should trigger the webhook.\n\n## Why do I get an old version in the CDA?\n\nAs the delivery API is powered by a CDN network consisting of hundreds of servers distributed across continents, it takes some time (up to a few minutes) to reflect the changes to the published content. This must be taken into consideration when reacting to webhooks. In normal conditions, there could be a reasonable delay of 2 to 5 minutes.\n\nExtracted from the [Webhooks FAQ](https://www.contentful.com/faq/webhooks/ \"Webhooks FAQ\").",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-12T00:00+02:00",
+        "tags": [
+          "javascript"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "52MtRdqczOs1x9B77GbeYh",
+        "type": "Entry",
+        "createdAt": "2019-08-20T14:27:21.495Z",
+        "updatedAt": "2019-08-20T14:27:21.495Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Why I Hate FOOD",
+        "slug": "hello-world",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "6Od9v3wzLOysiMum0Wkmme"
+          }
+        },
+        "description": "Your very first content with Contentful, pulled in JSON format using the Content Delivery API.",
+        "body": "These is your very first content with Contentful, pulled in JSON format using the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ \"Content Delivery API\"). Content and presentation are now decoupled, allowing you to focus your efforts in building the perfect app.\n\n## Your first steps\n\nBuilding with Contentful is easy. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ \"the basics of content modelling\"), which you can set up in the [Contentful Web app](https://app.contentful.com/ \"Contentful Web app\"). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ \"Documentation\") to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ \"API basics\") and each one of our four APIs, as shown below.\n\n### Content Delivery API\n\nThe [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ \"Content Delivery API\") (CDA), available at `cdn.contentful.com`, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.\nThe API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.\n\n### Content Management API\n\nThe [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/ \"Content Management API\") (CMA), available at `api.contentful.com`, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:\n* Automatic imports from different CMSes like WordPress or Drupal.\n* Integration with other backend systems, such as an e-commerce shop.\n* Building custom editing experiences. We built the [Contentful Web app](https://app.contentful.com/ \"Contentful Web app\") on top of this API.\n\n### Preview API\n\nThe [Content Preview API](https://www.contentful.com/developers/docs/concepts/apis/#content-preview-api \"Content Preview API\"), available at `preview.contentful.com`, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a \"preview\" deployment of your website (or a \"preview\" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a \"preview\" access token as though it were delivered by the CDA.\n\n### Images API\n\nThe [Images API](https://www.contentful.com/developers/docs/concepts/apis/#images-api \"Images API\"), available at `images.contentful.com`, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-15T00:00+02:00",
+        "tags": [
+          "general"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "1WEZd7SKKqQItBVzsOd60E",
+        "type": "Entry",
+        "createdAt": "2019-08-20T14:52:03.255Z",
+        "updatedAt": "2019-08-20T14:52:03.255Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Moving Fast with Dart Immutable Values",
+        "slug": "Moving Fast with Dart Immutable Values",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "4gCzH73vFE1YN9fmnszAD"
+          }
+        },
+        "description": "Dart’s built_value provides powerful, convenient immutable values for Dart. The values might be immutable, but the package hasn’t been standing still! In the six months since I last wrote about built_value there have been ten major improvements to the package.",
+        "body": ". Generic classes\nSophisticated object models use generics, so of course built_value needs generics. You can now declare your type using generics and the generated builder class will also support them:\nabstract class GenericValue<T>\n    implements Built<GenericValue<T>, GenericValueBuilder<T>> {\n  T get value;\n  ...\n}\nvar value = new GenericValue<String>((b) => b..value = 'string');\nValue types using generics are serializable, as usual.\n2. Serializer plugins\nA new SerializerPlugin API allows you to make cross-cutting modifications to serialization, by running arbitrary code before and after every object is serialized or deserialized.\nYou could, for example, use this to map between two wire-incompatible versions of a protocol. But a better example is the next improvement…\n3. “Standard JSON” serializer plugin\nBy default, built_value serializes to and from its own list-based JSON format, for performance and flexibility.\nBut many people need to inter-operate with existing JSON data and APIs. What should they do?\nNow, you can install StandardJsonPlugin and switch to a standard map-based JSON format.",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "7cmXisibCFMtHyUTAWqmRq"
+          }
+        },
+        "publishDate": "2019-08-21T00:00+03:00",
+        "tags": [
+          "javascript"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "2PtC9h1YqIA6kaUaIsWEQ0",
+        "type": "Entry",
+        "createdAt": "2019-08-19T08:53:14.665Z",
+        "updatedAt": "2019-08-19T08:53:14.665Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Static sites are great",
+        "slug": "static-sites-are-great",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "4NzwDSDlGECGIiokKomsyI"
+          }
+        },
+        "description": "Worry less about security, caching, and talking to the server. Static sites are the new thing.",
+        "body": "## The case for the static site generator\n\nMore and more developers are jumping on the \"go static train\", and rightfully so. Static pages are fast, lightweight, they scale well. They are more secure, and simple to maintain and they allow you to focus all your time and effort on the user interface. Often times, this dedication really shows.\n\nIt just so happens that static site generators are mostly loved by developers, but not by the average Joe. They do not offer WYSIWYG, previewing on demo sites may take an update cycle, they are often based on markdown text files, and they require some knowledge of modern day repositories.\n\nMoreover, when teams are collaborating, it can get complicated quickly. Has this article already been proof-read or reviewed? Is this input valid? Are user permissions available, e.g. for administering adding and removing team members? Can this article be published at a future date? How can a large repository of content be categorized, organized, and searched? All these requirements have previously been more or less solved within the admin area of your CMS. But of course with all the baggage that made you leave the appserver-app-database-in-one-big-blob stack in the first place.\n\n## Content APIs to the rescue\n\nAn alternative is decoupling the content management aspect from the system. And then replacing the maintenance prone server with a cloud based web service offering. Effectively, instead of your CMS of old, you move to a [Content Management as a Service (CMaaS)](https://www.contentful.com/r/knowledgebase/content-as-a-service/ \"Content Management as a Service (CMaaS)\") world, with a content API to deliver all your content. That way, you get the all the [benefits of content management features](http://www.digett.com/blog/01/16/2014/pairing-static-websites-cms \"benefits of content management features\") while still being able to embrace the static site generator mantra.\n\nIt so happens that Contentful is offering just that kind of content API. A service that\n\n* from the ground up has been designed to be fast, scalable, secure, and offer high uptime, so that you don’t have to worry about maintenance ever again.\n* offers a powerful editor and lots of flexibility in creating templates for your documents that your editors can reuse and combine, so that no developers resources are required in everyday writing and updating tasks.\n* separates content from presentation, so you can reuse your content repository for any device platform your heart desires. That way, you can COPE (\"create once, publish everywhere\").\n* offers webhooks that you can use to rebuild your static site in a fully automated fashion every time your content is modified.\n\nExtracted from the article [CMS-functionality for static site generators](https://www.contentful.com/r/knowledgebase/contentful-api-cms-static-site-generators/ \"CMS-functionality for static site generators\"). Read more about the [static site generators supported by Contentful](https://www.contentful.com/developers/docs/tools/staticsitegenerators/ \"static site generators supported by Contentful\").",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-16T00:00+02:00",
+        "tags": [
+          "javascript",
+          "static-sites"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "685EVQLrVDFFk8qOvHhS8x",
+        "type": "Entry",
+        "createdAt": "2019-08-20T14:26:25.652Z",
+        "updatedAt": "2019-08-20T14:26:25.652Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Now You Can Have Your FOOD Done Safely",
+        "slug": "automate-with-webhooks",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "4shwYI3POEGkw0Eg6kcyaQ"
+          }
+        },
+        "description": "Webhooks notify you, another person or system when resources have changed by calling a given HTTP endpoint.",
+        "body": "## What are webhooks?\n\nThe webhooks are used to notify you when content has been changed. Specify a URL, configure your webhook, and we will send an HTTP POST request whenever something happens to your content.\n\n## How do I configure a webhook?\n\nGo to Settings → Webhooks from the navigation bar at the top. From there, hit Add webhook, and you will be directed to your new webhook. Then choose a name, put in the information of your HTTP endpoint (URL and authentication), specify any custom headers and select the types of events that should trigger the webhook.\n\n## Why do I get an old version in the CDA?\n\nAs the delivery API is powered by a CDN network consisting of hundreds of servers distributed across continents, it takes some time (up to a few minutes) to reflect the changes to the published content. This must be taken into consideration when reacting to webhooks. In normal conditions, there could be a reasonable delay of 2 to 5 minutes.\n\nExtracted from the [Webhooks FAQ](https://www.contentful.com/faq/webhooks/ \"Webhooks FAQ\").",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-12T00:00+02:00",
+        "tags": [
+          "javascript"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "31TNnjHlfaGUoMOwU0M2og",
+        "type": "Entry",
+        "createdAt": "2019-08-19T08:53:14.659Z",
+        "updatedAt": "2019-08-19T08:53:14.659Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Automate with webhooks",
+        "slug": "automate-with-webhooks",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "4shwYI3POEGkw0Eg6kcyaQ"
+          }
+        },
+        "description": "Webhooks notify you, another person or system when resources have changed by calling a given HTTP endpoint.",
+        "body": "## What are webhooks?\n\nThe webhooks are used to notify you when content has been changed. Specify a URL, configure your webhook, and we will send an HTTP POST request whenever something happens to your content.\n\n## How do I configure a webhook?\n\nGo to Settings → Webhooks from the navigation bar at the top. From there, hit Add webhook, and you will be directed to your new webhook. Then choose a name, put in the information of your HTTP endpoint (URL and authentication), specify any custom headers and select the types of events that should trigger the webhook.\n\n## Why do I get an old version in the CDA?\n\nAs the delivery API is powered by a CDN network consisting of hundreds of servers distributed across continents, it takes some time (up to a few minutes) to reflect the changes to the published content. This must be taken into consideration when reacting to webhooks. In normal conditions, there could be a reasonable delay of 2 to 5 minutes.\n\nExtracted from the [Webhooks FAQ](https://www.contentful.com/faq/webhooks/ \"Webhooks FAQ\").",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-12T00:00+02:00",
+        "tags": [
+          "javascript"
+        ]
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ptvfv26c3ni8"
+          }
+        },
+        "id": "3K9b0esdy0q0yGqgW2g6Ke",
+        "type": "Entry",
+        "createdAt": "2019-08-19T08:53:15.077Z",
+        "updatedAt": "2019-08-19T08:53:15.077Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 1,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blogPost"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Hello world",
+        "slug": "hello-world",
+        "heroImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "6Od9v3wzLOysiMum0Wkmme"
+          }
+        },
+        "description": "Your very first content with Contentful, pulled in JSON format using the Content Delivery API.",
+        "body": "These is your very first content with Contentful, pulled in JSON format using the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ \"Content Delivery API\"). Content and presentation are now decoupled, allowing you to focus your efforts in building the perfect app.\n\n## Your first steps\n\nBuilding with Contentful is easy. First take a moment to get [the basics of content modelling](https://www.contentful.com/r/knowledgebase/content-modelling-basics/ \"the basics of content modelling\"), which you can set up in the [Contentful Web app](https://app.contentful.com/ \"Contentful Web app\"). Once you get that, feel free to drop by the [Documentation](https://www.contentful.com/developers/docs/ \"Documentation\") to learn a bit more about how to build your app with Contentful, in particular the [API basics](https://www.contentful.com/developers/docs/concepts/apis/ \"API basics\") and each one of our four APIs, as shown below.\n\n### Content Delivery API\n\nThe [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/ \"Content Delivery API\") (CDA), available at `cdn.contentful.com`, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.\nThe API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.\n\n### Content Management API\n\nThe [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/ \"Content Management API\") (CMA), available at `api.contentful.com`, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:\n* Automatic imports from different CMSes like WordPress or Drupal.\n* Integration with other backend systems, such as an e-commerce shop.\n* Building custom editing experiences. We built the [Contentful Web app](https://app.contentful.com/ \"Contentful Web app\") on top of this API.\n\n### Preview API\n\nThe [Content Preview API](https://www.contentful.com/developers/docs/concepts/apis/#content-preview-api \"Content Preview API\"), available at `preview.contentful.com`, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Content Preview API in combination with a \"preview\" deployment of your website (or a \"preview\" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a \"preview\" access token as though it were delivered by the CDA.\n\n### Images API\n\nThe [Images API](https://www.contentful.com/developers/docs/concepts/apis/#images-api \"Images API\"), available at `images.contentful.com`, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.",
+        "author": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "15jwOBqpxqSAOy2eOO4S0m"
+          }
+        },
+        "publishDate": "2017-05-15T00:00+02:00",
+        "tags": [
+          "general"
+        ]
+      }
+    }
+  ],
+  "includes": {
+    "Entry": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "15jwOBqpxqSAOy2eOO4S0m",
+          "type": "Entry",
+          "createdAt": "2019-08-19T08:53:15.052Z",
+          "updatedAt": "2019-08-19T08:53:15.052Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "person"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "John Doe",
+          "title": "Web Developer",
+          "company": "ACME",
+          "shortBio": "Research and recommendations for modern stack websites.",
+          "email": "john@doe.com",
+          "phone": "0176 / 1234567",
+          "facebook": "johndoe",
+          "twitter": "johndoe",
+          "github": "johndoe",
+          "image": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "7orLdboQQowIUs22KAW4U"
+            }
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "7cmXisibCFMtHyUTAWqmRq",
+          "type": "Entry",
+          "createdAt": "2019-08-20T14:28:09.827Z",
+          "updatedAt": "2019-08-20T14:53:19.622Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 3,
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "person"
+            }
+          },
+          "locale": "en-US"
+        },
+        "fields": {
+          "name": "Steve Bug",
+          "title": "Web Developer",
+          "company": "ACME",
+          "shortBio": "![photo-1566223940272-1ad81d4ed6be](//images.ctfassets.net/ptvfv26c3ni8/7lPNpeHREiT67T8hl1dfv1/426ffdc0fb9ff2555bbc6f2b83e8b08f/photo-1566223940272-1ad81d4ed6be)Research and recommendations for modern stack websites.",
+          "email": "john@doe.com",
+          "phone": "0176 / 1234567",
+          "facebook": "johndoe",
+          "twitter": "johndoe",
+          "github": "johndoe",
+          "image": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "7orLdboQQowIUs22KAW4U"
+            }
+          }
+        }
+      }
+    ],
+    "Asset": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "4NzwDSDlGECGIiokKomsyI",
+          "type": "Asset",
+          "createdAt": "2019-08-19T08:53:15.675Z",
+          "updatedAt": "2019-08-19T08:53:15.675Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "City",
+          "description": "City pictured from the sky",
+          "file": {
+            "url": "//images.ctfassets.net/ptvfv26c3ni8/4NzwDSDlGECGIiokKomsyI/66b6d7c3d0c7a26e90fda3d92670a9a4/denys-nevozhai-100695.jpg",
+            "details": {
+              "size": 15736986,
+              "image": {
+                "width": 3992,
+                "height": 2992
+              }
+            },
+            "fileName": "denys-nevozhai-100695.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "4gCzH73vFE1YN9fmnszAD",
+          "type": "Asset",
+          "createdAt": "2019-08-20T14:50:04.756Z",
+          "updatedAt": "2019-08-20T14:50:04.756Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "1",
+          "file": {
+            "url": "//images.ctfassets.net/ptvfv26c3ni8/4gCzH73vFE1YN9fmnszAD/2f61d1fa3ab2d17fbc07a359ce26620b/photo-1566221522142-ebbf26f78096",
+            "details": {
+              "size": 66583,
+              "image": {
+                "width": 634,
+                "height": 951
+              }
+            },
+            "fileName": "photo-1566221522142-ebbf26f78096",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "4shwYI3POEGkw0Eg6kcyaQ",
+          "type": "Asset",
+          "createdAt": "2019-08-19T08:53:16.059Z",
+          "updatedAt": "2019-08-19T08:53:16.059Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Man in the fields",
+          "description": "Tattooed man walking in a field",
+          "file": {
+            "url": "//images.ctfassets.net/ptvfv26c3ni8/4shwYI3POEGkw0Eg6kcyaQ/f0f4a8f1bfc8a0535e14939030bba176/felix-russell-saw-112140.jpg",
+            "details": {
+              "size": 4539181,
+              "image": {
+                "width": 2500,
+                "height": 1667
+              }
+            },
+            "fileName": "felix-russell-saw-112140.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "6Od9v3wzLOysiMum0Wkmme",
+          "type": "Asset",
+          "createdAt": "2019-08-19T08:53:15.684Z",
+          "updatedAt": "2019-08-19T08:53:15.684Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Woman with black hat",
+          "description": "Woman wearing a black hat",
+          "file": {
+            "url": "//images.ctfassets.net/ptvfv26c3ni8/6Od9v3wzLOysiMum0Wkmme/9b32e0e56fb8eec9c64e791165f9f20b/cameron-kirby-88711.jpg",
+            "details": {
+              "size": 7316629,
+              "image": {
+                "width": 3000,
+                "height": 2000
+              }
+            },
+            "fileName": "cameron-kirby-88711.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      },
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "ptvfv26c3ni8"
+            }
+          },
+          "id": "7orLdboQQowIUs22KAW4U",
+          "type": "Asset",
+          "createdAt": "2019-08-19T08:53:15.703Z",
+          "updatedAt": "2019-08-19T08:53:15.703Z",
+          "environment": {
+            "sys": {
+              "id": "master",
+              "type": "Link",
+              "linkType": "Environment"
+            }
+          },
+          "revision": 1,
+          "locale": "en-US"
+        },
+        "fields": {
+          "title": "Sparkler",
+          "description": "John with Sparkler",
+          "file": {
+            "url": "//images.ctfassets.net/ptvfv26c3ni8/7orLdboQQowIUs22KAW4U/6653caf3c895d98e18301b746a7bb6d3/matt-palmer-254999.jpg",
+            "details": {
+              "size": 2293094,
+              "image": {
+                "width": 3000,
+                "height": 2000
+              }
+            },
+            "fileName": "matt-palmer-254999.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    ]
+  }
+}
