@@ -1,4 +1,4 @@
-# WIP: - Contentful Dart - Dart Delivery SDK for Contentful
+# Contentful Dart - Dart Delivery SDK for Contentful
 
 [![Build Status](https://travis-ci.org/data-hfg/contentful.dart.svg?branch=develop)](https://travis-ci.org/data-hfg/contentful.dart)
 [![Version](https://img.shields.io/badge/version-0.0.5-blue.svg)](https://github.com/data-hfg/contentful.dart)
@@ -12,7 +12,7 @@
 <summary>Table of contents</summary>
 <!-- TOC -->
 
-- [WIP: - Contentful Dart - Dart Delivery SDK for Contentful](#wip---contentful-dart---dart-delivery-sdk-for-contentful)
+- [Contentful Dart - Dart Delivery SDK for Contentful](#contentful-dart---dart-delivery-sdk-for-contentful)
   - [Core Features](#core-features)
   - [Getting started](#getting-started)
     - [Installation](#installation)
@@ -34,6 +34,7 @@
 
 - Content retrieval through [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/).
 - [Link resolution](https://www.contentful.com/developers/docs/concepts/links/)
+- Up-to-date with the latest Dart development stack: Dart 2.4.1 | built_value 6.7.1
 
 ## Getting started
 
