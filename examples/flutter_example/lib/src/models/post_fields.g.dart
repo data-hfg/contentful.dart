@@ -28,7 +28,7 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
           specifiedType: const FullType(String)),
       'heroImage',
       serializers.serialize(object.heroImage,
-          specifiedType: const FullType(SystemFields)),
+          specifiedType: const FullType(Asset)),
       'publishDate',
       serializers.serialize(object.publishDate,
           specifiedType: const FullType(String)),
@@ -70,7 +70,7 @@ class _$PostFieldsSerializer implements StructuredSerializer<PostFields> {
           break;
         case 'heroImage':
           result.heroImage.replace(serializers.deserialize(value,
-              specifiedType: const FullType(SystemFields)) as SystemFields);
+              specifiedType: const FullType(Asset)) as Asset);
           break;
         case 'publishDate':
           result.publishDate = serializers.deserialize(value,
@@ -105,7 +105,7 @@ class _$PostFields extends PostFields {
   @override
   final String description;
   @override
-  final SystemFields heroImage;
+  final Asset heroImage;
   @override
   final String publishDate;
   @override
@@ -222,10 +222,9 @@ class PostFieldsBuilder implements Builder<PostFields, PostFieldsBuilder> {
   String get description => _$this._description;
   set description(String description) => _$this._description = description;
 
-  SystemFieldsBuilder _heroImage;
-  SystemFieldsBuilder get heroImage =>
-      _$this._heroImage ??= new SystemFieldsBuilder();
-  set heroImage(SystemFieldsBuilder heroImage) => _$this._heroImage = heroImage;
+  AssetBuilder _heroImage;
+  AssetBuilder get heroImage => _$this._heroImage ??= new AssetBuilder();
+  set heroImage(AssetBuilder heroImage) => _$this._heroImage = heroImage;
 
   String _publishDate;
   String get publishDate => _$this._publishDate;

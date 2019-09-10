@@ -20,7 +20,7 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
 
   String get description;
 
-  SystemFields get heroImage;
+  Asset get heroImage;
 
   String get publishDate;
 

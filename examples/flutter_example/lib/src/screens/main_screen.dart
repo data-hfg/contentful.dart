@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/prototyping_ui/photo.dart';
 import 'package:flutter_example/src/prototyping_ui/photos_repository.dart';
+import 'package:flutter_example/src/repository/contentful_repository.dart';
 import 'package:flutter_example/src/widgets/post_preview_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Photo> photoList = [];
 
-  // final _contentfulRepository = ContentfulRepository();
+  final _contentfulRepository = ContentfulRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _getPhotos();
+    _getPost();
     super.initState();
   }
 
@@ -52,7 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final items = await _photoRepository.fetchPhotos(page: 3);
     setState(() => photoList = items.toList());
   }
-  // Future<void> _getSpace() async {
-  //   final _ = await _contentfulRepository.getPosts();
-  // }
+
+  Future<void> _getPost() async {
+    final post =
+        await _contentfulRepository.getPost(postId: '31TNnjHlfaGUoMOwU0M2og');
+    print(post);
+  }
 }

@@ -7,6 +7,11 @@ part of serializers;
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(Asset.serializer)
+      ..add(AssetFields.serializer)
+      ..add(AssetFile.serializer)
+      ..add(AssetFileDetails.serializer)
+      ..add(AssetFileDetailsImage.serializer)
       ..add(Locale.serializer)
       ..add(Photo.serializer)
       ..add(Post.serializer)

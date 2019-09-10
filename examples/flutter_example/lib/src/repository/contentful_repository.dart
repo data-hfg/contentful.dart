@@ -1,4 +1,5 @@
 import 'package:contentful_dart/contentful_dart.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/utils/keys.dart';
 
@@ -27,14 +28,12 @@ class ContentfulRepository {
     }
   }
 
-  Future<Post> getPost() async {
+  Future<Post> getPost({
+    @required String postId,
+  }) async {
     try {
       final item = await _contentfulClient.getEntry<Post>(
-        entryId: 'id',
-        params: {
-          'content_type': 'blogPost',
-          'order': 'sys.createdAt',
-        },
+        entryId: postId,
         fromJson: Post.fromJson,
       );
 
