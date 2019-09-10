@@ -44,21 +44,21 @@ class ContentfulRepository {
     }
   }
 
-  Future<Post> getPosts() async {
-    try {
-      final entries = await _contentfulClient.getEntries<Post>(
-        params: {
-          'content_type': 'blogPost',
-          'skip': '0',
-          'limit': '100',
-          'order': 'sys.createdAt',
-        },
-        fromJson: Post.fromJson,
-      );
+  // Future<Post> getPosts() async {
+  //   try {
+  //     final entries = await _contentfulClient.getEntries<Post>(
+  //       params: {
+  //         'content_type': 'blogPost',
+  //         'skip': '0',
+  //         'limit': '100',
+  //         'order': 'sys.createdAt',
+  //       },
+  //       fromJson: Post.fromJson,
+  //     );
 
-      return entries.items.first;
-    } on ContentfulError catch (error) {
-      throw ContentfulError(message: error.message);
-    }
-  }
+  //     return entries.items.first;
+  //   } on ContentfulError catch (error) {
+  //     throw ContentfulError(message: error.message);
+  //   }
+  // }
 }
