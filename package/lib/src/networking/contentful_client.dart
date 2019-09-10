@@ -11,9 +11,6 @@ class ContentfulClient {
   /// Base delivery host
   static const _delivery = 'cdn.contentful.com';
 
-  /// Base preview host
-  static const _preview = 'preview.contentful.com';
-
   /// ContentfulHttpClient
   final ContentfulHttpClient client;
 
