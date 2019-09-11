@@ -36,10 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 1,
         bottomOpacity: 0,
       ),
-      body: Center(
-          child: PostPreviewList(
-        photoList: photoList,
-      )),
+      body: SafeArea(
+        child: Center(
+            child: PostPreviewList(
+          photoList: photoList,
+        )),
+      ),
     );
   }
 
@@ -55,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() => photoList = items.toList());
   }
 
-  Future<void> _getPost() async {
+  _getPost() async {
     final post =
         await _contentfulRepository.getPost(postId: '31TNnjHlfaGUoMOwU0M2og');
     print(post);

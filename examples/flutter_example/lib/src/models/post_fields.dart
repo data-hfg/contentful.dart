@@ -11,16 +11,18 @@ part 'post_fields.g.dart';
 
 abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
   static Serializer<PostFields> get serializer => _$postFieldsSerializer;
+
   factory PostFields([updates(PostFieldsBuilder b)]) = _$PostFields;
+
   PostFields._();
 
-  SystemFields get author;
+  // SystemFields get author;
 
   String get body;
 
   String get description;
 
-  Asset get heroImage;
+  // Asset get heroImage;
 
   String get publishDate;
 
@@ -35,11 +37,8 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
   }
 
   static PostFields fromJson(String jsonString) {
+    print('DEBUG: $jsonString');
     return serializers.deserializeWith(
         PostFields.serializer, json.decode(jsonString));
-  }
-
-  static PostFields parsePostFields(String responseBody) {
-    return PostFields.fromJson(responseBody);
   }
 }

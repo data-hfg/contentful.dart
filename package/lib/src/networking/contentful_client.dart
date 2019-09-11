@@ -67,16 +67,14 @@ class ContentfulClient {
       path: 'entries/$entryId',
       params: params,
     ));
-
-    print(response.body);
-
     if (response.statusCode != 200) {
       throw ContentfulError(
         message:
             '''Cannot get entry with id: $entryId. Finished with error: ${response.body}''',
       );
     }
-    return fromJson(response.body);
+    final item = fromJson(response.body);
+    return item;
   }
 
   Future<Space> getSpaceDetails({@required String spaceid}) async {

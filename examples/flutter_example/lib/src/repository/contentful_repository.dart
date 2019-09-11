@@ -32,12 +32,10 @@ class ContentfulRepository {
     @required String postId,
   }) async {
     try {
-      final item = await _contentfulClient.getEntry<Post>(
+      return await _contentfulClient.getEntry<Post>(
         entryId: postId,
         fromJson: Post.fromJson,
       );
-
-      return item;
     } on ContentfulError catch (error) {
       throw ContentfulError(message: error.message);
     }
