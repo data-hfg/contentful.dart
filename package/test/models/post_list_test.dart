@@ -1,8 +1,5 @@
 import 'package:test/test.dart';
 
-import '../utils/load_fixture.dart';
-import '../utils/models/post_list.dart';
-
 void main() {
   group('List of Post Tests:', () {
     // test('returns List of Post from json', () {

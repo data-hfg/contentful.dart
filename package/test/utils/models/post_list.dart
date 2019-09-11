@@ -13,9 +13,7 @@ import 'serializers.dart';
 
 part 'post_list.g.dart';
 
-abstract class PostList extends Object
-    with EntryList<Post>
-    implements Built<PostList, PostListBuilder> {
+abstract class PostList implements Built<PostList, PostListBuilder> {
   static Serializer<PostList> get serializer => _$postListSerializer;
 
   factory PostList([void Function(PostListBuilder) updates]) = _$PostList;

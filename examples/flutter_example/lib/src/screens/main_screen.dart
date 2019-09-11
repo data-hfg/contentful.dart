@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/src/prototyping_ui/photo.dart';
-import 'package:flutter_example/src/prototyping_ui/photos_repository.dart';
+import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/repository/contentful_repository.dart';
-import 'package:flutter_example/src/widgets/post_preview_list.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -12,11 +10,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _photoRepository = PhotoRepository();
-
-  List<Photo> photoList = [];
-
   final _contentfulRepository = ContentfulRepository();
+
+  List<Post> photoList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +34,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: Center(
-            child: PostPreviewList(
-          photoList: photoList,
-        )),
+          child: Text('Demo'),
+        ),
+        // child: Center(
+        //     child: PostPreviewList(
+        //   postList: photoList,
+        // )),
       ),
     );
   }
 
   @override
   void initState() {
-    _getPhotos();
+    _getPosts();
     _getPost();
     super.initState();
   }
 
-  _getPhotos() async {
-    final items = await _photoRepository.fetchPhotos(page: 3);
-    setState(() => photoList = items.toList());
+  _getPosts() async {
+    // final items = await _contentfulRepository.fetchPhotos(page: 3);
+    // setState(() => photoList = items.toList());
   }
 
   _getPost() async {

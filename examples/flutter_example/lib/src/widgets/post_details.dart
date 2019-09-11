@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/src/prototyping_ui/photo.dart';
+import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/utils/free_functions.dart';
 
 class PostDetails extends StatelessWidget {
-  final Photo photo;
+  final Post post;
 
   const PostDetails({
-    @required this.photo,
+    @required this.post,
     Key key,
   }) : super(key: key);
 
@@ -25,7 +25,7 @@ class PostDetails extends StatelessWidget {
           },
         ),
         title: Text(
-          photo.postTitle,
+          post.fields.title,
           maxLines: 2,
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -43,7 +43,7 @@ class PostDetails extends StatelessWidget {
                   width: screenSize(context: context).width,
                   height: 300,
                   child: Image.network(
-                    photo.imageUrl,
+                    post.computedImageUrl(),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -52,7 +52,7 @@ class PostDetails extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'By ${photo.author}',
+                      'By ${post.fields.author}',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18,
@@ -64,7 +64,7 @@ class PostDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                   child: Text(
-                    photo.postBody,
+                    post.fields.body,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -81,7 +81,7 @@ class PostDetails extends StatelessWidget {
                       spacing: 8,
                       runSpacing: 4,
                       children: [
-                        for (final tag in photo.tags)
+                        for (final tag in post.fields.tags)
                           Chip(
                             backgroundColor: Colors.black38,
                             label: Text(

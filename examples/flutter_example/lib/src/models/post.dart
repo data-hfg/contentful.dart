@@ -2,18 +2,16 @@ library post;
 
 import 'dart:convert';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful_dart/contentful_dart.dart' show Entry, SystemFields;
+import 'package:contentful_dart/contentful_dart.dart'
+    show Entry, EntryList, SystemFields;
 import 'package:flutter_example/src/models/post_fields.dart';
 import 'package:flutter_example/src/models/serializers.dart';
 
 part 'post.g.dart';
 
-abstract class Post extends Object
-    with Entry<PostFields>
-    implements Built<Post, PostBuilder> {
+abstract class Post with Entry<PostFields> implements Built<Post, PostBuilder> {
   static Serializer<Post> get serializer => _$postSerializer;
   factory Post([updates(PostBuilder b)]) = _$Post;
 
@@ -32,8 +30,16 @@ abstract class Post extends Object
         Post.serializer, json.decode(jsonString));
   }
 
-  static BuiltList<Post> parseListOfPosts(String responseBody) {
+  static EntryList<Post> parseListOfPosts(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return deserializeListOf<Post>(parsed);
+    return deserializeEntryListOf<Post>(parsed);
+  }
+
+  String computedImageUrl({
+    int width = 400,
+    int height = 400,
+  }) {
+    //final imageSize = this.fields.heroImage.fields.file.details.image;
+    return 'https://picsum.photos/id/${this.fields.heroImage.sys.id}/${width}/${height}';
   }
 }

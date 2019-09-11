@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_example/src/prototyping_ui/photo.dart';
+import 'package:flutter_example/src/models/post.dart';
 import 'package:flutter_example/src/utils/free_functions.dart';
 
 class PostPreviewItem extends StatelessWidget {
-  final Photo photo;
-  final ValueChanged<Photo> postItemDidTapped;
+  final Post post;
+  final ValueChanged<Post> postItemDidTapped;
 
   const PostPreviewItem({
-    @required this.photo,
+    @required this.post,
     @required this.postItemDidTapped,
     Key key,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class PostPreviewItem extends StatelessWidget {
     return GestureDetector(
       key: UniqueKey(),
       behavior: HitTestBehavior.opaque,
-      onTap: () => postItemDidTapped(photo),
+      onTap: () => postItemDidTapped(post),
       child: Container(
         margin: const EdgeInsets.all(4),
         child: Stack(
@@ -26,7 +26,7 @@ class PostPreviewItem extends StatelessWidget {
               height: 200,
               width: double.infinity,
               child: Image.network(
-                photo.computedImageUrl(),
+                post.computedImageUrl(),
                 fit: BoxFit.cover,
               ),
             ),
@@ -57,7 +57,7 @@ class PostPreviewItem extends StatelessWidget {
                   SizedBox(
                     width: screenSize(context: context).width - 16,
                     child: Text(
-                      photo.postTitle,
+                      post.fields.title,
                       maxLines: 2,
                       style: TextStyle(
                         color: Colors.white,
@@ -69,7 +69,7 @@ class PostPreviewItem extends StatelessWidget {
                   Opacity(
                     opacity: 0.7,
                     child: Text(
-                      'Published at: ${photo.publishedAt}',
+                      'Published at: ${post.fields.publishDate}',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,

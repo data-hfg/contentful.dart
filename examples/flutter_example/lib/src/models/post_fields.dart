@@ -16,13 +16,13 @@ abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
 
   PostFields._();
 
-  // SystemFields get author;
+  SystemFields get author;
 
   String get body;
 
   String get description;
 
-  // Asset get heroImage;
+  Asset get heroImage;
 
   String get publishDate;
 
