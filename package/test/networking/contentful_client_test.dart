@@ -91,7 +91,7 @@ void main() {
         params: params,
         fromJson: Post.fromJson,
       );
-
+      expect(response.sys.id, '31TNnjHlfaGUoMOwU0M2og');
       expect(response, const TypeMatcher<Post>());
     });
 
@@ -147,7 +147,6 @@ void main() {
     final response = await contentfulClient.getContentTypes(
       spaceid: _spaceid,
     );
-
     expect(response, const TypeMatcher<ContentTypeResponse>());
   });
 

@@ -18,7 +18,10 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
   @override
   Iterable<Object> serialize(Serializers serializers, SystemFields object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object>[
+      'type',
+      serializers.serialize(object.type, specifiedType: const FullType(String)),
+    ];
     if (object.contentType != null) {
       result
         ..add('contentType')
@@ -96,12 +99,6 @@ class _$SystemFieldsSerializer implements StructuredSerializer<SystemFields> {
         ..add('space')
         ..add(serializers.serialize(object.space,
             specifiedType: const FullType(Space)));
-    }
-    if (object.type != null) {
-      result
-        ..add('type')
-        ..add(serializers.serialize(object.type,
-            specifiedType: const FullType(String)));
     }
     if (object.updatedAt != null) {
       result
@@ -267,7 +264,11 @@ class _$SystemFields extends SystemFields {
       this.updatedAt,
       this.updatedBy,
       this.version})
-      : super._();
+      : super._() {
+    if (type == null) {
+      throw new BuiltValueNullFieldError('SystemFields', 'type');
+    }
+  }
 
   @override
   SystemFields rebuild(void Function(SystemFieldsBuilder) updates) =>

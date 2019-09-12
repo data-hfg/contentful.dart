@@ -7,7 +7,7 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:contentful_dart/src/models/models.dart';
 
-import './serializers.dart';
+import 'test_serializers.dart';
 
 part 'post_field.g.dart';
 
@@ -35,11 +35,12 @@ abstract class PostField implements Built<PostField, PostFieldBuilder> {
   String get title;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(PostField.serializer, this));
+    return json
+        .encode(testSerializers.serializeWith(PostField.serializer, this));
   }
 
   static PostField fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return testSerializers.deserializeWith(
         PostField.serializer, json.decode(jsonString));
   }
 }

@@ -73,7 +73,6 @@ abstract class SystemFields
   Space get space;
 
   /// The type identifier of the resource.
-  @nullable
   String get type;
 
   /// Describes the date the resource was last updated.

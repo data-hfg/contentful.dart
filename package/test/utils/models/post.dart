@@ -4,33 +4,32 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful_dart/src/models/entry/entry.dart';
-import 'package:contentful_dart/src/models/system_fields/system_fields.dart';
+import 'package:contentful_dart/src/models/models.dart';
 
-import './serializers.dart';
 import 'post_field.dart';
+import 'test_serializers.dart';
 
 part 'post.g.dart';
 
 abstract class Post extends Object
-    with Entry<PostField>
+    with Entry
     implements Built<Post, PostBuilder> {
   static Serializer<Post> get serializer => _$postSerializer;
 
-  factory Post([void Function(PostBuilder) updates]) = _$Post;
+  factory Post([updates(PostBuilder b)]) = _$Post;
 
   Post._();
 
-  PostField get fields;
+  GenericValue<PostField> get fields;
 
   SystemFields get sys;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(Post.serializer, this));
+    return json.encode(testSerializers.serializeWith(Post.serializer, this));
   }
 
   static Post fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return testSerializers.deserializeWith(
         Post.serializer, json.decode(jsonString));
   }
 }

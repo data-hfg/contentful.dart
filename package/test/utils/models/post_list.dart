@@ -5,11 +5,10 @@ import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful_dart/src/models/entry/entry_list.dart';
 import 'package:contentful_dart/src/models/system_fields/system_fields.dart';
 
 import 'post.dart';
-import 'serializers.dart';
+import 'test_serializers.dart';
 
 part 'post_list.g.dart';
 
@@ -33,11 +32,12 @@ abstract class PostList implements Built<PostList, PostListBuilder> {
   int get total;
 
   String toJson() {
-    return json.encode(serializers.serializeWith(PostList.serializer, this));
+    return json
+        .encode(testSerializers.serializeWith(PostList.serializer, this));
   }
 
   static PostList fromJson(String jsonString) {
-    return serializers.deserializeWith(
+    return testSerializers.deserializeWith(
         PostList.serializer, json.decode(jsonString));
   }
 }

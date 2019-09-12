@@ -51,7 +51,7 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
         isUnderspecified ? FullType.object : specifiedType.parameters[0];
 
     final result = isUnderspecified
-        ? new EntryListBuilder<Entry<dynamic>>()
+        ? new EntryListBuilder<Entry>()
         : serializers.newBuilder(specifiedType) as EntryListBuilder;
 
     final iterator = serialized.iterator;
@@ -88,7 +88,7 @@ class _$EntryListSerializer implements StructuredSerializer<EntryList> {
   }
 }
 
-class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
+class _$EntryList<T extends Entry> extends EntryList<T> {
   @override
   final BuiltList<T> items;
   @override
@@ -163,7 +163,7 @@ class _$EntryList<T extends Entry<dynamic>> extends EntryList<T> {
   }
 }
 
-class EntryListBuilder<T extends Entry<dynamic>>
+class EntryListBuilder<T extends Entry>
     implements Builder<EntryList<T>, EntryListBuilder<T>> {
   _$EntryList<T> _$v;
 

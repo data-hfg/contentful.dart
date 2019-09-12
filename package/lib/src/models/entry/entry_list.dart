@@ -38,20 +38,3 @@ abstract class EntryList<T extends Entry>
         EntryList.serializer, json.decode(jsonString));
   }
 }
-
-// import 'package:built_collection/built_collection.dart';
-// import 'package:contentful_dart/src/models/models.dart';
-
-// abstract class EntryList<T> {
-//   BuiltList<T> get items;
-
-//   int get limit;
-
-//   int get skip;
-
-//   SystemFields get sys;
-
-//   int get total;
-
-//   BuiltListMultimap get includes;
-// }
