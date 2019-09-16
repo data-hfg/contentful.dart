@@ -1,5 +1,5 @@
 # Contentful Flutter Example Project
 
-![Alt Text](https://github.com/data-hfg/contentful.dart/tree/develop/examples/flutter_example/assets/contentful.gif)
+![Alt Text](https://github.com/data-hfg/contentful.dart/blob/develop/examples/flutter_example/assets/contentful.gif?raw=true)
 
 ## Documentation in WIP
