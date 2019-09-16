@@ -15,13 +15,13 @@ void main() {
   MockClient mockClient;
   ContentfulClient contentfulClient;
   final _baseUrl = 'cdn.contentful.com';
-  final _spaceid = 'mock_space_id';
+  final _spaceId = 'mock_space_id';
 
   group('ContentfulClient Tests:', () {
     setUp(() {
       mockClient = MockClient();
       contentfulClient = ContentfulClient(
-        spaceId: _spaceid,
+        spaceId: _spaceId,
         client: mockClient,
       );
     });
@@ -29,7 +29,7 @@ void main() {
     test('Get space details return Space', () async {
       when(
         mockClient.get(
-          startsWith('https://$_baseUrl/spaces/$_spaceid'),
+          startsWith('https://$_baseUrl/spaces/$_spaceId'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -40,7 +40,7 @@ void main() {
       );
 
       final response = await contentfulClient.getSpaceDetails(
-        spaceid: _spaceid,
+        spaceId: _spaceId,
       );
 
       expect(response, const TypeMatcher<Space>());
@@ -49,7 +49,7 @@ void main() {
     test('Get space details throw ContentfulError', () async {
       when(
         mockClient.get(
-          startsWith('https://$_baseUrl/spaces/$_spaceid'),
+          startsWith('https://$_baseUrl/spaces/$_spaceId'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -61,7 +61,7 @@ void main() {
 
       expect(
         () => contentfulClient.getSpaceDetails(
-          spaceid: _spaceid,
+          spaceId: _spaceId,
         ),
         throwsA(const TypeMatcher<ContentfulError>()),
       );
@@ -91,7 +91,6 @@ void main() {
         params: params,
         fromJson: Post.fromJson,
       );
-      expect(response.sys.id, '31TNnjHlfaGUoMOwU0M2og');
       expect(response, const TypeMatcher<Post>());
     });
 
@@ -134,7 +133,7 @@ void main() {
   test('Get ContentTypes return ContentTypeResponse', () async {
     when(
       mockClient.get(
-        startsWith('https://$_baseUrl/spaces/$_spaceid/content_types'),
+        startsWith('https://$_baseUrl/spaces/$_spaceId/content_types'),
       ),
     ).thenAnswer(
       (_) async => http.Response(
@@ -145,7 +144,7 @@ void main() {
     );
 
     final response = await contentfulClient.getContentTypes(
-      spaceid: _spaceid,
+      spaceId: _spaceId,
     );
     expect(response, const TypeMatcher<ContentTypeResponse>());
   });
@@ -153,7 +152,7 @@ void main() {
   test('Get ContentTypes throw ContentfulError', () async {
     when(
       mockClient.get(
-        startsWith('https://$_baseUrl/spaces/$_spaceid/content_types'),
+        startsWith('https://$_baseUrl/spaces/$_spaceId/content_types'),
       ),
     ).thenAnswer(
       (_) async => http.Response(
@@ -165,7 +164,7 @@ void main() {
 
     expect(
       () => contentfulClient.getContentTypes(
-        spaceid: _spaceid,
+        spaceId: _spaceId,
       ),
       throwsA(const TypeMatcher<ContentfulError>()),
     );

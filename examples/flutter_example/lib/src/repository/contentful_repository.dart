@@ -14,7 +14,7 @@ class ContentfulRepository {
 
   Future<Space> getCurrentSpaceDetails() async {
     try {
-      return await _contentfulClient.getSpaceDetails(spaceid: Secrets.spaceId);
+      return await _contentfulClient.getSpaceDetails(spaceId: Secrets.spaceId);
     } on ContentfulError catch (error) {
       throw ContentfulError(message: error.message);
     }

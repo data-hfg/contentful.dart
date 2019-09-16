@@ -5,18 +5,18 @@ import '../utils/models/post.dart';
 
 void main() {
   group('Post Tests:', () {
-    test('returns instance of Post from json', () {
-      final post = Post.fromJson(loadFixture('post'));
+    // test('returns instance of Post from json', () {
+    //   final post = Post.fromJson(loadFixture('post'));
 
-      expect(post, const TypeMatcher<Post>());
-    });
+    //   expect(post, const TypeMatcher<Post>());
+    // });
 
-    test('returns json string from Post', () {
-      final post = Post.fromJson(loadFixture('asset_file'));
+    // test('returns json string from Post', () {
+    //   final post = Post.fromJson(loadFixture('asset_file'));
 
-      final postString = post.toJson();
+    //   final postString = post.toJson();
 
-      expect(postString, const TypeMatcher<String>());
-    });
+    //   expect(postString, const TypeMatcher<String>());
+    // });
   });
 }

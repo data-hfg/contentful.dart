@@ -16,8 +16,8 @@
   - [Core Features](#core-features)
   - [Getting started](#getting-started)
     - [Installation](#installation)
-    - [Your first request](#your-first-request)
     - [Authorization](#authorization)
+    - [Your first request](#your-first-request)
   - [Documentation & References](#documentation--references)
     - [Reference Documentation](#reference-documentation)
     - [Tutorials & other resources](#tutorials--other-resources)
@@ -40,9 +40,67 @@
 
 ### Installation
 
-### Your first request
+Add this to your package's pubspec.yaml file:
+
+```dart
+
+dependencies:
+  contentful_dart: ^0.1.0
+```
+
+You can install packages from the command line:
+
+with pub:
+
+```sh
+ pub get
+```
+
+with Flutter:
+
+```sh
+ flutter pub get
+```
+
+Alternatively, your editor might support `pub get` or `flutter pub get`. Check the docs for your editor to learn more.
+
+Now in your Dart code, you can use:
+
+```dart
+import 'package:contentful_dart/contentful_dart.dart';
+```
 
 ### Authorization
+
+Grab credentials for your Contentful space by [navigating to the "APIs" section of the Contentful Web App](https://app.contentful.com/deeplink?link=api).
+If you don't have access tokens for your app, create a new set for the Delivery and Preview APIs.
+Next, pass the id of your space and delivery access token into the initializer like so:
+
+### Your first request
+
+The following code snippet is the most basic one you can use to fetch content from Contentful with this SDK:
+
+```dart
+
+class ContentfulRepository {
+  final ContentfulClient _contentfulClient;
+
+  ContentfulRepository()
+      : _contentfulClient = ContentfulClient(
+          client: ContentfulHttpClient(accessToken: Secrets.accessToken),
+          spaceId: Secrets.spaceId,
+        );
+
+
+  Future<Space> getCurrentSpaceDetails() async {
+    try {
+      return await _contentfulClient.getSpaceDetails(spaceId: Secrets.spaceId);
+    } on ContentfulError catch (error) {
+      throw ContentfulError(message: error.message);
+    }
+  }
+}
+```
 
 ## Documentation & References
 
