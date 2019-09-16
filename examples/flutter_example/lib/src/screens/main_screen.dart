@@ -46,19 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    _getPosts();
-    _getPost();
+    _getSpaceDetails();
     super.initState();
   }
 
-  _getPosts() async {
-    // final items = await _contentfulRepository.fetchPhotos(page: 3);
-    // setState(() => photoList = items.toList());
-  }
-
-  _getPost() async {
-    final post =
-        await _contentfulRepository.getPost(postId: '31TNnjHlfaGUoMOwU0M2og');
+  _getSpaceDetails() async {
+    final post = await _contentfulRepository.getCurrentSpaceDetails();
     print(post);
   }
 }

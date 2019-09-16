@@ -81,6 +81,7 @@ Next, pass the id of your space and delivery access token into the initializer l
 The following code snippet is the most basic one you can use to fetch content from Contentful with this SDK:
 
 ```dart
+import 'package:contentful_dart/contentful_dart.dart';
 
 class ContentfulRepository {
   final ContentfulClient _contentfulClient;
@@ -94,12 +95,17 @@ class ContentfulRepository {
 
   Future<Space> getCurrentSpaceDetails() async {
     try {
-      return await _contentfulClient.getSpaceDetails(spaceId: Secrets.spaceId);
+      return await _contentfulClient.getSpaceDetails(
+        spaceId: Secrets.spaceId,
+      );
     } on ContentfulError catch (error) {
       throw ContentfulError(message: error.message);
     }
   }
 }
+
+final _contentfulRepository = ContentfulRepository();
+final post = await _contentfulRepository.getCurrentSpaceDetails();
 ```
 
 ## Documentation & References
