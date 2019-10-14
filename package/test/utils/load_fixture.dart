@@ -15,7 +15,7 @@ void expectMismatch(
     Object value, Built otherValue, String expectedMismatchMessage) {
   try {
     expect(value, equalsBuilt(otherValue));
-  } catch (exception) {
+  } on Error catch (exception) {
     expect(exception.toString(), contains(expectedMismatchMessage));
     return;
   }
