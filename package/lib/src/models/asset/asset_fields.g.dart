@@ -18,12 +18,12 @@ class _$AssetFieldsSerializer implements StructuredSerializer<AssetFields> {
   Iterable<Object> serialize(Serializers serializers, AssetFields object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'title',
-      serializers.serialize(object.title,
-          specifiedType: const FullType(String)),
       'file',
       serializers.serialize(object.file,
           specifiedType: const FullType(AssetFile)),
+      'title',
+      serializers.serialize(object.title,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -40,13 +40,13 @@ class _$AssetFieldsSerializer implements StructuredSerializer<AssetFields> {
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
-        case 'title':
-          result.title = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'file':
           result.file.replace(serializers.deserialize(value,
               specifiedType: const FullType(AssetFile)) as AssetFile);
+          break;
+        case 'title':
+          result.title = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -57,19 +57,19 @@ class _$AssetFieldsSerializer implements StructuredSerializer<AssetFields> {
 
 class _$AssetFields extends AssetFields {
   @override
-  final String title;
-  @override
   final AssetFile file;
+  @override
+  final String title;
 
   factory _$AssetFields([void Function(AssetFieldsBuilder) updates]) =>
       (new AssetFieldsBuilder()..update(updates)).build();
 
-  _$AssetFields._({this.title, this.file}) : super._() {
-    if (title == null) {
-      throw new BuiltValueNullFieldError('AssetFields', 'title');
-    }
+  _$AssetFields._({this.file, this.title}) : super._() {
     if (file == null) {
       throw new BuiltValueNullFieldError('AssetFields', 'file');
+    }
+    if (title == null) {
+      throw new BuiltValueNullFieldError('AssetFields', 'title');
     }
   }
 
@@ -83,19 +83,19 @@ class _$AssetFields extends AssetFields {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AssetFields && title == other.title && file == other.file;
+    return other is AssetFields && file == other.file && title == other.title;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, title.hashCode), file.hashCode));
+    return $jf($jc($jc(0, file.hashCode), title.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AssetFields')
-          ..add('title', title)
-          ..add('file', file))
+          ..add('file', file)
+          ..add('title', title))
         .toString();
   }
 }
@@ -103,20 +103,20 @@ class _$AssetFields extends AssetFields {
 class AssetFieldsBuilder implements Builder<AssetFields, AssetFieldsBuilder> {
   _$AssetFields _$v;
 
-  String _title;
-  String get title => _$this._title;
-  set title(String title) => _$this._title = title;
-
   AssetFileBuilder _file;
   AssetFileBuilder get file => _$this._file ??= new AssetFileBuilder();
   set file(AssetFileBuilder file) => _$this._file = file;
+
+  String _title;
+  String get title => _$this._title;
+  set title(String title) => _$this._title = title;
 
   AssetFieldsBuilder();
 
   AssetFieldsBuilder get _$this {
     if (_$v != null) {
-      _title = _$v.title;
       _file = _$v.file?.toBuilder();
+      _title = _$v.title;
       _$v = null;
     }
     return this;
@@ -139,7 +139,7 @@ class AssetFieldsBuilder implements Builder<AssetFields, AssetFieldsBuilder> {
   _$AssetFields build() {
     _$AssetFields _$result;
     try {
-      _$result = _$v ?? new _$AssetFields._(title: title, file: file.build());
+      _$result = _$v ?? new _$AssetFields._(file: file.build(), title: title);
     } catch (_) {
       String _$failedField;
       try {

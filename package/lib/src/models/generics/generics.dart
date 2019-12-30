@@ -35,18 +35,6 @@ abstract class CollectionGenericValue<T>
   BuiltList<T> get values;
 }
 
-abstract class GenericValue<T>
-    implements Built<GenericValue<T>, GenericValueBuilder<T>> {
-  static Serializer<GenericValue> get serializer => _$genericValueSerializer;
-
-  factory GenericValue([void Function(GenericValueBuilder<T>) updates]) =
-      _$GenericValue<T>;
-
-  GenericValue._();
-
-  T get value;
-}
-
 /// Example of how to use built_value.
 ///
 /// The value class must implement [Built]. It must be abstract, and have
@@ -67,4 +55,16 @@ abstract class GenericContainer
   CollectionGenericValue<String> get collectionGenericValue;
 
   GenericValue<String> get genericValue;
+}
+
+abstract class GenericValue<T>
+    implements Built<GenericValue<T>, GenericValueBuilder<T>> {
+  static Serializer<GenericValue> get serializer => _$genericValueSerializer;
+
+  factory GenericValue([void Function(GenericValueBuilder<T>) updates]) =
+      _$GenericValue<T>;
+
+  GenericValue._();
+
+  T get value;
 }
