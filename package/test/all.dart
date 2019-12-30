@@ -30,14 +30,12 @@ void main() {
   content_type_response.main();
   content_type.main();
   endpoint_test.main();
-  // entry_list.main();
   field_type.main();
   field.main();
   http_client.main();
   link.main();
   locale.main();
   location.main();
-  // post_list.main();
   post_test.main();
   space.main();
   sys.main();

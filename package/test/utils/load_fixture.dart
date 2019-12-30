@@ -18,14 +18,10 @@ void expectMismatch(
 ) {
   try {
     expect(value, equalsBuilt(otherValue));
-  } on FixtureError catch (error) {
+    // ignore: avoid_catches_without_on_clauses
+  } catch (error) {
     expect(error.toString(), contains(expectedMismatchMessage));
     return;
   }
   throw StateError('Expected mismatch.');
-}
-
-class FixtureError implements Exception {
-  final String message;
-  FixtureError({this.message});
 }
