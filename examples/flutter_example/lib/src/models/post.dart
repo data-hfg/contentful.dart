@@ -12,12 +12,14 @@ part 'post.g.dart';
 
 abstract class Post with Entry<PostFields> implements Built<Post, PostBuilder> {
   static Serializer<Post> get serializer => _$postSerializer;
-  factory Post([updates(PostBuilder b)]) = _$Post;
+  factory Post([void Function(PostBuilder) updates]) = _$Post;
 
   Post._();
 
+  @override
   PostFields get fields;
 
+  @override
   SystemFields get sys;
 
   String toJson() {
