@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  _getPhotos() async {
+  void _getPhotos() async {
     final items = await _photoRepository.fetchPhotos(page: 3);
     setState(() => photoList = items.toList());
   }

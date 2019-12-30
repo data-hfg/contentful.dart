@@ -1,5 +1,6 @@
 coverage/
 .test_coverage.dart
+flutter_export_environment.sh
 
 # Miscellaneous
 *.class
