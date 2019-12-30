@@ -16,7 +16,6 @@ void main() {
   ContentfulClient contentfulClient;
   final _baseUrl = 'cdn.contentful.com';
   final _spaceid = 'mock_space_id';
-  // final _accessToken = 'mock_access_token';
 
   group('ContentfulClient Tests:', () {
     setUp(() {

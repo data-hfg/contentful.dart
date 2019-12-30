@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:core';
 
 import 'package:contentful_dart/src/models/models.dart';
@@ -58,7 +57,7 @@ class ContentfulClient {
 
   Future<EntryList<T>> getEntries<T extends Entry>({
     @required Map<String, dynamic> params,
-    @required T Function(String jsonString) fromJson,
+    @required EntryList<T> Function(String jsonString) fromJson,
   }) async {
     final response = await client.get(_uri(path: 'entries', params: params));
 
@@ -68,15 +67,7 @@ class ContentfulClient {
             '''Cannot get list of entries. Finished with error: ${response.body}''',
       );
     }
-
-    final jsonResponse = json.decode(utf8.decode(response.bodyBytes));
-
-    if (jsonResponse['includes'] != null) {
-      final includes = Includes.fromJson(jsonResponse['includes']);
-      jsonResponse['items'] = includes.resolveLinks(jsonResponse['items']);
-    }
-
-    return EntryList.fromJson(response.body);
+    return fromJson(response.body);
   }
 
   Future<T> getEntry<T extends Entry>({

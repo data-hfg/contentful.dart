@@ -13,9 +13,11 @@ import './models/field_type_test.dart' as field_type;
 import './models/link_test.dart' as link;
 import './models/locale_test.dart' as locale;
 import './models/location_test.dart' as location;
+import './models/post_test.dart' as post_test;
 import './models/space_test.dart' as space;
 import './models/system_fields_test.dart' as sys;
 import './networking/contentful_client_test.dart' as client;
+import './networking/contentful_http_client_test.dart' as http_client;
 
 void main() {
   all_locales.main();
@@ -28,11 +30,15 @@ void main() {
   content_type_response.main();
   content_type.main();
   endpoint_test.main();
+  // entry_list.main();
   field_type.main();
   field.main();
+  http_client.main();
   link.main();
   locale.main();
   location.main();
+  // post_list.main();
+  post_test.main();
   space.main();
   sys.main();
 }

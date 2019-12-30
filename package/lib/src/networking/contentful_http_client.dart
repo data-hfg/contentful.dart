@@ -12,10 +12,10 @@ class ContentfulHttpClient extends http.BaseClient {
     @required String accessToken,
   }) {
     final client = http.Client();
-    return ContentfulHttpClient._internal(client, accessToken);
+    return ContentfulHttpClient._(client, accessToken);
   }
 
-  ContentfulHttpClient._internal(this.client, this.accessToken);
+  ContentfulHttpClient._(this.client, this.accessToken);
 
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) {

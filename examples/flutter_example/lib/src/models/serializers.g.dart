@@ -8,6 +8,7 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Locale.serializer)
+      ..add(Photo.serializer)
       ..add(Post.serializer)
       ..add(PostFields.serializer)
       ..add(Space.serializer)

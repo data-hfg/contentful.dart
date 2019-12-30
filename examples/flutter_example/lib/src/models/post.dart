@@ -2,9 +2,10 @@ library post;
 
 import 'dart:convert';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:contentful_dart/contentful_dart.dart';
+import 'package:contentful_dart/contentful_dart.dart' hide deserializeListOf;
 import 'package:flutter_example/src/models/post_fields.dart';
 import 'package:flutter_example/src/models/serializers.dart';
 
@@ -33,5 +34,10 @@ abstract class Post with Entry<PostFields> implements Built<Post, PostBuilder> {
 
   static Post parsePost(String responseBody) {
     return Post.fromJson(responseBody);
+  }
+
+  static BuiltList<Post> parseListOfPosts(String responseBody) {
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    return deserializeListOf<Post>(parsed);
   }
 }
