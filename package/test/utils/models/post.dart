@@ -21,8 +21,10 @@ abstract class Post extends Object
 
   Post._();
 
+  @override
   PostField get fields;
 
+  @override
   SystemFields get sys;
 
   String toJson() {

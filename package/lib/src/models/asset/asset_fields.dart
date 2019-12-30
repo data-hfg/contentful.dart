@@ -9,13 +9,15 @@ import 'package:contentful_dart/src/models/models.dart';
 part 'asset_fields.g.dart';
 
 abstract class AssetFields implements Built<AssetFields, AssetFieldsBuilder> {
-  String get title;
-  AssetFile get file;
+  static Serializer<AssetFields> get serializer => _$assetFieldsSerializer;
+  factory AssetFields([void Function(AssetFieldsBuilder) updates]) =
+      _$AssetFields;
 
   AssetFields._();
 
-  factory AssetFields([void Function(AssetFieldsBuilder) updates]) =
-      _$AssetFields;
+  AssetFile get file;
+
+  String get title;
 
   String toJson() {
     return json.encode(
@@ -26,6 +28,4 @@ abstract class AssetFields implements Built<AssetFields, AssetFieldsBuilder> {
     return contentfulSerializers.deserializeWith(
         AssetFields.serializer, json.decode(jsonString));
   }
-
-  static Serializer<AssetFields> get serializer => _$assetFieldsSerializer;
 }

@@ -11,7 +11,8 @@ part 'post_fields.g.dart';
 
 abstract class PostFields implements Built<PostFields, PostFieldsBuilder> {
   static Serializer<PostFields> get serializer => _$postFieldsSerializer;
-  factory PostFields([updates(PostFieldsBuilder b)]) = _$PostFields;
+  factory PostFields([void Function(PostFieldsBuilder) updates]) = _$PostFields;
+
   PostFields._();
 
   SystemFields get author;

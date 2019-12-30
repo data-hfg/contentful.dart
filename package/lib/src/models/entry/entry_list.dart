@@ -24,7 +24,8 @@
 
 //   int get skip;
 
-//   SystemFields get sys;
+// factory EntryList([void Function(EntryListBuilder<T>) updates]) =
+//     _$EntryList<T>;
 
 //   int get total;
 
