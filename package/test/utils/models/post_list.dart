@@ -22,16 +22,22 @@ abstract class PostList extends Object
 
   PostList._();
 
+  @override
   BuiltListMultimap get includes;
 
+  @override
   BuiltList<Post> get items;
 
+  @override
   int get limit;
 
+  @override
   int get skip;
 
+  @override
   SystemFields get sys;
 
+  @override
   int get total;
 
   String toJson() {

@@ -12,11 +12,15 @@ String loadFixture(String name) {
 }
 
 void expectMismatch(
-    Object value, Built otherValue, String expectedMismatchMessage) {
+  Object value,
+  Built otherValue,
+  String expectedMismatchMessage,
+) {
   try {
     expect(value, equalsBuilt(otherValue));
-  } catch (exception) {
-    expect(exception.toString(), contains(expectedMismatchMessage));
+    // ignore: avoid_catches_without_on_clauses
+  } catch (error) {
+    expect(error.toString(), contains(expectedMismatchMessage));
     return;
   }
   throw StateError('Expected mismatch.');

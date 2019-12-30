@@ -10,7 +10,6 @@ Uri get dummyUrl => Uri.parse('http://dartlang.org/');
 
 void main() {
   final accessToken = 'accessToken';
-  final headers = {'authorization': 'Bearer accessToken'};
 
   group('ContentfulHttpClient Tests', () {
     test('Can create ContentfulHttpClient factory', () {

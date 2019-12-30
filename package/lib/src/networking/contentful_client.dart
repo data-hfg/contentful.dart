@@ -36,11 +36,23 @@ class ContentfulClient {
   const ContentfulClient._({
     @required this.client,
     @required this.spaceId,
-  })  : this.host = _delivery,
-        this.environmentId = 'master';
+  })  : host = _delivery,
+        environmentId = 'master';
 
   void close() {
-    this.client.close();
+    client.close();
+  }
+
+  Future<ContentTypeResponse> getContentTypes(
+      {@required String spaceid}) async {
+    final response =
+        await client.get('https://$_delivery/spaces/$spaceid/content_types');
+    if (response.statusCode != 200) {
+      throw ContentfulError(
+          message:
+              '''Cannot get Content Types for space id: $spaceid. Finished with error: ${response.body}''');
+    }
+    return ContentTypeResponse.fromJson(response.body);
   }
 
   Future<EntryList<T>> getEntries<T extends Entry>({
@@ -85,18 +97,6 @@ class ContentfulClient {
               '''Cannot get Space with id: $spaceid. Finished with error: ${response.body}''');
     }
     return Space.fromJson(response.body);
-  }
-
-  Future<ContentTypeResponse> getContentTypes(
-      {@required String spaceid}) async {
-    final response =
-        await client.get('https://$_delivery/spaces/$spaceid/content_types');
-    if (response.statusCode != 200) {
-      throw ContentfulError(
-          message:
-              '''Cannot get Content Types for space id: $spaceid. Finished with error: ${response.body}''');
-    }
-    return ContentTypeResponse.fromJson(response.body);
   }
 
   String _uri({
