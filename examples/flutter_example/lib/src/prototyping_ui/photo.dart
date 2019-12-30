@@ -39,7 +39,7 @@ abstract class Photo implements Built<Photo, PhotoBuilder> {
     int width = 400,
     int height = 400,
   }) {
-    return 'https://picsum.photos/id/${this.id}/${width}/${height}';
+    return 'https://picsum.photos/id/${id}/${width}/${height}';
   }
 
   String get publishedAt => randomDateInThePast();
