@@ -11,7 +11,8 @@ abstract class BoundGenericValue<T extends num>
   static Serializer<BoundGenericValue> get serializer =>
       _$boundGenericValueSerializer;
 
-  factory BoundGenericValue([updates(BoundGenericValueBuilder<T> b)]) =
+  factory BoundGenericValue(
+          [void Function(BoundGenericValueBuilder<T>) updates]) =
       _$BoundGenericValue<T>;
 
   BoundGenericValue._();
@@ -26,7 +27,7 @@ abstract class CollectionGenericValue<T>
       _$collectionGenericValueSerializer;
 
   factory CollectionGenericValue(
-          [updates(CollectionGenericValueBuilder<T> b)]) =
+          [void Function(CollectionGenericValueBuilder<T>) updates]) =
       _$CollectionGenericValue<T>;
 
   CollectionGenericValue._();
@@ -38,7 +39,8 @@ abstract class GenericValue<T>
     implements Built<GenericValue<T>, GenericValueBuilder<T>> {
   static Serializer<GenericValue> get serializer => _$genericValueSerializer;
 
-  factory GenericValue([updates(GenericValueBuilder<T> b)]) = _$GenericValue<T>;
+  factory GenericValue([void Function(GenericValueBuilder<T>) updates]) =
+      _$GenericValue<T>;
 
   GenericValue._();
 

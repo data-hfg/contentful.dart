@@ -12,12 +12,20 @@ String loadFixture(String name) {
 }
 
 void expectMismatch(
-    Object value, Built otherValue, String expectedMismatchMessage) {
+  Object value,
+  Built otherValue,
+  String expectedMismatchMessage,
+) {
   try {
     expect(value, equalsBuilt(otherValue));
-  } catch (exception) {
-    expect(exception.toString(), contains(expectedMismatchMessage));
+  } on FixtureError catch (error) {
+    expect(error.toString(), contains(expectedMismatchMessage));
     return;
   }
   throw StateError('Expected mismatch.');
+}
+
+class FixtureError implements Exception {
+  final String message;
+  FixtureError({this.message});
 }

@@ -13,7 +13,8 @@ abstract class EntryList<T extends Entry>
     implements Built<EntryList<T>, EntryListBuilder<T>> {
   static Serializer<EntryList> get serializer => _$entryListSerializer;
 
-  factory EntryList([updates(EntryListBuilder<T> b)]) = _$EntryList<T>;
+  factory EntryList([void Function(EntryListBuilder<T>) updates]) =
+      _$EntryList<T>;
 
   EntryList._();
 
